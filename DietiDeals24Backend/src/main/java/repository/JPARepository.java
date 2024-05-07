@@ -6,7 +6,7 @@ public interface JPARepository<T, ID> {
 	
 	//Comandi base universali per tutte le repository
 	//T=Classe generica
-	//ID=tipo di Primary key ned DB (es:integer per utente)
+	//ID=tipo di Primary key
 	
 	void save(T entity);
 	void delete(T entity);

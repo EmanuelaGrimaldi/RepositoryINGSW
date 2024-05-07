@@ -19,21 +19,27 @@ import implementazione.UtenteRepositoryImpl;
 @WebServlet("/ControllerUtenti")
 public class ControllerUtenti extends HttpServlet {
 	
-	//private UtenteRepository utenterepository = UtenteRepositoryImpl.getInstance();
 	
+	private UtenteRepository utenterepository;
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
 		PrintWriter pw = response.getWriter();
 		
+		
 		pw.println("Ora stampo tutta la lista degli utenti nel DB:");
 		
-		//List<Utente> listaUtenti = utenterepository.findAll();
-		List<String> listaUtenti = new ArrayList<>();
-				
+		System.out.println("Pre riga problematica");
+		utenterepository = UtenteRepositoryImpl.getInstance();	
+		System.out.println("AAAA DOPO riga problematica");
+		
+		List<Utente> listaUtenti = utenterepository.findAll();
+		
+		/*List<String> listaUtenti = new ArrayList<>();		
 		listaUtenti.add("Emy");
 		listaUtenti.add("Carlo");
-		listaUtenti.add("Maria");
+		listaUtenti.add("Maria");*/
 		
 		System.out.println(listaUtenti);
 		pw.println(listaUtenti.toString());
