@@ -36,10 +36,6 @@ public class ControllerUtenti extends HttpServlet {
 		
 		List<Utente> listaUtenti = utenterepository.findAll();
 		
-		/*List<String> listaUtenti = new ArrayList<>();		
-		listaUtenti.add("Emy");
-		listaUtenti.add("Carlo");
-		listaUtenti.add("Maria");*/
 		
 		System.out.println(listaUtenti);
 		pw.println(listaUtenti.toString());
