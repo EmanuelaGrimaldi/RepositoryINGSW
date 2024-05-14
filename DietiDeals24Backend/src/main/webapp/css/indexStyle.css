@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.main-body .main-container {flex: 1 1 100%;align-items: flex-start;}
+
+p{white-space: normal!important;font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif"; text-align:center;}
+h1{white-space: normal!important;font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";}
+.img-max{width:100%;}
 *{
 	margin: 0;
 	padding: 0;
@@ -36,7 +41,7 @@
 }
 
 .DietiDeals24_header{
-	width: 1000px;
+	width: 70%;
 	height: 100%;
 	display: block;
 	margin: 0 auto;
@@ -124,3 +129,38 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/*Qui creo due colonne per le aste che devono apparire*/
+
+.flex-diviso2{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+	}
+	
+.flex-diviso2 div{
+	width: 40%;
+	height: 200px;
+	padding: 40px;
+	text-align:left;
+	font-family:Gotham;
+}
+
+.flex-diviso2 p{
+	text-align:left;
+	font-family:Gotham;
+	font-size: 18px;
+}
+
+/*Per posizionare correttamente le immagini*/
+
+.immagineAsta{
+	display:block; 
+	margin: 40px;
+	}
+
+.cell{
+	flex-flow: row wrap;
+	margin: 20px 0;	
+}
+

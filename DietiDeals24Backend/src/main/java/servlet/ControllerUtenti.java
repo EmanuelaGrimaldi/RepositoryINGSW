@@ -13,7 +13,6 @@ import repository.UtenteRepository;
 import entità.Utente;
 import implementazione.UtenteRepositoryImpl;
 
-//Warning perché togliamo il numero seriale
 @SuppressWarnings("serial")
 
 @WebServlet("/ControllerUtenti")
