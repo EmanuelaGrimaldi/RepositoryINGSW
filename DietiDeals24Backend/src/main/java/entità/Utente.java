@@ -13,13 +13,13 @@ public class Utente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", nullable = false)
-	private int ID;
+	@Column(name = "ID_Utente", nullable = false)
+	private int ID_Utente;
 	
-	@Column(name = "Nome", nullable = false, length = 45)
+	@Column(name = "Nome", nullable = false, length = 30)
 	private String nome;
 	
-	@Column(name = "Cognome", nullable = false, length = 45)
+	@Column(name = "Cognome", nullable = false, length = 30)
 	private String cognome;
 		
 	@Column(name = "Biografia", nullable = false, length = 300)
@@ -33,22 +33,7 @@ public class Utente {
 	
 	@Column(name = "FotoProfilo", nullable = false, length = 300)
 	private String fotoProfilo;
-		
-	@Column(name = "ElencoRecensioni", nullable = false, length = 30)
-	private String elencoRecensioni;
 	
-	@Column(name = "ElencoAste", nullable = true, length = 30)
-	private String elencoAste;
-
-	@Override
-	public String toString() {
-		return "Utente [ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + ", biografia=" + biografia
-				+ ", geolocalizzazione=" + geolocalizzazione + ", elencoSocial=" + elencoSocial + ", fotoProfilo="
-				+ fotoProfilo + ", elencoRecensioni=" + elencoRecensioni + ", elencoAste=" + elencoAste
-				+ ", isAmministratore=" + isAmministratore + ", emailUtente=" + emailUtente + ", passwordUtente="
-				+ passwordUtente + ", elencoNotifiche=" + elencoNotifiche + "]";
-	}
-
 	@Column(name = "IsAmministratore", nullable = false)
 	private boolean isAmministratore;
 
@@ -58,15 +43,25 @@ public class Utente {
 	@Column(name = "PasswordUtente", nullable = true, length = 40)
 	private String passwordUtente;
 	
-	@Column(name = "ElencoNotifiche", nullable = true, length = 100)
-	private String elencoNotifiche;
-
-	public int getID() {
-		return ID;
+	/// 
+	
+	@Column(name = "ElencoNotifiche_FK", nullable = true, length = 100)
+	private String elencoNotifiche_FK;
+	
+	@Override
+	public String toString() {
+		return "Utente [ID_Utente=" + ID_Utente + ", nome=" + nome + ", cognome=" + cognome + ", biografia=" + biografia
+				+ ", geolocalizzazione=" + geolocalizzazione + ", elencoSocial=" + elencoSocial + ", fotoProfilo="
+				+ fotoProfilo + ", isAmministratore=" + isAmministratore + ", emailUtente=" + emailUtente
+				+ ", passwordUtente=" + passwordUtente + "]";
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public int getID_Utente() {
+		return ID_Utente;
+	}
+
+	public void setID_Utente(int iD_Utente) {
+		ID_Utente = iD_Utente;
 	}
 
 	public String getNome() {
@@ -117,22 +112,6 @@ public class Utente {
 		this.fotoProfilo = fotoProfilo;
 	}
 
-	public String getElencoRecensioni() {
-		return elencoRecensioni;
-	}
-
-	public void setElencoRecensioni(String elencoRecensioni) {
-		this.elencoRecensioni = elencoRecensioni;
-	}
-
-	public String getElencoAste() {
-		return elencoAste;
-	}
-
-	public void setElencoAste(String elencoAste) {
-		this.elencoAste = elencoAste;
-	}
-
 	public boolean isAmministratore() {
 		return isAmministratore;
 	}
@@ -157,14 +136,12 @@ public class Utente {
 		this.passwordUtente = passwordUtente;
 	}
 
-	public String getElencoNotifiche() {
-		return elencoNotifiche;
-	}
+	@Column(name = "ElencoRecensioni_FK", nullable = true)
+	private int elencoRecensioni;
 
-	public void setElencoNotifiche(String elencoNotifiche) {
-		this.elencoNotifiche = elencoNotifiche;
-	}
-	
+	@Column(name = "ElencoAste_FK", nullable = true)
+	private boolean elencoAste;
+
 	  
 	
 }
