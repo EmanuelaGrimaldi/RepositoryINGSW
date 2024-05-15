@@ -2,135 +2,7 @@
 
 .main-body .main-container {flex: 1 1 100%;align-items: flex-start;}
 
-p{white-space: normal!important;font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif"; text-align:center;}
-h1{white-space: normal!important;font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";}
-.img-max{width:100%;}
-*{
-	margin: 0;
-	padding: 0;
-	list-style:none;
-	text-decoration:none;
-}
-
-.over_header{
-	width: 100%;
-	height: 50px;
-	display: block;
-	background-color: #9CB4E3;
-}
-
-.loginButton{
-	background-color: #9CB4E3;
-	border: 5px;
-  	color: white;
-  	text-align: right;
-  	text-decoration: none;
-  	display: inline-block;
-  	font-size: 18px;
-  	padding: 15px 20px;
-  	cursor: pointer;
-  	width: 100%;
-  	font-family: Arial;	
-}
-
-.header{
-	width: 100%;
-	height: 160px;
-	display: block;
-	background-color: #9CB4E3;
-}
-
-.DietiDeals24_header{
-	width: 70%;
-	height: 100%;
-	display: block;
-	margin: 0 auto;
-	background-color: #9CB4E3;
-	font-family:  Comic Sans;
-	font-size: 125px;
-	color: white;
-	text-align: center;
-}
-
-.under-header {
-  overflow: hidden;
-  background-color: #9CB4E3;
-  font-family: Arial;
-}
-
-/* Links dentro-la-navbar */
-.under-header a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.free_space{
-	width: 35%;
-	height: 160px;
-	overflow: hidden;
-  	background-color: red;
-  	margin: left;
-  	
-}
-
-/* Container-dropdown */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* bottone-dropdown */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/*Il-dropdown-diventa-blu-quando-lo-clicco */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: #1A1170;
-}
-
-/* Contenuti-nel-dropdown (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/*Opzioni-nel-dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/*Sfondo-grigio quando-vai col-cursore sopra-le opzioni-del-dropdown*/
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/*Qui creo due colonne per le aste che devono apparire*/
+/*---COLONNE PER ASTE---*/
 
 .flex-diviso2{
   display: flex;
@@ -138,6 +10,7 @@ h1{white-space: normal!important;font-family:Gotham, "Helvetica Neue", Helvetica
   justify-content: center;
 	}
 	
+/*Per il testo*/
 .flex-diviso2 div{
 	width: 40%;
 	height: 200px;
@@ -152,7 +25,7 @@ h1{white-space: normal!important;font-family:Gotham, "Helvetica Neue", Helvetica
 	font-size: 18px;
 }
 
-/*Per posizionare correttamente le immagini*/
+/*Per le immagini*/
 
 .immagineAsta{
 	display:block; 
