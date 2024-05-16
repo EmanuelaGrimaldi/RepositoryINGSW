@@ -7,6 +7,10 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!--  INSERISCI QUA LE CLASSE ENTITA' DEL TUO PROGETTO  -->
 		<class>entità.Utente</class>
+		<class>entità.Asta</class>
+		<class>entità.ConcorrentiUtenteAsta</class>
+		<class>entità.Notifiche</class>
+		<class>entità.Recensione</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 

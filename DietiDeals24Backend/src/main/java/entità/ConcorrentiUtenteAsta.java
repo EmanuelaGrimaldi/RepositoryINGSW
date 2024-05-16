@@ -14,7 +14,7 @@ public class ConcorrentiUtenteAsta
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_Utnete", nullable = false)
+	@Column(name = "ID_Utente", nullable = false)
 	private int ID_Utnete;
 
 

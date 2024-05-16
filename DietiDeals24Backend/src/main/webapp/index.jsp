@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,21 +58,13 @@
  
 <!-- Containers per le aste-->
 
-  <div class="flex-diviso2 cell">
-    <div>
-		<h1>TITOLO ARTICOLO:</h1>
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>     
-    </div>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    alt="Immagine prodotto"
-    class="immagineAsta">
-  </div> 
+	 <%@ 
+	 getAsteHome a = new getAsteHome();
+	 a.getAsteHome();  
+	 %>
   
     <div class="flex-diviso2 cell">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    	 alt="Immagine prodotto"
     	 class="immagineAsta">
      <div>
 		<h1>TITOLO ARTICOLO:</h1>
@@ -80,33 +74,7 @@
     </div>
   </div> 
    
-   <!--AGGIUNTO SOLO A SCOPO VISIVO: DA CANCELLARE-->
 
-  <div class="flex-diviso2 cell">
-    <div>
-		<h1>TITOLO ARTICOLO:</h1>
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>     
-    </div>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    alt="Immagine prodotto"
-    class="immagineAsta">
-  </div> 
-  
-    <div class="flex-diviso2 cell">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    	 alt="Immagine prodotto"
-    	 class="immagineAsta">
-     <div>
-		<h1>TITOLO ARTICOLO:</h1>
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>    
-    </div>
-  </div> 
-  
-   <!--FINE CODICE DA CANCELLARE-->
    
 <!--Footer:-->
 

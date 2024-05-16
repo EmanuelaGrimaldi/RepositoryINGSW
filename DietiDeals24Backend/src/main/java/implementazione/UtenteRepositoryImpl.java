@@ -8,16 +8,13 @@ public class UtenteRepositoryImpl extends JPARepositoryImpl<Utente, Integer> imp
 	private static UtenteRepository instance = new UtenteRepositoryImpl();
 
 	
-    private UtenteRepositoryImpl() {
-    	
+    private UtenteRepositoryImpl() {   	
     }
 
     public static UtenteRepository getInstance() {
-    	System.out.println("Pre riga problematica");
         return instance;
     }
 
-	
 	
 	
 }
