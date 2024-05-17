@@ -1,1 +1,74 @@
-@charset "UTF-8";
+h1{
+	text-align:center;
+	font-family:Gotham;
+	font-size: 30px;
+	margin: 20px;
+}
+
+.background{
+	display: flex;
+  	align-items: flex-start;
+  	justify-content: center; 
+	margin: 0 15%;
+	width:70%;
+	height: 900px;
+	background: #E8EEF8;	
+}
+
+.background .flex-diviso2{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width:100%; 
+}
+
+.flex-diviso2 .divSX{
+	width: 40%;
+	text-align:center;
+	font-family:Gotham;
+	padding:10px 20px;
+}
+
+.flex-diviso2 .divDX{
+	width: 60%;
+	text-align:center;
+	font-family:Gotham;
+	padding:10px 35px;	
+}
+
+.immagineAsta{
+	display:block; 
+	margin:auto;
+	}
+
+.squareInfoAsta{
+	text-align:center;
+	font-family:Gotham;
+	padding:35px;
+}
+
+.squareInfoAsta h2{
+	font-size: 30px;
+}
+
+.squareInfoAsta h1{
+	font-size: 35px;
+}
+
+.squareInfoAsta h3{
+	font-size: 40px;
+	padding: 20px;
+}
+
+.Offerta{
+	background: #1A1170;
+	text-align:center;
+	color: white;
+	font-family:Gotham;
+	font-size: 40px;
+  	cursor: pointer;
+  	text-align:center;
+  	padding: 5px;
+  	width: 60%;
+  	margin: 0 auto;
+}

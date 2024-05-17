@@ -55,3 +55,21 @@ h1:hover {
 	margin: 20px 0;	
 }
 
+/*usiamo-le-h3-per-la-scritta-offerta-in-rosso*/
+
+h3{
+	background : red;
+	color: white;
+	cursor: pointer;
+	width: 30%;
+	height: 25px;
+	text-align:center;
+	font-family:Gotham;
+	font-size: 22px;
+}
+
+h3:hover{
+	background : white;
+	color: red;
+	cursor: pointer;
+}
