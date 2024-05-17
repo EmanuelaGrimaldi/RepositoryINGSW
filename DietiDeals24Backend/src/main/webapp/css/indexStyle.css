@@ -10,7 +10,7 @@
   justify-content: center;
 	}
 	
-/*Per il testo*/
+/*Per-il-testo*/
 .flex-diviso2 div{
 	width: 40%;
 	height: 200px;
@@ -25,12 +25,30 @@
 	font-size: 18px;
 }
 
-/*Per le immagini*/
+/*Per-le-immagini*/
 
 .immagineAsta{
 	display:block; 
 	margin: 40px;
+	border:5px solid white;
 	}
+	
+/*Cursore-sulle-aste-le-cerchiano-di-celeste-e-cambia-cursore*/
+.immagineAsta:hover {
+  	border:5px solid #9CB4E3;
+  	cursor: pointer;
+}
+
+/*Cursore-sui-titoli-aste-le-sottolineano-e-cambia-colore*/
+/*IMPORTANTE: Usare-H1-solo-per-titoli-aste*/
+
+h1{color: black;}
+
+h1:hover {
+  	color: #9CB4E3;
+  	cursor: pointer;
+  	text-decoration: underline;
+}
 
 .cell{
 	flex-flow: row wrap;

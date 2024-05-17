@@ -20,9 +20,12 @@
 	</a>	
 </div>	
 <div class="header">
-	<div class="DietiDeals24_header">
-	DietiDeals24
-	</div>
+	<a href="index.html">
+		<!--INSERIRE LOGO QUI:-->
+		<div class="DietiDeals24_header">
+		DietiDeals24
+		</div>
+	</a>
 </div>		
 <div class="under-header"> 
   	<div class="homeButton">Home</div> 		

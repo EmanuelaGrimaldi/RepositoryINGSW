@@ -117,7 +117,21 @@ h4{
   	color: #9CB4E3;
 }
 
+.plusButton{
+	display:flex;
+	color: grey;	
+	display: inline-block;
+	justify-content: center;
+	border: 5px;
+  	font-size: 40px;
+  	cursor: pointer;	
+  	padding: 15px 8px;
+  	margin: 0 48%;
+}
 
+.plusButton:hover {
+  	color: #9CB4E3;
+}
 
 
 
