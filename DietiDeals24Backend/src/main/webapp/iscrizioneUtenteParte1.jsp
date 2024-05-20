@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,7 @@
 <!--INIZIO HEADER-->
 <div class="over_header">
 
-	<a href="login.html">
+	<a href="login.jsp">
 		<div class="loginButton">
 		<i class="fa-regular fa-user"></i>   Login</div>
 	</a>
@@ -20,7 +22,7 @@
 </div>
 	
 <div class="header">
-	<a href="index.html">
+	<a href="index.jsp">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
 		DietiDeals24
@@ -30,7 +32,7 @@
 		
 <div class="under-header">
   
-  	<a href="index.html"> 
+  	<a href="index.jsp"> 
   		<div class="homeButton">Home</div> 		
   	</a>
   		
@@ -66,7 +68,7 @@
 <!-- LOGIN-->
 
 <div>
-	<a href="login.html">
+	<a href="login.jsp">
 	<i class="fa-solid fa-arrow-left freccia-indietro"></i>
 	</a>
 </div>
@@ -103,7 +105,7 @@
 
 
 <div>
-	<a href="IscrizioneUtenteP2.html">
+	<a href="IscrizioneUtenteParte2.jsp">
 		<button type="button" class="avantiButton">Avanti</button>
 	</a>
 </div>

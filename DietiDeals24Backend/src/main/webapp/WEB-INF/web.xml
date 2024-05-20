@@ -2,36 +2,6 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
   <display-name>DietiDeals24</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>getAsteHome</display-name>
-    <servlet-name>getAsteHome</servlet-name>
-    <servlet-class>servlet.getAsteHome</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>getAsteHome</servlet-name>
-    <url-pattern>/getAsteHome</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>getAsteByTipologia</display-name>
-    <servlet-name>getAsteByTipologia</servlet-name>
-    <servlet-class>servlet.getAsteByTipologia</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>getAsteByTipologia</servlet-name>
-    <url-pattern>/getAsteByTipologia</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>getAsteByCategoria</display-name>
-    <servlet-name>getAsteByCategoria</servlet-name>
-    <servlet-class>servlet.getAsteByCategoria</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>getAsteByCategoria</servlet-name>
-    <url-pattern>/getAsteByCategoria</url-pattern>
-  </servlet-mapping>
 </web-app>
