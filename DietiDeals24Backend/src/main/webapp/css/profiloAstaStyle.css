@@ -11,8 +11,7 @@ h1{
   	justify-content: center; 
 	margin: 0 15%;
 	width:70%;
-	height: 900px;
-	background: #E8EEF8;	
+	height: 750px;	
 }
 
 .background .flex-diviso2{
@@ -26,38 +25,53 @@ h1{
 	width: 40%;
 	text-align:center;
 	font-family:Gotham;
-	padding:10px 20px;
+	padding:30px;
+	overflow:hidden
 }
 
 .flex-diviso2 .divDX{
 	width: 60%;
 	text-align:center;
 	font-family:Gotham;
-	padding:10px 35px;	
+	padding:30px;	
 }
 
 .immagineAsta{
-	display:block; 
-	margin:auto;
+	display:block;
+	object-fit: cover;
+  	width: 100%;
+  	height: 100%;
+  	margin: 0 auto;
 	}
 
 .squareInfoAsta{
-	text-align:center;
 	font-family:Gotham;
-	padding:35px;
-}
-
-.squareInfoAsta h2{
-	font-size: 30px;
+	padding:15px 35px;
+	background: #9CB4E3;
 }
 
 .squareInfoAsta h1{
 	font-size: 35px;
+	color:white;
+}
+
+.squareInfoAsta h2{
+	font-size: 40px;
+	color:white;
+  	padding:5px 0;
 }
 
 .squareInfoAsta h3{
-	font-size: 40px;
-	padding: 20px;
+	font-size: 20px;
+	color:white;
+	text-align: right;
+  	padding:5px 0;
+}
+
+.squareInfoAsta h4{
+	font-size: 35px;
+	color:white;
+  	padding:5px 0;
 }
 
 .Offerta{
@@ -69,6 +83,61 @@ h1{
   	cursor: pointer;
   	text-align:center;
   	padding: 5px;
-  	width: 60%;
-  	margin: 0 auto;
+  	width: 90%;
+  	margin: 0 auto 30px auto;
 }
+
+.descrizioneAsta{
+	margin: 10px 0;
+	padding: 10px;
+	border:2px solid black;
+	text-align:center;
+	font-family:Gotham;
+	font-size: 18px;
+}
+
+.profiloVenditore{
+	background: #9CB4E3;
+	height:200px;
+	display: flex;
+  	align-items: flex-start;
+  	width:100%; 
+  	padding:15px 0;
+	
+}
+
+.fotoVenditore{
+	object-fit: cover;
+  	width: 200px;
+  	margin: auto 0 auto 10px;
+	
+}
+
+.nomeVenditore{
+	color: white;
+	width: auto;
+  	height: 30px;
+	text-align:center;
+	font-family:Gotham;
+	font-size: 40px;
+	margin: 10px 0 0 100px;
+}
+
+.profiloVenditore a{
+	text-align:right;
+	font-family:Gotham;
+	font-size: 20px;
+	color: white;
+	text-decoration: underline;
+	width: auto;
+  	height: 40px;
+	margin: 180px 20px 0 50px;
+}
+
+.profiloVenditore a:hover {
+  	color: #1A1170;
+  	cursor: pointer;
+}
+
+
+
