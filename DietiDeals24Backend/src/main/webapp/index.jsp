@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page import = "javaJSP.getAllAste, java.util.List, entità.Asta"%>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -62,13 +64,29 @@
 
  <br>
  
-<!-- Containers per le aste-->
+<!-- CODICE DINAMICO: PROVE-->
 
+	<%! 
+	getAllAste c = new getAllAste();
+	List<Asta> listaAsta = c.getAllAsteFunction();
+	int i = 0;
+	
+	do {
+		System.out.println("<div class='flex-diviso2 cell'><div><h1>" + listaAsta.get(i).getTitolo() + ":</h1><h2>Nome venditore:" + 
+				listaAsta.get(i).getVenditore() + "</h2><h2>Descrizione Merce:</h2><p>" + listaAsta.get(i).getDescrizione() +
+				"</p></div><img src=" + listaAsta.get(i).getFotoProfilo() + "alt='Immagine prodotto'class='immagineAsta'></div>");
+		i++;
+	}while(listaAsta.get(i) != null);
+
+	%>
+<!-- CODICE DINAMICO: FINE-->
+
+<!-- vecchi esempi:-->
   <div class="flex-diviso2 cell">
     <div>
     	<h3>OFFERTA</h3>	
 		<a href="profiloAsta.html">
-		<h1>TITOLO ARTICOLO:</h1>
+			<h1>TITOLO ARTICOLO:</h1>
 		</a>
 		<h2>Nome venditore: Mario Rossi</h2>
 		<h2>Descrizione Merce:</h2>

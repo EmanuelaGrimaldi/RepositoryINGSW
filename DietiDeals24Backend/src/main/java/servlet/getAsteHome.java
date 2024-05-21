@@ -27,6 +27,7 @@ public class getAsteHome extends HttpServlet {
 		
 		//qua ho lasciato una find all, ma va implementata una funzione dove selezionano solo determinate aste.
 		List<Asta> listaAsta = astarepository.findAll();
+		//request.setAttribute("listaAsta", listaAsta);
 		
 		i = 0;
 		
@@ -38,6 +39,7 @@ public class getAsteHome extends HttpServlet {
 			i++;
 		}while(listaAsta.get(i) != null);
 	
+		//request.getRequestDispatcher("/home.jsp").forward(request, response);
 		
 	}
 }

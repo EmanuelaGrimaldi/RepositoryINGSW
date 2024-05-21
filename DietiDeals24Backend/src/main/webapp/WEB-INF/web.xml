@@ -4,4 +4,14 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>getAsteIndex</display-name>
+    <servlet-name>getAsteIndex</servlet-name>
+    <servlet-class>servlet.getAsteIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getAsteIndex</servlet-name>
+    <url-pattern>/getAsteIndex</url-pattern>
+  </servlet-mapping>
 </web-app>
