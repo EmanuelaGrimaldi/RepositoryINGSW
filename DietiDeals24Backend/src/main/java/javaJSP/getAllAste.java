@@ -24,7 +24,17 @@ public class getAllAste {
 			i++;
 		}while(listaAsta.get(i) != null);
 		*/
+		for(Asta a : listaAsta)
+		{
+			
+			System.out.println(	"<div class='flex-diviso2 cell'><div><h1>" + a.getTitolo() +
+								":</h1><h2>Nome venditore:" + a.getVenditore() + 
+								"</h2><h2>Descrizione Merce:</h2><p>" + a.getDescrizione() +
+								"</p></div><img src=" + a.getFotoProfilo() + 
+								"alt='Immagine prodotto'class='immagineAsta'></div>"
+								);
 		
+		}
 	return listaAsta;
 	}
 	

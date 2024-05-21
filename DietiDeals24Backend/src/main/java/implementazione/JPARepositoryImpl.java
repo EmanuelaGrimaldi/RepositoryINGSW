@@ -159,23 +159,29 @@ public abstract class JPARepositoryImpl<T, ID> implements JPARepository<T, ID> {
 		EntityTransaction et = null;
 		List<T> lista = null;
 		
-		try {
+		try 
+		{
 			em = emf.createEntityManager();
 			et = em.getTransaction();
 			
-			et.begin();		
-			lista = em.createQuery("FROM " + entityClass.getSimpleName(), entityClass).getResultList();	
+			et.begin();			
+			lista = em.createQuery(" FROM " + entityClass.getSimpleName(), entityClass).getResultList();
 			et.commit();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			System.err.println("Errorino uwu :" + e.getMessage());
 			
 			if (et != null && et.isActive()) 
 				et.rollback();				
 			
-		}finally {
+		}
+		finally 
+		{
 			if(em != null)
 				em.close();
 		}
+		
 	return lista;
 	}
 	

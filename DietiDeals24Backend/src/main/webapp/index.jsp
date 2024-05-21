@@ -1,7 +1,8 @@
+<%@page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "javaJSP.getAllAste, java.util.List, entità.Asta"%>
+<%@page import = "javaJSP.getAllAste, servlet.getAsteHome,implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
 
 <html>
 <head>
@@ -16,24 +17,23 @@
 
 <!--INIZIO HEADER-->
 <div class="over_header">
-	<a href="login.jsp">
-		<div class="loginButton">
-		<i class="fa-regular fa-user"></i>   Login</div>
-	</a>	
+	<div class="loginButton">
+		<i class="fa-regular fa-user">
+			<a href="login.jsp">Login</a>
+		</i>	
+	</div>
+	
 </div>	
 <div class="header">
-	<a href="index.jsp">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-		DietiDeals24
+			<a href="index.jsp">DietiDeals24</a>
 		</div>
-	</a>
 </div>		
 <div class="under-header">
-
-	<a href="index.jsp"> 
-  		<div class="homeButton">Home</div> 		
-  	</a>
+  	<div class="homeButton">
+  		<a href="index.jsp">Home</a>
+  	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
@@ -66,28 +66,47 @@
  
 <!-- CODICE DINAMICO: PROVE-->
 
-	<%! 
-	getAllAste c = new getAllAste();
-	List<Asta> listaAsta = c.getAllAsteFunction();
-	int i = 0;
-	
-	do {
-		System.out.println("<div class='flex-diviso2 cell'><div><h1>" + listaAsta.get(i).getTitolo() + ":</h1><h2>Nome venditore:" + 
-				listaAsta.get(i).getVenditore() + "</h2><h2>Descrizione Merce:</h2><p>" + listaAsta.get(i).getDescrizione() +
-				"</p></div><img src=" + listaAsta.get(i).getFotoProfilo() + "alt='Immagine prodotto'class='immagineAsta'></div>");
-		i++;
-	}while(listaAsta.get(i) != null);
-
+	<%!
+	boolean get(){	
+		
+		getAsteHome c = new getAsteHome();
+		
+		//getAllAste c = new getAllAste();
+		int i = 0;
+		//List<Asta> listaAsta = c.getAllAsteFunction();
+		List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll();
+		/* 
+		do{
+			System.out.println("<div class='flex-diviso2 cell'><div><h1>" + listaAsta.get(i).getTitolo() + ":</h1><h2>Nome venditore:" + 
+					listaAsta.get(i).getVenditore() + "</h2><h2>Descrizione Merce:</h2><p>" + listaAsta.get(i).getDescrizione() +
+					"</p></div><img src=" + listaAsta.get(i).getFotoProfilo() + "alt='Immagine prodotto'class='immagineAsta'></div>");
+			i++;
+		}while(listaAsta.get(i) != null);
+		 */
+		for(Asta a : listaAsta)
+		{
+			
+			System.out.println(	"<div class='flex-diviso2 cell'><div><h1>" + a.getTitolo() +
+								":</h1><h2>Nome venditore:" + a.getVenditore() + 
+								"</h2><h2>Descrizione Merce:</h2><p>" + a.getDescrizione() +
+								"</p></div><img src=" + a.getFotoProfilo() + 
+								"alt='Immagine prodotto'class='immagineAsta'></div>"
+								);
+		
+		}
+		return true;
+	}
 	%>
 <!-- CODICE DINAMICO: FINE-->
 
 <!-- vecchi esempi:-->
   <div class="flex-diviso2 cell">
     <div>
-    	<h3>OFFERTA</h3>	
-		<a href="profiloAsta.html">
-			<h1>TITOLO ARTICOLO:</h1>
-		</a>
+    	<h3>OFFERTA</h3>		
+		<h1>
+			<a href="profiloAsta.html">TITOLO ARTICOLO:</a>
+			<%=	get()%>
+		</h1>
 		<h2>Nome venditore: Mario Rossi</h2>
 		<h2>Descrizione Merce:</h2>
 		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>     
@@ -106,10 +125,16 @@
     		 class="immagineAsta">
      	</a>
     <div>
-		<a href="profiloAsta.html">
-		<h3>OFFERTA</h3>
-		<h1>TITOLO ARTICOLO:</h1>
-		</a>
+		<h3>
+			<a href="profiloAsta.html"></a>
+			OFFERTA
+		</h3>
+		<h1>
+			<a href="profiloAsta.html"></a>
+			TITOLO ARTICOLO:
+		</h1>
+		
+		
 		<h2>Nome venditore: Mario Rossi</h2>
 		<h2>Descrizione Merce:</h2>
 		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>    
@@ -120,10 +145,14 @@
 
   <div class="flex-diviso2 cell">
   	<div>
-  		<a href="profiloAsta.html">
-  		<h3>OFFERTA</h3>
-		<h1>TITOLO ARTICOLO:</h1>
-		</a>
+  		<h3>
+			<a href="profiloAsta.html"></a>
+			OFFERTA
+		</h3>
+		<h1>
+			<a href="profiloAsta.html"></a>
+			TITOLO ARTICOLO:
+		</h1>
 		<h2>Nome venditore: Mario Rossi</h2>
 		<h2>Descrizione Merce:</h2>
 		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>     
@@ -142,10 +171,14 @@
     	 class="immagineAsta">
     </a>
      <div>
-     	<h3>OFFERTA</h3>
-		<a href="profiloAsta.html"></a>
-		<h1>TITOLO ARTICOLO:</h1>
-		</a>
+     	<h3>
+			<a href="profiloAsta.html"></a>
+			OFFERTA
+		</h3>
+		<h1>
+			<a href="profiloAsta.html"></a>
+			TITOLO ARTICOLO:
+		</h1>
 		<h2>Nome venditore: Mario Rossi</h2>
 		<h2>Descrizione Merce:</h2>
 		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>    
@@ -157,7 +190,7 @@
 <!--Footer:-->
 
 <div class="footer">
-	<p> DietiDeals24 &#169</p>
+	<p> DietiDeals24 &#169;</p>
 </div>
 
 
