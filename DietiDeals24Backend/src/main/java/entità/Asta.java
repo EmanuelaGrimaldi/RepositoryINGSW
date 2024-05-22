@@ -1,7 +1,7 @@
 package entità;
 
 import java.sql.Date;
-
+import java.sql.Time;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,45 +10,77 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Asta")
+@Table(name = "asta")
 public class Asta {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", nullable = false)
-	public int ID;
-	
-	@Column(name = "Titolo", nullable = false, length = 30)
+	@Column(name = "titolo", nullable = false, length = 30)
 	private String titolo;
 	
-	@Column(name = "Descrizione", nullable = true, length = 130)
+	@Column(name = "descrizione", nullable = true, length = 150)
 	private String descrizione;
 	
-	@Column(name = "Categoria", nullable = false, length = 30)
+	@Column(name = "categoria", nullable = false, columnDefinition = "ENUM('TabletTelefonia', 'Giocattoli', 'Elettronica', 'Arte', 'Immobili', 'Antiquariato')")
 	private String categoria;
 	
-	@Column(name = "Tipologia", nullable = false, length = 30)
+	@Column(name = "tipologia", nullable = false, columnDefinition = "ENUM('astaTempoFisso', 'astaInglese')")
 	private String tipologia;
 
-	@Column(name = "DataInizio", nullable = false)
+	@Column(name = "datainizio", nullable = false)
 	private Date dataInizio;
-
-	@Override
-	public String toString() {
-		return "Asta [ID=" + ID + ", titolo=" + titolo + ", descrizione=" + descrizione + ", categoria=" + categoria
-				+ ", tipologia=" + tipologia + ", dataInizio=" + dataInizio + ", dataFine=" + dataFine + ", venditore="
-				+ venditore + ", listaConcorrenti=" + listaConcorrenti + ", offertaPiuAlta=" + offertaPiuAlta
-				+ ", fotoProfilo=" + fotoProfilo + "]";
-	}
-
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
-
+	
+	@Column(name = "offertainiziale", nullable = false)
+	private float offertaIniziale;
+	
+	@Column(name = "offertapiualta", nullable = true)
+	private float offertaPiuAlta;
+	
+	@Column(name = "idoffertapiualta", nullable = true)
+	private int IDOffertaPiuAlta;
+	
+	@Column(name = "fotoasta1", nullable = true, length = 500)
+	private String fotoAsta1;
+	
+	@Column(name = "fotoasta2", nullable = true, length = 500)
+	private String fotoAsta2;
+	
+	@Column(name = "fotoasta3", nullable = true, length = 500)
+	private String fotoAsta3;
+	
+	@Column(name = "fotoasta4", nullable = true, length = 500)
+	private String fotoAsta4;
+	
+	@Column(name = "fotoasta5", nullable = true, length = 500)
+	private String fotoAsta5;
+	
+	
+	//Per_aste_inglesi
+	
+	@Column(name = "timer", nullable = true)
+	private Time timer;
+	
+	@Column(name = "sogliarialzo", nullable = true)
+	private float sogliaRialzo;
+	
+	
+	//Per_aste_tempoFisso
+	
+	@Column(name = "datafine", nullable = true)
+	private Date dataFine;
+	
+	
+	//PK_e_FK
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idasta", nullable = false)
+	public int ID;
+	 
+	@Column(name = "proprietariofk", nullable = false)
+	private int proprietario_FK;
+	
+	
+	//Getters_Setters_toSring
+	
 	public String getTitolo() {
 		return titolo;
 	}
@@ -89,28 +121,12 @@ public class Asta {
 		this.dataInizio = dataInizio;
 	}
 
-	public Date getDataFine() {
-		return dataFine;
+	public float getOffertaIniziale() {
+		return offertaIniziale;
 	}
 
-	public void setDataFine(Date dataFine) {
-		this.dataFine = dataFine;
-	}
-
-	public int getVenditore() {
-		return venditore;
-	}
-
-	public void setVenditore(int venditore) {
-		this.venditore = venditore;
-	}
-
-	public String getListaConcorrenti() {
-		return listaConcorrenti;
-	}
-
-	public void setListaConcorrenti(String listaConcorrenti) {
-		this.listaConcorrenti = listaConcorrenti;
+	public void setOffertaIniziale(float offertaIniziale) {
+		this.offertaIniziale = offertaIniziale;
 	}
 
 	public float getOffertaPiuAlta() {
@@ -121,29 +137,105 @@ public class Asta {
 		this.offertaPiuAlta = offertaPiuAlta;
 	}
 
-	public String getFotoProfilo() {
-		return fotoProfilo;
+	public int getIDOffertaPiuAlta() {
+		return IDOffertaPiuAlta;
 	}
 
-	public void setFotoProfilo(String fotoProfilo) {
-		this.fotoProfilo = fotoProfilo;
+	public void setIDOffertaPiuAlta(int iDOffertaPiuAlta) {
+		IDOffertaPiuAlta = iDOffertaPiuAlta;
 	}
 
-	@Column(name = "DataFine", nullable = false)
-	private Date dataFine;
-	 
-	@Column(name = "Venditore", nullable = false)
-	private int venditore;
-			   
-	@Column(name = "ListaConcorrenti", nullable = false, length = 400)
-	private String listaConcorrenti;
-	 
-	@Column(name = "OffertaPiuAlta", nullable = false)
-	private float offertaPiuAlta;
-	   
-	@Column(name = "FotoProfilo", nullable = true, length = 300)
-	private String fotoProfilo;
+	public String getFotoAsta1() {
+		return fotoAsta1;
+	}
+
+	public void setFotoAsta1(String fotoAsta1) {
+		this.fotoAsta1 = fotoAsta1;
+	}
+
+	public String getFotoAsta2() {
+		return fotoAsta2;
+	}
+
+	public void setFotoAsta2(String fotoAsta2) {
+		this.fotoAsta2 = fotoAsta2;
+	}
+
+	public String getFotoAsta3() {
+		return fotoAsta3;
+	}
+
+	public void setFotoAsta3(String fotoAsta3) {
+		this.fotoAsta3 = fotoAsta3;
+	}
+
+	public String getFotoAsta4() {
+		return fotoAsta4;
+	}
+
+	public void setFotoAsta4(String fotoAsta4) {
+		this.fotoAsta4 = fotoAsta4;
+	}
+
+	public String getFotoAsta5() {
+		return fotoAsta5;
+	}
+
+	public void setFotoAsta5(String fotoAsta5) {
+		this.fotoAsta5 = fotoAsta5;
+	}
+
+	public Time getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Time timer) {
+		this.timer = timer;
+	}
+
+	public float getSogliaRialzo() {
+		return sogliaRialzo;
+	}
+
+	public void setSogliaRialzo(float sogliaRialzo) {
+		this.sogliaRialzo = sogliaRialzo;
+	}
+
+	public Date getDataFine() {
+		return dataFine;
+	}
+
+	public void setDataFine(Date dataFine) {
+		this.dataFine = dataFine;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public int getProprietario_FK() {
+		return proprietario_FK;
+	}
+
+	public void setProprietario_FK(int proprietario_FK) {
+		this.proprietario_FK = proprietario_FK;
+	}
+
+	@Override
+	public String toString() {
+		return "Asta [titolo=" + titolo + ", descrizione=" + descrizione + ", categoria=" + categoria + ", tipologia="
+				+ tipologia + ", dataInizio=" + dataInizio + ", offertaIniziale=" + offertaIniziale
+				+ ", offertaPiuAlta=" + offertaPiuAlta + ", IDOffertaPiuAlta=" + IDOffertaPiuAlta + ", fotoAsta1="
+				+ fotoAsta1 + ", fotoAsta2=" + fotoAsta2 + ", fotoAsta3=" + fotoAsta3 + ", fotoAsta4=" + fotoAsta4
+				+ ", fotoAsta5=" + fotoAsta5 + ", timer=" + timer + ", sogliaRialzo=" + sogliaRialzo + ", dataFine="
+				+ dataFine + ", ID=" + ID + ", proprietario_FK=" + proprietario_FK + "]";
+	}  
+
 	
 	
-	//@OneToMany Connection con le aste
+	
 }

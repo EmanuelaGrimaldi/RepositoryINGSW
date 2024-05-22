@@ -1,0 +1,127 @@
+//Popolamento_Database
+
+
+-- UTENTI
+
+
+INSERT INTO auctionlinedb.utente (Nome,Cognome,Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
+VALUES("Marco","DePretis","giovane disoccupato","Napoi, Na","Fackebook, Mastodon",null,"marcodepretis44@gmail.com","lamiapassword44");
+
+INSERT INTO auctionlinedb.utente ( Nome,Cognome, Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
+VALUES("Francesco","Rogo","giovane studente","Padova, Pa","Mastodon",null,"frnacescorogo123@gmail.com","lamiapassword33");
+
+INSERT INTO auctionlinedb.utente ( Nome,Cognome,Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
+VALUES("Luisa","Amodeo","giovane della terza età","Napoi, Na","Fackebook, twitter" ,null,"luisaamodeo09@gmail.com","lamiapassword11");
+
+INSERT INTO auctionlinedb.utente ( Nome,Cognome, Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
+VALUES("Alex","Madonna","Anziana esploratrice","Gerusalemme, G","X" ,null,"mammacar@gmail.xxx","lamiapassword22");
+
+INSERT INTO auctionlinedb.utente ( Nome,Cognome,EmailUtente,PasswordUtente) 
+VALUES("Massimo","Coopenaghen","lamiacoop@gmail.ur","pisswordmeoff");
+
+INSERT INTO auctionlinedb.utente ( Nome,Cognome,EmailUtente,PasswordUtente) 
+VALUES("Antonio","Luongo","ilportiere@gmail.ur" ,"parmstepasword");
+
+INSERT INTO auctionlinedb.utente ( Nome,Cognome,EmailUtente,PasswordUtente) 
+VALUES("Lucrezia","Zerlenga","maiazod@gmail.it" ,"superpasword");
+
+
+-- ASTE
+
+
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, SogliaRialzo, DataFine, ProprietarioFK)  
+VALUES(	"Mouse MSI",
+	"Ottimo strumento per destrorsi e mancini, 18 tasti modulabili",
+	'Elettronica',
+	'astaTempoFisso',
+	"2024-5-21 2:30:00",
+	100, 0, 0,
+	"https://shop.akinformatica.it/wp-content/uploads/2022/01/EsseShop.it-MSI-S12-0401650-CLA_0_large.jpg", 0,
+	"2024-7-21 00:00:00",
+	1);
+
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo ,ProprietarioFK) 
+VALUES(	"Bici di Sergio DiMartino",
+	"Ottima bici Elettrica in condizioni pre-acquisto, nessun professore è stato ferito durante il proecsso",
+	'Antiquariato',
+	'astaInglese',
+	"2024-5-1 11:30:00",
+	200, 0, 0,
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/15-07-12-Ciclistas-en-Mexico-RalfR-N3S_8973.jpg/310px-15-07-12-Ciclistas-en-	Mexico-RalfR-N3S_8973.jpg",
+	'12:00:00',
+	30.00,
+	2); 
+
+INSERT INTO auctionlinedb.asta (Titolo, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, SogliaRialzo, DataFine, ProprietarioFK)
+VALUES(	"Seggiolo",
+	'Antiquariato',
+	'astaTempoFisso',
+	"2023-12-31 12:30:00",
+   	20, 0, 0,
+ 	"https://www.bibliothecaculinaria.it/wp-content/uploads/2021/12/seggiolino-107000LM155-3.jpg", 0,
+	"2024-12-31 12:30:00",
+	5);
+
+INSERT INTO auctionlinedb.asta (Titolo, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, SogliaRialzo, DataFine, ProprietarioFK)
+VALUES(	"Aspirapolvere",
+	'Elettronica',
+	'astaTempoFisso',
+	"2024-03-28 14:30:00",
+	80, 0, 0,
+	"https://ricondizionati.mediaworld.it/dw/image/v2/BJRJ_PRD/on/demandware.static/-/Sites-mw-refurbished-catalog-master/default/dw30baaacf/images/hi-res/170762.jpg?sw=1000&sh=1000", 0,
+	"2024-10-28 14:30:00",
+	3);
+
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo ,ProprietarioFK)  
+VALUES(	"Monnalisa",
+	"Copia dell'omonimo quadro di Da Vinci.. credo.",
+	'Arte',
+	'astaInglese',
+	"2024-1-22 1:9:40",
+	200, 0, 0,
+	"https://www.storicang.it/medio/2019/12/16/leonardo-utilizzo-linnovativa-tecnica-dello-sfumato-per-dipingere-questo-famoso-quadro_e3d1df62_800x1057.jpg", 
+	'03:00:00',
+	50,
+	5);
+
+INSERT INTO auctionlinedb.asta (Titolo, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo ,ProprietarioFK) 
+VALUES(	"Casse Boose",
+	'Elettronica',
+	'astaInglese',
+	"2023-12-31 12:30:00",
+	50, 0, 0,
+	"https://m.media-amazon.com/images/I/61xeEzulNrL._AC_UF1000,1000_QL80_.jpg",
+	'12:00:00',
+	25,
+	1); 
+
+INSERT INTO auctionlinedb.asta (Titolo, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, SogliaRialzo, DataFine, ProprietarioFK) 
+VALUES(	"Aspirapolvere 3k",
+	'Elettronica',
+	'astaTempoFisso',
+	"2023-12-31 14:30:00",
+	500, 0, 0,
+	"https://m.media-amazon.com/images/I/51rU5isp9RL._AC_UF1000,1000_QL80_.jpg", 0,
+	"2024-1-31 00:00:00",
+	6);
+
+INSERT INTO auctionlinedb.asta (Titolo, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, SogliaRialzo, DataFine, ProprietarioFK) 
+VALUES(	"Laptop Alien",
+	'TabletTelefonia',
+	'astaTempoFisso',
+	"2024-1-22 1:9:40",
+	600, 0, 0,
+	"https://statics.cedscdn.it/photos/MED_HIGH/56/06/7885606_21080950_alien_m18_copertina.jpg", 0,
+	"2024-12-22 1:9:40",
+	7);
+
+-- NOTIFICHE
+
+
+
+-- PARTECIPAZIONEASTA
+
+INSERT INTO auctionlinedb.partecipazioneutenteasta (IDUtente,IDAsta) VALUES(1, 2);
+INSERT INTO auctionlinedb.partecipazioneutenteasta (IDUtente,IDAsta) VALUES(1, 3);
+
+

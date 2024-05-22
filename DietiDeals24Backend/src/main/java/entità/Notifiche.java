@@ -12,12 +12,18 @@ import jakarta.persistence.Table;
 public class Notifiche 
 {
 
+	@Column(name = "Titolo", nullable = false, length = 50)
+	private String titolo;
+	
+	@Column(name = "Testo", nullable = false, length = 150)
+	private String testo;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_notifiche", nullable = false)
 	private int ID_notofiche;
 	
-	@Column(name = "testo", nullable = false, length = 50)
-	private String testo;
+	@Column(name = "ID_Utente_FK", nullable = false)
+	private int ID_Utente_FK;
 	
 }

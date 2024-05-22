@@ -1,157 +1,88 @@
---CREAZIONE DB
+//Creazione_Database
 
-CREATE SCHEMA `auctionlinedb` ;
+1)CREATE SCHEMA `auctionlinedb` ;
+2)Imposta auctionlinedb come default schema;
+3)copy-paste:
 
-CREATE TABLE IF NOT EXISTS auctionlinedb.asta 
+CCREATE TABLE IF NOT EXISTS asta 
 (
 	Titolo VARCHAR(30) NOT NULL,
-	Descrizione VARCHAR(1000), -- fix
-	Categoria ENUM ('TabletTelefonia', 'Giocattoli', 'Elettronica', 'Arte', 'Immobili', 'Antiquariato'),
-	Tipologia ENUM('Asta inglese', 'Asta a tempo fisso'),
+	Descrizione VARCHAR(150),
+	Categoria ENUM ('TabletTelefonia', 'Giocattoli', 'Elettronica', 'Arte', 'Immobili', 'Antiquariato') NOT NULL,
+	Tipologia ENUM ('astaTempoFisso', 'astaInglese') NOT NULL,
 	DataInizio DATETIME NOT NULL,
-	DataFine DATETIME NOT NULL,
+	OffertaIniziale float NOT NULL,
 	OffertaPiuAlta float,
-	FotoAsta1 varchar(500), 
-  
-	ID_asta INT AUTO_INCREMENT NOT NULL,
-	Proprietario_FK int NOT NULL,
+	IDOffertaPiuAlta int,
+	FotoAsta1 varchar(500),
+	FotoAsta2 varchar(500),
+	FotoAsta3 varchar(500),
+	FotoAsta4 varchar(500),
+	FotoAsta5 varchar(500), 
+
+	-- Per aste inglesi
+	Timer TIME,
+	SogliaRialzo float,
+
+	-- Per aste tempofisso
+	DataFine DATETIME,
+
+
+	-- PK e FK  
+	IDasta INT AUTO_INCREMENT NOT NULL,
+	ProprietarioFK int NOT NULL,
     
-	PRIMARY KEY (ID_asta)
+	PRIMARY KEY (IDasta)
     
   );
 
 
-CREATE TABLE IF NOT EXISTS auctionlinedb.partecipazioneUtenteAsta
-(
-	ID_Utente INT,
-   	ID_Asta INT,
-    
-	PRIMARY KEY (ID_Utente, ID_Asta)
-	
-);
-
-CREATE TABLE IF NOT EXISTS auctionlinedb.utente 
+CREATE TABLE IF NOT EXISTS utente 
 (
 	Nome VARCHAR(30) NOT NULL,
 	Cognome VARCHAR(30) NOT NULL,
-	Biografia VARCHAR(1000), -- fix
+	Biografia VARCHAR(1000),
  	Geolocalizzazione VARCHAR(50) ,
- 	ElencoSocial VARCHAR(30),
- 	FotoProfilo VARCHAR(1000), -- fix
-	EmailUtente varchar(40),
- 	PasswordUtente varchar(30),
+ 	ElencoSocial VARCHAR(1000),
+ 	FotoProfilo VARCHAR(1000),
+	EmailUtente varchar(40) NOT NULL,
+ 	PasswordUtente varchar(30)NOT NULL,
 
-	ID_Utente INT AUTO_INCREMENT NOT NULL,
-  
-  	PRIMARY KEY (ID_Utente)
+	IDUtente INT AUTO_INCREMENT NOT NULL,
+
+  	PRIMARY KEY (IDUtente)
   
   );
-  
-CREATE TABLE IF NOT EXISTS auctionlinedb.notifiche 
-(
-	Testo varchar(50) NOT NULL,
-    	
-	ID_notifiche INT AUTO_INCREMENT NOT NULL,
-    id_utente_fk int, -- add
 
-	PRIMARY KEY (ID_notifiche)
+
+CREATE TABLE IF NOT EXISTS partecipazioneutenteasta
+(
+	IDUtente INT,
+   	IDAsta INT,
+    
+	PRIMARY KEY (IDUtente, IDAsta)
+	
+);
+
+
+CREATE TABLE IF NOT EXISTS notifiche 
+(	
+	Titolo varchar(50) NOT NULL,
+	Testo varchar(150) NOT NULL,
+    	
+	IDnotifiche INT AUTO_INCREMENT NOT NULL,
+    	IDutenteFK int NOT NULL,
+
+	PRIMARY KEY (IDnotifiche)
 );
     
 
 ALTER TABLE auctionlinedb.ASTA
-add FOREIGN KEY (Proprietario_FK) REFERENCES auctionlinedb.utente(ID_Utente);
+add FOREIGN KEY (ProprietarioFK) REFERENCES auctionlinedb.utente(IDUtente);
 
 ALTER TABLE auctionlinedb.partecipazioneUtenteAsta
-add FOREIGN KEY (ID_Asta) REFERENCES asta(ID_Asta),
-add FOREIGN KEY (ID_Utente) REFERENCES utente(ID_Utente);
+add FOREIGN KEY (IDAsta) REFERENCES asta(IDAsta),
+add FOREIGN KEY (IDUtente) REFERENCES utente(IDUtente);
 
 ALTER TABLE auctionlinedb.notifiche
-add FOREIGN KEY (id_utente_fk) REFERENCES utente(ID_Utente);
-
-
-
-
-
--- POPOLAMENTO DB
-
--- UTENTI
-
-INSERT INTO auctionlinedb.utente (Nome,Cognome,Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
-VALUES("Marco"	,"DePretis","giovane disoccupato","Napoi, Na","Fackebook, Mastodon",null,"marcodepretis44@gmail.com","lamiapassword44");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome, Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
-VALUES("Francesco","Rogo","giovane studente","Padova, Pa","Mastodon",null,"frnacescorogo123@gmail.com","lamiapassword33");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome,Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
-VALUES("Luisa","Amodeo","giovane della terza età","Napoi, Na","Fackebook, twitter" ,null,"luisaamodeo09@gmail.com","lamiapassword11");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome, Biografia,Geolocalizzazione,ElencoSocial,FotoProfilo,EmailUtente,PasswordUtente) 
-VALUES("Alex","Madonna","Anziana esploratrice","Gerusalemme, G","X" ,null,"mammacar@gmail.xxx","lamiapassword22");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome,EmailUtente,PasswordUtente) 
-VALUES("Massimo","Coopenaghen","lamiacoop@gmail.ur","pisswordmeoff");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome,EmailUtente,PasswordUtente) 
-VALUES("Antonio","Luongo","ilportiere@gmail.ur" ,"parmstepasword");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome,EmailUtente,PasswordUtente) 
-VALUES("Lucrezia","Zerlenga","maiazod@gmail.it" ,"superpasword");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome) 
-VALUES("Roberto","Roberto");
-INSERT INTO auctionlinedb.utente ( Nome,Cognome)
- VALUES("MariaLucia","DeSimone");
-
-INSERT INTO auctionlinedb.utente ( Nome,Cognome) 
-VALUES("Voldemort","Serpeverde");
-
-
--- ASTE
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Descrizione,Categoria,Tipologia,DataInizio,DataFine,OffertaPiuAlta,FotoAsta1,Proprietario_FK)  
-VALUES("Mouse MSI","Ottimo strumento per destrorsi e mancini, 18,7 tasti modulabili e riutilizzabili",'Elettronica','Asta a tempo fisso',"2023-3-4 2:30:00","2024-5-1 1:30:00",100,"https://shop.akinformatica.it/wp-content/uploads/2022/01/EsseShop.it-MSI-S12-0401650-CLA_0_large.jpg",1);
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Descrizione,Categoria,Tipologia,DataInizio,DataFine,OffertaPiuAlta,FotoAsta1,Proprietario_FK) 
-VALUES("Bici di Sergio DiMartino","Ottima bici Elettrica in condizioni pre-acquisto, nessun professore è stato ferito durante il proecsso",'Antiquariato','Asta inglese',"2024-5-1 1:30:00","2025-5-1 11:30:00",2500,"https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/15-07-12-Ciclistas-en-Mexico-RalfR-N3S_8973.jpg/310px-15-07-12-Ciclistas-en-Mexico-RalfR-N3S_8973.jpg",2); 
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Categoria,Tipologia,DataInizio,DataFine,FotoAsta1,Proprietario_FK) 
-VALUES('Seggiolo','Antiquariato','Asta a tempo fisso',"2023-12-31 12:30:00","2024-5-31 12:30:00", "https://www.bibliothecaculinaria.it/wp-content/uploads/2021/12/seggiolino-107000LM155-3.jpg",5);
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Categoria,Tipologia,DataInizio,DataFine,FotoAsta1,Proprietario_FK) 
-VALUES("Aspirapolvere",'Elettronica','Asta a tempo fisso',"2023-12-31 14:30:00"	,"2024-1-31 18:20:10","https://ricondizionati.mediaworld.it/dw/image/v2/BJRJ_PRD/on/demandware.static/-/Sites-mw-refurbished-catalog-master/default/dw30baaacf/images/hi-res/170762.jpg?sw=1000&sh=1000",3);
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Categoria,Tipologia,DataInizio,DataFine,FotoAsta1,Proprietario_FK) 
-VALUES("Monnalisa",'Arte','Asta inglese',"2024-1-22 1:9:40","2024-1-28 18:20:10","https://www.storicang.it/medio/2019/12/16/leonardo-utilizzo-linnovativa-tecnica-dello-sfumato-per-dipingere-questo-famoso-quadro_e3d1df62_800x1057.jpg", 8);
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Categoria,Tipologia,DataInizio,DataFine,FotoAsta1,Proprietario_FK) 
-VALUES('Casse Boose','Elettronica','Asta inglese',"2023-12-31 12:30:00"	,"2024-5-31 12:30:00","https://m.media-amazon.com/images/I/61xeEzulNrL._AC_UF1000,1000_QL80_.jpg",1); 
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Categoria,Tipologia,DataInizio,DataFine,FotoAsta1,Proprietario_FK) 
-VALUES("Aspirapolvere 3k",'Elettronica','Asta a tempo fisso',"2023-12-31 14:30:00","2024-1-31 18:20:10","https://m.media-amazon.com/images/I/51rU5isp9RL._AC_UF1000,1000_QL80_.jpg",6);
-
-INSERT INTO auctionlinedb.ASTA (Titolo,Categoria,Tipologia,DataInizio,DataFine,FotoAsta1,Proprietario_FK) 
-VALUES("Laptop Alien",'TabletTelefonia','Asta inglese',"2024-1-22 1:9:40","2024-1-28 18:20:10","https://statics.cedscdn.it/photos/MED_HIGH/56/06/7885606_21080950_alien_m18_copertina.jpg",7);
-
--- NOTIFICHE
-
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx aggoiranta", 1);
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx finita", 2);
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx finita", 2);
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx aggoiranta", 4);
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx aggoiranta", 5);
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx aggoiranta", 6);
-INSERT INTO auctionlinedb.notifiche (Testo,id_utente_fk) VALUES("Asta xxx aggoiranta", 7);
-
-
--- PARTECIPAZIONEASTA
-
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(1, 2);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(1, 3);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(1, 4);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(1, 5);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(2, 1);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(4, 1);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(4, 2);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(9, 4);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(8, 4);
-INSERT INTO auctionlinedb.partecipazioneutenteasta (ID_Utente,ID_Asta) VALUES(9, 2);
+add FOREIGN KEY (IDUtenteFK) REFERENCES utente(IDUtente);

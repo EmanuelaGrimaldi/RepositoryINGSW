@@ -7,11 +7,13 @@ import repository.persistenceUtil;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 
 public abstract class JPARepositoryImpl<T, ID> implements JPARepository<T, ID> {
 	
 	protected EntityManagerFactory emf = persistenceUtil.getEntityManagerFactory();    
 	protected Class<T> entityClass;
+	Query q;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -152,6 +154,7 @@ public abstract class JPARepositoryImpl<T, ID> implements JPARepository<T, ID> {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll(){
 	
@@ -165,7 +168,8 @@ public abstract class JPARepositoryImpl<T, ID> implements JPARepository<T, ID> {
 			et = em.getTransaction();
 			
 			et.begin();			
-			lista = em.createQuery(" FROM " + entityClass.getSimpleName(), entityClass).getResultList();
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName(), this.entityClass);
+			lista = q.getResultList();
 			et.commit();
 		} 
 		catch (Exception e) 

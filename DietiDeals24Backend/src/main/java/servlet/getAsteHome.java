@@ -31,23 +31,13 @@ public class getAsteHome extends HttpServlet {
 		
 		i = 0;
 		
-		//per comodità mi sto prendendo la propic del venditore invece che la foto asta, perché ci manca come valore.
-		/*
-		 * do { pw.println("<div class='flex-diviso2 cell'><div><h1>" +
-		 * listaAsta.get(i).getTitolo() + ":</h1><h2>Nome venditore:" +
-		 * listaAsta.get(i).getVenditore() + "</h2><h2>Descrizione Merce:</h2><p>" +
-		 * listaAsta.get(i).getDescrizione() + "</p></div><img src=" +
-		 * listaAsta.get(i).getFotoProfilo() +
-		 * "alt='Immagine prodotto'class='immagineAsta'></div>"); i++;
-		 * }while(listaAsta.get(i) != null);
-		 */
 		for(Asta a : listaAsta)
 		{
 			
 			System.out.println(	"<div class='flex-diviso2 cell'><div><h1>" + a.getTitolo() +
-								":</h1><h2>Nome venditore:" + a.getVenditore() + 
+								":</h1><h2>Nome venditore:" + a.getProprietario_FK() + 
 								"</h2><h2>Descrizione Merce:</h2><p>" + a.getDescrizione() +
-								"</p></div><img src=" + a.getFotoProfilo() + 
+								"</p></div><img src=" + a.getFotoAsta1() + 
 								"alt='Immagine prodotto'class='immagineAsta'></div>"
 								);
 		

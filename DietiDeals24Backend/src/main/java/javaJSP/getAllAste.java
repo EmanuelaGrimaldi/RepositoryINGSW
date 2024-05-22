@@ -23,7 +23,7 @@ public class getAllAste {
 					"</p></div><img src=" + listaAsta.get(i).getFotoProfilo() + "alt='Immagine prodotto'class='immagineAsta'></div>");
 			i++;
 		}while(listaAsta.get(i) != null);
-		*/
+		
 		for(Asta a : listaAsta)
 		{
 			
@@ -35,6 +35,7 @@ public class getAllAste {
 								);
 		
 		}
+		*/
 	return listaAsta;
 	}
 	
