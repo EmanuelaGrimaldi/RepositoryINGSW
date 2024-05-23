@@ -47,164 +47,66 @@
       		<a href="#">Asta a tempo fisso</a>
     	</div>
   </div>
-  
-  			
-  <div class="dropdown">
-  			<%! 
-  				String categoria; 
-  				enum categoriaenum{TabletTelefonia, Giocattoli, Elettronica, Arte, Immobili, Antiquariato}; 
-  			%>
-  			 
+  <div class="dropdown"> 
   		<button class="dropbtn">
   			Categorie
-  			<i class="fa fa-caret-down"></i>
+    		<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="#">Tablet e telefonia
-      			<%= categoria=categoriaenum.TabletTelefonia.toString()  %></a>
-      		<a href="#">Giocattoli 
-      			<%= categoria=categoriaenum.Giocattoli.toString()  %></a>
-      		<a href="#">Elettronica 
-      			<%= categoria=categoriaenum.Elettronica.toString()  %></a>
-     	 	<a href="#">Arte 
-     	 		<%= categoria=categoriaenum.Arte.toString() %></a>
-    	    <a href="#">Immobili 
-    	    	<%= categoria=categoriaenum.Immobili.toString()  %></a>
-    	    <a href="#">Antiquariato 
-    	    	<%= categoria=categoriaenum.Antiquariato.toString() %></a>
+      		<a href="#">Tablet e telefonia</a>
+      		<a href="#">Giocattoli</a>
+      		<a href="#">Elettronica</a>
+     	 	<a href="#">Arte</a>
+    	    <a href="#">Immobili</a>
+    	    <a href="#">Antiquariato</a>
     	</div>
   </div>
 </div>
 
 <!-- FINE HEADER -->
-
- <br>
- 
-<!-- CODICE DINAMICO: PROVE-->
-
-	<!--  al posto di astarepository metto la servlet? -->
-	
+		
+	<!-- DA IMPLEMENTARE: Invece di "findAll" va cambiata la ricerca in base a:
+			-HOME
+			-CATEGORIA
+			-TIPO ASTA
+	-->
+		
 	<% List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll(); %>
-	<% List<Asta> listaAstaPerCategoria = AstaRepositoryImpl.getInstance().findByCategoria( categoria ); %>
-	
 	
 
 	<c:forEach var = "i" items="<%= listaAsta %>">
-    	Item <c:out value = "No. ${i.titolo}"/><p>
-    	Item <c:out value = "No. ${i.descrizione}"/><p>
+	
+	<div class="flex-diviso2 cell">
+	
+		<div>
+    		<a href="profiloAsta.html">
+    			<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+   	 		</a>
+   	 	</div>
+   	 	
+    	<div>
+			<div class="testoAsta">
+    			<h3>OFFERTA!</h3>		
+				<h1><a href="profiloAsta.html"><c:out value = "${i.titolo}"/></a></h1>
+				<p><c:out value = "${i.descrizione}"/></p>
+				
+				<!-- In base a tipo di asta -->
+				<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
+				<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
+				<h2><c:out value = "${i.tipologia}"/></h2>		     
+   			</div>
+  		</div> 
+  		
+  	</div>
+  		   	
 	</c:forEach>
 	
-	
-	
-	
-	<c:choose>
-	    <c:when test="${param.enter=='1'}">
-	 
-	        <br />
-	    </c:when>    
-	    <c:otherwise>
-	        pizzas. 
-	        <br />
-	    </c:otherwise>
-	</c:choose>
-	
-	
 	<!-- funziona ma non conosco il tag <option> 
-	<c:forEach var="element" items="<%= listaAsta %>">
+	<c:forEach var="element" items="< % = listaAsta % > ">
 	  	<option value="${element}">${element}</option>
 	 </c:forEach>
-	FINE-->
+	-->
 	
-
-<!-- vecchi esempi:
-  <div class="flex-diviso2 cell">
-    <div>
-    	<h3>OFFERTA</h3>		
-		<h1>
-			<a href="profiloAsta.html">TITOLO ARTICOLO:</a>
-			<%=	get()%>
-			
-			
-		</h1>
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>     
-    </div>
-    <a href="profiloAsta.html">
-    	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-   		alt="Immagine prodotto"
-    	class="immagineAsta">
-    </a>
-  </div> 
-  
-    <div class="flex-diviso2 cell">
-    	<a href="profiloAsta.html">
-    		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    		 alt="Immagine prodotto"
-    		 class="immagineAsta">
-     	</a>
-    <div>
-		<h3>
-			<a href="profiloAsta.html"></a>
-			OFFERTA
-		</h3>
-		<h1>
-			<a href="profiloAsta.html"></a>
-			TITOLO ARTICOLO:
-		</h1>
-		
-		
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>    
-    </div>
-  </div> 
-   
-   
-
-  <div class="flex-diviso2 cell">
-  	<div>
-  		<h3>
-			<a href="profiloAsta.html"></a>
-			OFFERTA
-		</h3>
-		<h1>
-			<a href="profiloAsta.html"></a>
-			TITOLO ARTICOLO:
-		</h1>
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>     
-    </div>
-    <a href="profiloAsta.html">
-   		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    	alt="Immagine prodotto"
-    	class="immagineAsta">
-    </a>
-  </div> 
-  
-    <div class="flex-diviso2 cell">
-     <a href="profiloAsta.html">
-   		 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTufU2S_PzDaYmOTvxGL7M-OE-XOn7Op9E3XRL3vWYXAw&s" 
-    	 alt="Immagine prodotto"
-    	 class="immagineAsta">
-    </a>
-     <div>
-     	<h3>
-			<a href="profiloAsta.html"></a>
-			OFFERTA
-		</h3>
-		<h1>
-			<a href="profiloAsta.html"></a>
-			TITOLO ARTICOLO:
-		</h1>
-		<h2>Nome venditore: Mario Rossi</h2>
-		<h2>Descrizione Merce:</h2>
-		<p>Descrizione descrizione descrizione descrizione descrizione descrizione descrizione descrizione</p>    
-    </div>
-  </div> 
-  
-   -->
    
 <!--Footer:-->
 

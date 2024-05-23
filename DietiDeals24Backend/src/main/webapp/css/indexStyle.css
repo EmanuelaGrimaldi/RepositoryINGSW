@@ -6,46 +6,44 @@
 
 .flex-diviso2{
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-	}
-	
-/*Per-il-testo*/
-.flex-diviso2 div{
-	width: 40%;
+  align-items: stretch;
+  padding: 30px 0 0 25%;
+  height: 200px;
+}
+
+/*destra-right*/
+.flex-diviso2 .testoAsta{
 	height: 200px;
-	padding: 40px;
+	width: 600px;
 	text-align:left;
 	font-family:Gotham;
+	padding: 0 40px;
 }
 
-.flex-diviso2 p{
-	text-align:left;
-	font-family:Gotham;
-	font-size: 18px;
+/*sinistra-left*/
+.flex-diviso2 .immagineAsta{
+	display:block;
+	height: 200px;
+	width: 200px;
+	border:2px solid black;
+	object-fit: contain;
+  	padding: auto;
+  	float: right;
 }
-
-/*Per-le-immagini*/
-
-.immagineAsta{
-	display:block; 
-	margin: 40px;
-	border:5px solid white;
-	}
 	
 /*Cursore-sulle-aste-le-cerchiano-di-celeste-e-cambia-cursore*/
 .immagineAsta:hover {
-  	border:5px solid #9CB4E3;
+  	border:2px solid #9CB4E3;
   	cursor: pointer;
 }
 
-/*Cursore-sui-titoli-aste-le-sottolineano-e-cambia-colore*/
-/*IMPORTANTE: Usare-H1-solo-per-titoli-aste*/
+p{text-align:left;font-family:Gotham;font-size: 18px;}
 
-h1{color: black;}
+/*usiamo-le-h1-per-titolo-asta*/
+h1{color: black!important;}
 
 h1:hover {
-  	color: #9CB4E3;
+  	color: #9CB4E3!important;
   	cursor: pointer;
   	text-decoration: underline;
 }
@@ -56,12 +54,11 @@ h1:hover {
 }
 
 /*usiamo-le-h3-per-la-scritta-offerta-in-rosso*/
-
 h3{
 	background : red;
 	color: white;
 	cursor: pointer;
-	width: 30%;
+	width: 150px;
 	height: 25px;
 	text-align:center;
 	font-family:Gotham;
@@ -72,4 +69,18 @@ h3:hover{
 	background : white;
 	color: red;
 	cursor: pointer;
+}
+
+/*usiamo-le-h2-per-la-tipologia-asta*/
+h2{
+	font-family:Gotham;
+	font-size: 20px;
+	margin-right:5px;
+  	position:relative;
+  	float:right;
+}
+/*usiamo-h5-per-timer-o-data-fine*/
+h5{
+	font-family:Gotham;
+	font-size: 20px;
 }
