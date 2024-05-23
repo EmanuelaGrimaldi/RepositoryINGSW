@@ -47,18 +47,31 @@
       		<a href="#">Asta a tempo fisso</a>
     	</div>
   </div>
-  <div class="dropdown"> 
+  
+  			
+  <div class="dropdown">
+  			<%! 
+  				String categoria; 
+  				enum categoriaenum{TabletTelefonia, Giocattoli, Elettronica, Arte, Immobili, Antiquariato}; 
+  			%>
+  			 
   		<button class="dropbtn">
   			Categorie
-    		<i class="fa fa-caret-down"></i>
+  			<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="#">Tablet e telefonia</a>
-      		<a href="#">Giocattoli</a>
-      		<a href="#">Elettronica</a>
-     	 	<a href="#">Arte</a>
-    	    <a href="#">Immobili</a>
-    	    <a href="#">Antiquariato</a>
+      		<a href="#">Tablet e telefonia
+      			<%= categoria=categoriaenum.TabletTelefonia.toString()  %></a>
+      		<a href="#">Giocattoli 
+      			<%= categoria=categoriaenum.Giocattoli.toString()  %></a>
+      		<a href="#">Elettronica 
+      			<%= categoria=categoriaenum.Elettronica.toString()  %></a>
+     	 	<a href="#">Arte 
+     	 		<%= categoria=categoriaenum.Arte.toString() %></a>
+    	    <a href="#">Immobili 
+    	    	<%= categoria=categoriaenum.Immobili.toString()  %></a>
+    	    <a href="#">Antiquariato 
+    	    	<%= categoria=categoriaenum.Antiquariato.toString() %></a>
     	</div>
   </div>
 </div>
@@ -69,46 +82,32 @@
  
 <!-- CODICE DINAMICO: PROVE-->
 
-	<%!
-	
-	// questa parte non serve piu ora  
-	
-	boolean get(){	
-		
-		getAsteHome c = new getAsteHome();
-		
-		//getAllAste c = new getAllAste();
-		int i = 0;
-		//List<Asta> listaAsta = c.getAllAsteFunction();
-		List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll();
-		
-		
-		/*
-		for(Asta a : listaAsta)
-		{
-			
-				"<div class='flex-diviso2 cell'><div><h1>" + a.getTitolo() +
-								":</h1><h2>Nome venditore:" + a.getProprietario_FK() + 
-								"</h2><h2>Descrizione Merce:</h2><p>" + a.getDescrizione() +
-								"</p></div><img src=" + a.getFotoAsta1() + 
-								"alt='Immagine prodotto'class='immagineAsta'></div>"
-								);
-		
-		}
-		*/
-		return true;
-	}
-	%>
-	
-	
+	<!--  al posto di astarepository metto la servlet? -->
 	
 	<% List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll(); %>
+	<% List<Asta> listaAstaPerCategoria = AstaRepositoryImpl.getInstance().findByCategoria( categoria ); %>
+	
 	
 
 	<c:forEach var = "i" items="<%= listaAsta %>">
     	Item <c:out value = "No. ${i.titolo}"/><p>
     	Item <c:out value = "No. ${i.descrizione}"/><p>
 	</c:forEach>
+	
+	
+	
+	
+	<c:choose>
+	    <c:when test="${param.enter=='1'}">
+	 
+	        <br />
+	    </c:when>    
+	    <c:otherwise>
+	        pizzas. 
+	        <br />
+	    </c:otherwise>
+	</c:choose>
+	
 	
 	<!-- funziona ma non conosco il tag <option> 
 	<c:forEach var="element" items="<%= listaAsta %>">
