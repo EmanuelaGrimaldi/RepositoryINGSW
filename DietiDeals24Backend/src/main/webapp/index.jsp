@@ -1,8 +1,10 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import = "javaJSP.getAllAste, servlet.getAsteHome,implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
 <head>
@@ -10,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
 <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 <title>Home: DietiDeals24</title>
 </head>
@@ -67,6 +70,9 @@
 <!-- CODICE DINAMICO: PROVE-->
 
 	<%!
+	
+	// questa parte non serve piu ora  
+	
 	boolean get(){	
 		
 		getAsteHome c = new getAsteHome();
@@ -75,12 +81,13 @@
 		int i = 0;
 		//List<Asta> listaAsta = c.getAllAsteFunction();
 		List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll();
-
 		
+		
+		/*
 		for(Asta a : listaAsta)
 		{
 			
-			System.out.println(	"<div class='flex-diviso2 cell'><div><h1>" + a.getTitolo() +
+				"<div class='flex-diviso2 cell'><div><h1>" + a.getTitolo() +
 								":</h1><h2>Nome venditore:" + a.getProprietario_FK() + 
 								"</h2><h2>Descrizione Merce:</h2><p>" + a.getDescrizione() +
 								"</p></div><img src=" + a.getFotoAsta1() + 
@@ -88,10 +95,27 @@
 								);
 		
 		}
+		*/
 		return true;
 	}
 	%>
-<!-- CODICE DINAMICO: FINE-->
+	
+	
+	
+	<% List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll(); %>
+	
+
+	<c:forEach var = "i" items="<%= listaAsta %>">
+    	Item <c:out value = "No. ${i.titolo}"/><p>
+    	Item <c:out value = "No. ${i.descrizione}"/><p>
+	</c:forEach>
+	
+	<!-- funziona ma non conosco il tag <option> 
+	<c:forEach var="element" items="<%= listaAsta %>">
+	  	<option value="${element}">${element}</option>
+	 </c:forEach>
+	FINE-->
+	
 
 <!-- vecchi esempi:
   <div class="flex-diviso2 cell">
@@ -100,6 +124,8 @@
 		<h1>
 			<a href="profiloAsta.html">TITOLO ARTICOLO:</a>
 			<%=	get()%>
+			
+			
 		</h1>
 		<h2>Nome venditore: Mario Rossi</h2>
 		<h2>Descrizione Merce:</h2>
