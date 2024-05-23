@@ -4,7 +4,7 @@
 2)Imposta auctionlinedb come default schema;
 3)copy-paste:
 
-CCREATE TABLE IF NOT EXISTS asta 
+CREATE TABLE IF NOT EXISTS asta 
 (
 	Titolo VARCHAR(30) NOT NULL,
 	Descrizione VARCHAR(150),
