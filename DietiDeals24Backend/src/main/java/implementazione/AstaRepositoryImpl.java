@@ -21,7 +21,7 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 
     
     @SuppressWarnings("unchecked")
-	public <T> List<T> findByCategoria(String tipoCategoria){
+	public <T> List<T> findByCategoria(String categoria){
     	
 		EntityManager em = null;
 		EntityTransaction et = null;
@@ -33,7 +33,8 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 			et = em.getTransaction();
 			
 			et.begin();			
-			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + " where categoria=" + tipoCategoria, this.entityClass);
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
+									" where categoria='" + categoria +"'", this.entityClass);
 			listaByCategoria = q.getResultList();
 			et.commit();
 		} 
@@ -53,8 +54,80 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 		
 	return listaByCategoria;
 	}
+    
 
-	
+    @SuppressWarnings("unchecked")
+	public <T> List<T> findAsteInScadenza()
+	{
+		EntityManager em = null;
+		EntityTransaction et = null;
+		List<T> listaByTiplistaAsteInScadenzaologia = null;
+		
+		try 
+		{
+			em = emf.createEntityManager();
+			et = em.getTransaction();
+			
+			et.begin();			
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
+									" where date(dataFine) = CURDATE();", this.entityClass);
+			listaByTiplistaAsteInScadenzaologia = q.getResultList();
+			et.commit();
+		} 
+		catch (Exception e) 
+		{
+			System.err.println("Errorino uwu :" + e.getMessage());
+			
+			if (et != null && et.isActive()) 
+				et.rollback();				
+			
+		}
+		finally 
+		{
+			if(em != null)
+				em.close();
+		}
+		
+	return listaByTiplistaAsteInScadenzaologia;
+	}
+    
+    
+    public <T> List<T> findAssteInScadenza()
+    {
+
+		EntityManager em = null;
+		EntityTransaction et = null;
+		List<T> lista = null;
+		
+		try 
+		{
+			em = emf.createEntityManager();
+			et = em.getTransaction();
+			
+			et.begin();			
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + " where ", this.entityClass);
+			lista = q.getResultList();
+			et.commit();
+		} 
+		catch (Exception e) 
+		{
+			System.err.println("Errorino uwu :" + e.getMessage());
+			
+			if (et != null && et.isActive()) 
+				et.rollback();				
+			
+		}
+		finally 
+		{
+			if(em != null)
+				em.close();
+		}
+		
+	return lista;
+    }
+
+	// forse mai usato
+    ///////////////////////////////////////////////////////
     @SuppressWarnings("unchecked")
 	private <T> List<T> findByTipoAsta(String tipoAsta){
     	
