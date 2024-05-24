@@ -42,8 +42,14 @@ public class getAsteHome extends HttpServlet {
 								);
 		
 		}
-	
 		//request.getRequestDispatcher("/home.jsp").forward(request, response);
 		
+	}
+	
+	public List<Asta> findAsteInScadenza()
+	{
+		AstaRepository a = AstaRepositoryImpl.getInstance();
+		List<Asta> lista = a.findAsteInScadenza();
+		return lista;
 	}
 }
