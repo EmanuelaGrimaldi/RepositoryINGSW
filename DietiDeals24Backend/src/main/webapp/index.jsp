@@ -1,3 +1,5 @@
+<%@page import="servlet.getAsteByTipologia"%>
+<%@page import="servlet.getAsteByCategoria"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -35,30 +37,33 @@
 </div>		
 <div class="under-header">
   	<div class="homeButton">
-  		<a href="index.jsp">Home</a>
+  		<a href="index.jsp">Home</a> 
   	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
+  			<%! String tipologia; %>
     		<i class="fa fa-caret-down"></i>
    		</button>
    		<div class="dropdown-content">
-      		<a href="#">Asta all'inglese</a>
-      		<a href="#">Asta a tempo fisso</a>
+      		<a href="#">Asta all'inglese</a> 	<%= tipologia="astaInglese" %> 
+      		<a href="#">Asta a tempo fisso</a>	<%= tipologia="astaTempoFisso" %> 
+      		
     	</div>
   </div>
   <div class="dropdown"> 
   		<button class="dropbtn">
   			Categorie
+  			<%! String categoria; %>
     		<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="#">Tablet e telefonia</a>
-      		<a href="#">Giocattoli</a>
-      		<a href="#">Elettronica</a>
-     	 	<a href="#">Arte</a>
-    	    <a href="#">Immobili</a>
-    	    <a href="#">Antiquariato</a>
+      		<a href="#">Tablet e telefonia</a> <%= categoria="TabletTelefonia" %> 
+      		<a href="#">Giocattoli</a> <%= categoria="Giocattoli" %>
+      		<a href="#">Elettronica</a> <%= categoria="Elettronica" %>
+     	 	<a href="#">Arte</a> <%= categoria="Arte" %>
+    	    <a href="#">Immobili</a> <%= categoria="Immobili" %>
+    	    <a href="#">Antiquariato</a><%= categoria="Antiquariato" %>
     	</div>
   </div>
 </div>
@@ -71,8 +76,21 @@
 			-TIPO ASTA
 	-->
 		
-	<% List<Asta> listaAsta = AstaRepositoryImpl.getInstance().findAll(); %>
+	<%	List<Asta> listaAsta, listaAsteByCategoria, listaAsteByTipologia, listaAsteInScadenza;
 	
+		listaAsta = AstaRepositoryImpl.getInstance().findAll();
+		
+		getAsteByCategoria asteByCategoria = new getAsteByCategoria(); 
+		listaAsteByCategoria = asteByCategoria.findByCategoria(categoria);
+		
+		getAsteByTipologia asteByTipologia = new getAsteByTipologia();
+		listaAsteByTipologia = asteByTipologia.findByTipologia(tipologia);
+		
+		getAsteHome asteInScadenza = new getAsteHome();
+		listaAsteInScadenza = asteInScadenza.findAsteInScadenza();
+	
+		
+	%>
 
 	<c:forEach var = "i" items="<%= listaAsta %>">
 	
