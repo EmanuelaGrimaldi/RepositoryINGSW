@@ -92,7 +92,8 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 	}
     
     
-    public <T> List<T> findAssteInScadenza()
+    @SuppressWarnings("unchecked")
+	public <T> List<T> findAsteInScadenza1()
     {
 
 		EntityManager em = null;
@@ -129,7 +130,7 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 	// forse mai usato
     ///////////////////////////////////////////////////////
     @SuppressWarnings("unchecked")
-	private <T> List<T> findByTipoAsta(String tipoAsta){
+	public <T> List<T> findByTipologia(String tipoAsta){
     	
 		EntityManager em = null;
 		EntityTransaction et = null;
@@ -161,6 +162,7 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 		
 	return lista;
 	}
+
 
 
 }
