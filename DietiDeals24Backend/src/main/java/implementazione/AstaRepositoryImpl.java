@@ -92,6 +92,41 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 	return lista;
 	}
     
+    @SuppressWarnings("unchecked")
+	public <T> List<T> findAstaByProprietarioFK(int proprietarioFK){
+    	
+    	EntityManager em = null;
+		EntityTransaction et = null;
+		List<T> lista = null;
+		
+		try 
+		{
+			em = emf.createEntityManager();
+			et = em.getTransaction();
+			
+			et.begin();			
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
+									 " where proprietarioFK = :proprietarioFK ", this.entityClass);
+			q.setParameter("proprietarioFK", proprietarioFK);
+			lista = q.getResultList();
+			et.commit();
+		} 
+		catch (Exception e) 
+		{
+			System.err.println("Errorino uwu :" + e.getMessage());
+			
+			if (et != null && et.isActive()) 
+				et.rollback();				
+			
+		}
+		finally 
+		{
+			if(em != null)
+				em.close();
+		}
+		
+    return lista;
+    }
     
     //DA QUI FORSE NON CI SERVONO
     
