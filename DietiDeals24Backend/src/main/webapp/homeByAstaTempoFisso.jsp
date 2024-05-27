@@ -1,16 +1,25 @@
+<%@page import="servlet.getAsteByTipologia"%>
+<%@page import="servlet.getAsteByCategoria"%>
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
+<%@page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page import = "javaJSP.getAllAste, servlet.getAsteHome,implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
-<link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<title>Iscrizione:Ci sei quasi..</title>
+
+<title>Aste a tempo fisso: DietiDeals24</title>
 </head>
 <body>
+
 <!--INIZIO HEADER-->
 <div class="over_header">
 	<div class="loginButton">
@@ -58,60 +67,45 @@
 </div>
 
 <!-- FINE HEADER -->
- 
-<!-- LOGIN-->
+		
+		
+	<%	
+	List<Asta> listaAsteByTipologia;
+	listaAsteByTipologia = AstaRepositoryImpl.getInstance().findByTipologia("AstaTempoFisso");			
+	%>
 
-<div>
-	<a href="iscrizioneUtenteParte1.jsp">
-	<i class="fa-solid fa-arrow-left freccia-indietro"></i>
-	</a>
-</div>
+	<c:forEach var = "i" items="<%= listaAsteByTipologia %>">
 	
-<div>
-	<h1>Creazione account: Personalizza il tuo profilo!</h1>
-</div>
-
-<br><br>
-	
-<div class="flex-diviso2">	
-
-	<div>
-		<h4>Inserisci qui la tua foto profilo:</h4>
-		<i class="fa-solid fa-file-circle-plus immagineProfilo"></i>
-	</div>
-	
-	<div>
-		<h4>Parlaci di te:</h4>
-		<input type="text" class="shortBio">
-	</div>	
-	
-	<div>
-		<h4>Posizione geografica:</h4>
-		<input type="text" class="inputTesto">
-	</div>
+	<div class="flex-diviso2 cell">
+		<div>
+    		<a href="profiloAsta.html">
+    			<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+   	 		</a>
+   	 	</div>	
+    	<div>
+			<div class="testoAsta">		
+				<h1><a href="profiloAsta.html"><c:out value = "${i.titolo}"/></a></h1>
+				<p><c:out value = "${i.descrizione}"/></p>
+				
+				<!-- In base a tipo di asta -->
+				<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
+				<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+				<h2><c:out value = "Asta a tempo fisso"/></h2>		     
+   			</div>
+  		</div> 		
+  	</div>
+  		   	
+	</c:forEach>
 	
 
-</div>
-
-<div>
-	<h4>Link ai tuoi socials:</h4>
-	<i class="fa-solid fa-circle-plus plusButton"></i>
-</div>	
-
-<br>
-
-<div>
-	<a href="index.jsp">
-		<button type="button" class="avantiButton">Fine</button>
-	</a>
-</div>
-
-
-
+	
+   
 <!--Footer:-->
-<br><br><br><br><br><br>
+
 <div class="footer">
-	<p> DietiDeals24 &#169</p>
+	<p> DietiDeals24 &#169;</p>
 </div>
+
+
 </body>
 </html>

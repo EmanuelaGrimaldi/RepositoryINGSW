@@ -34,7 +34,8 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 			
 			et.begin();			
 			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
-									" where categoria='" + categoria +"'", this.entityClass);
+									" where categoria = :categoria", this.entityClass);
+			q.setParameter("categoria", categoria);
 			listaByCategoria = q.getResultList();
 			et.commit();
 		} 
@@ -54,6 +55,45 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 		
 	return listaByCategoria;
 	}
+    
+    @SuppressWarnings("unchecked")
+	public <T> List<T> findByTipologia(String tipoAsta){
+    	
+		EntityManager em = null;
+		EntityTransaction et = null;
+		List<T> lista = null;
+		
+		try 
+		{
+			em = emf.createEntityManager();
+			et = em.getTransaction();
+			
+			et.begin();			
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
+									 " where tipologia = :tipologia ", this.entityClass);
+			q.setParameter("tipologia", tipoAsta);
+			lista = q.getResultList();
+			et.commit();
+		} 
+		catch (Exception e) 
+		{
+			System.err.println("Errorino uwu :" + e.getMessage());
+			
+			if (et != null && et.isActive()) 
+				et.rollback();				
+			
+		}
+		finally 
+		{
+			if(em != null)
+				em.close();
+		}
+		
+	return lista;
+	}
+    
+    
+    //DA QUI FORSE NON CI SERVONO
     
 
     @SuppressWarnings("unchecked")
@@ -127,41 +167,6 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 	return lista;
     }
 
-	// forse mai usato
-    ///////////////////////////////////////////////////////
-    @SuppressWarnings("unchecked")
-	public <T> List<T> findByTipologia(String tipoAsta){
-    	
-		EntityManager em = null;
-		EntityTransaction et = null;
-		List<T> lista = null;
-		
-		try 
-		{
-			em = emf.createEntityManager();
-			et = em.getTransaction();
-			
-			et.begin();			
-			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + " where ", this.entityClass);
-			lista = q.getResultList();
-			et.commit();
-		} 
-		catch (Exception e) 
-		{
-			System.err.println("Errorino uwu :" + e.getMessage());
-			
-			if (et != null && et.isActive()) 
-				et.rollback();				
-			
-		}
-		finally 
-		{
-			if(em != null)
-				em.close();
-		}
-		
-	return lista;
-	}
 
 
 

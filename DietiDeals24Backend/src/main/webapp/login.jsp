@@ -14,52 +14,46 @@
 <body>
 <!--INIZIO HEADER-->
 <div class="over_header">
-
-	<a href="login.jsp">
-		<div class="loginButton">
-		<i class="fa-regular fa-user"></i> Login</div>
-	</a>
+	<div class="loginButton">
+		<i class="fa-regular fa-user">
+			<a href="login.jsp">Login</a>
+		</i>	
+	</div>
 	
-</div>
-	
+</div>	
 <div class="header">
-	<a href="index.jsp">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-		DietiDeals24
+			<a href="index.jsp">DietiDeals24</a>
 		</div>
-	</a>
-</div>
-		
+</div>		
 <div class="under-header">
-  
-  	<a href="index.jsp">
-  		<div class="homeButton">Home</div> 		
-  	</a>
-  		
+  	<div class="homeButton">
+  		<a href="index.jsp">Home</a> 
+  	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
     		<i class="fa fa-caret-down"></i>
    		</button>
    		<div class="dropdown-content">
-      		<a href="#">Asta all'inglese</a>
-      		<a href="#">Asta a tempo fisso</a>
+      		<a href="homeByAstaInglese.jsp">Asta all'inglese</a> 
+      		<a href="homeByAstaTempoFisso.jsp">Asta a tempo fisso</a>
+      		
     	</div>
   </div>
-  
   <div class="dropdown"> 
   		<button class="dropbtn">
   			Categorie
     		<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="#">Tablet e telefonia</a>
-      		<a href="#">Giocattoli</a>
-      		<a href="#">Elettronica</a>
-     	 	<a href="#">Arte</a>
-    	    <a href="#">Immobili</a>
-    	    <a href="#">Antiquariato</a>
+      		<a href="homeByTabletTelefonia.jsp">Tablet e telefonia</a>
+      		<a href="homeByGiocattoli.jsp">Giocattoli</a>
+      		<a href="homeByElettronica.jsp">Elettronica</a>
+     	 	<a href="homeByArte.jsp">Arte</a>
+    	    <a href="homeByImmobili.jsp">Immobili</a>
+    	    <a href="homeByAntiquariato.jsp">Antiquariato</a>
     	</div>
   </div>
 </div>
