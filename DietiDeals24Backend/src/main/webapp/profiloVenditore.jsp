@@ -139,7 +139,7 @@
    	 		</div>	
     		<div>
 				<div class="testoAsta">		
-					<h1><a href="profiloAsta.html"><c:out value = "${i.titolo}"/></a></h1>
+					<h1><a href="profiloAsta.jsp"><c:out value = "${i.titolo}"/></a></h1>
 					<p><c:out value = "${i.descrizione}"/></p>
 					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
 					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>

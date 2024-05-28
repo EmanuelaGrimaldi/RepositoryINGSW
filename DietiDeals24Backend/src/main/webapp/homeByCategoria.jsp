@@ -89,53 +89,62 @@
 	%>
 
 	<!--INIZIO BODY ASTE-->	
-	<c:forEach var = "i" items="<%= listaAsteByCategoria %>">
 	
+	<c:set var="categoriaAsta" value="<%=stringCategoria%>" />
+	
+	<c:forEach var = "i" items="<%= listaAsteByCategoria %>">
 	
 	<c:if test= "${i.tipologia == 'astaInglese'}">
 	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAsta.html">
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-   	 			</a>
-   	 		</div>	 	
-    		<div>
-				<div class="testoAsta">		
-					<h1><a href="profiloAsta.html"><c:out value = "${i.titolo}"/></a></h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
-					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta all'inglese"/></h2>		     
-   				</div>
-  			</div> 	
-  		</div>
+			<div class="flex-diviso2 cell">
+				<div>
+    				<a href="profiloAsta.jsp?idAsta=${i.ID}">
+    					<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				</a>
+   	 			</div>	 	
+    			<div>
+					<div class="testoAsta">		
+						<h1><a href="profiloAsta.jsp?idAsta=${i.ID}">
+    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    						<c:out value = "${i.titolo}"/>
+    					</a></h1>
+						<p><c:out value = "${i.descrizione}"/></p>
+						<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
+						<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
+						<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+						<h2><c:out value = "Asta all'inglese"/></h2>		     
+   					</div>
+  				</div> 	
+  			</div>
 	</c:if>
 	
 	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
 	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAsta.html">
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-   	 			</a>
-   	 		</div>	
-    		<div>
-				<div class="testoAsta">		
-					<h1><a href="profiloAsta.html"><c:out value = "${i.titolo}"/></a></h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta a tempo fisso"/></h2>		     
-   				</div>
-  			</div> 		
-  		</div>
+			<div class="flex-diviso2 cell">
+				<div>
+    				<a href="profiloAsta.jsp?idAsta=${i.ID}">
+    					<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				</a>
+   	 			</div>	
+    			<div>
+					<div class="testoAsta">		
+						<h1><a href="profiloAsta.jsp?idAsta=${i.ID}">
+    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    						<c:out value = "${i.titolo}"/>
+    					</a></h1>
+						<p><c:out value = "${i.descrizione}"/></p>
+						<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+						<h2><c:out value = "Asta a tempo fisso"/></h2>		     
+   					</div>
+  				</div> 		
+  			</div>
 	</c:if>
-	   	
-	</c:forEach>
-<!--FINE BODY ASTE-->
+	
+</c:forEach>
 	
 
 	
