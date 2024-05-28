@@ -39,10 +39,13 @@
   			Tipi di Asta
     		<i class="fa fa-caret-down"></i>
    		</button>
-   		<div class="dropdown-content">
-      		<a href="homeByAstaInglese.jsp">Asta all'inglese</a> 
-      		<a href="homeByAstaTempoFisso.jsp">Asta a tempo fisso</a>
-      		
+     	<div class="dropdown-content">
+   			<a href="homeByTipologia.jsp?tipologia=astaInglese">
+    				<input type="hidden" name="tipologia" value="astaInglese"/>
+      				Asta all'inglese</a> 
+			<a href="homeByTipologia.jsp?tipologia=astaTempoFisso">
+    				<input type="hidden" name="tipologia" value="astaTempoFisso"/>
+      				Asta a tempo fisso</a> 		
     	</div>
   </div>
   <div class="dropdown"> 
@@ -51,54 +54,54 @@
     		<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="homeByTabletTelefonia.jsp">Tablet e telefonia</a>
-      		<a href="homeByGiocattoli.jsp">Giocattoli</a>
-      		<a href="homeByElettronica.jsp">Elettronica</a>
-     	 	<a href="homeByArte.jsp">Arte</a>
-    	    <a href="homeByImmobili.jsp">Immobili</a>
-    	    <a href="homeByAntiquariato.jsp">Antiquariato</a>
+      		<a href="homeByCategoria.jsp?categoria=TabletTelefonia">
+    				<input type="hidden" name="categoria" value="TabletTelefonia"/>
+    				Tablet e telefonia</a>
+      		<a href="homeByCategoria.jsp?categoria=Giocattoli">
+    				<input type="hidden" name="categoria" value="Giocattoli"/>
+    				Giocattoli</a>
+      		<a href="homeByCategoria.jsp?categoria=Elettronica">
+    				<input type="hidden" name="categoria" value="Elettronica"/>
+    				Elettronica</a>
+     	 	<a href="homeByCategoria.jsp?categoria=Arte">
+    				<input type="hidden" name="categoria" value="Arte"/>
+    				Arte</a>
+    	    <a href="homeByCategoria.jsp?categoria=Immobili">
+    				<input type="hidden" name="categoria" value="Immobili"/>
+    				Immobili</a>
+    	    <a href="homeByCategoria.jsp?categoria=Antiquariato">
+    				<input type="hidden" name="categoria" value="Antiquariato"/>
+    				Antiquariato</a>
     	</div>
   </div>
 </div>
 
 <!-- FINE HEADER -->
  
- 	<!--IMPORTANTE 
- 	
- 		DA FARE: COME MI PORTO L'ID DEL VENDITORE DALLA PAGINA PROFILOASTA? 
-
- 		Come select * from utente where IDUtente = asta.Proprietario.FK-->
- 	
- 	
- <!-- INIZIO HEADER VENDITORE -->
- 
- 	<%	
-	Utente venditore;
- 	venditore = UtenteRepositoryImpl.getInstance().findbyID(1);
+	<%	
+    //per prendere ID dall'url
+    String stringVenditoreID = request.getParameter("idUtente");
+	int intVenditoreID = Integer.valueOf(stringVenditoreID);
+ 	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
+	List<Asta> listaAsta;
+	listaAsta = AstaRepositoryImpl.getInstance().findAstaByProprietarioFK(intVenditoreID);
 	%>
- 
- 	 <!-- Domanda: c per singolo oggetto?-->
  	
  	<div class="headerVenditore">
  		<div class="divSX">
-    		<<img src="${venditore.fotoProfilo}" alt="Immagine prodotto" class="immagineVenditore">    
+    		<img src=<%= venditore.getFotoProfilo() %> alt="Immagine profilo" class="immagineVenditore">    
     	</div>
  		<div class="divDX">
- 			<h4 class="nomeVenditore"><c:out value = "${venditore.nome}"/>  <c:out value = "${venditore.cognome}"/>"/></h4>
- 			<h4><c:out value = "${venditore.geolocalizzazione}"/></h4>
- 			<p><c:out value = "${venditore.biografia}"/></p>
- 			<i class="fa-solid fa-link iconaLink">&nbsp <c:out value = "${venditore.elencoSocial}"/></i>
+ 			<h4 class="nomeVenditore"><%= venditore.getNome() %> <%= venditore.getCognome() %></h4>
+ 			<h4><%= venditore.getGeolocalizzazione() %></h4>
+ 			<p><%= venditore.getBiografia() %></p>
+ 			<i class="fa-solid fa-link iconaLink">&nbsp <%= venditore.getElencoSocial() %></i>
  		</div>
  	</div>
   	
 <!-- FINE HEADER VENDITORE -->
 
-	<div class="asteVenditore">Aste venditore:</div>	 	
- 	 
- 	<%	
-	List<Asta> listaAsta;
-	listaAsta = AstaRepositoryImpl.getInstance().findAstaByProprietarioFK(1);		
-	%>
+<div class="asteVenditore">Aste venditore:</div>	 	
 
 <!--INIZIO BODY ASTE-->	
 	<c:forEach var = "i" items="<%= listaAsta %>">
@@ -149,11 +152,6 @@
 	</c:forEach>
 <!--FINE BODY ASTE-->
  	
- 	
-
-
-
-
 
 <!--Footer:-->
 

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<title>Home: DietiDeals24</title>
+<title>Aste a tempo fisso: DietiDeals24</title>
 </head>
 <body>
 
@@ -80,78 +80,73 @@
 </div>
 
 <!-- FINE HEADER -->
-			
-	<%	
-	List<Asta> listaAsta;
-	listaAsta = AstaRepositoryImpl.getInstance().findAll();		
+	
+	<%
+    String stringTipologia = request.getParameter("tipologia");
+	List<Asta> listaAste;
+	listaAste = AstaRepositoryImpl.getInstance().findByTipologia(stringTipologia);	
+	System.out.println(listaAste.toString());
 	%>
 
-<!--INIZIO BODY ASTE-->	
-	<c:forEach var = "i" items="<%= listaAsta %>">
+	<c:set var="tipoAsta" value="<%=stringTipologia%>" />
 	
-	<c:if test= "${i.tipologia == 'astaInglese'}">
+	<c:if test= "${tipoAsta == 'astaInglese'}">
 	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAsta.jsp?idAsta=${i.ID}">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	 	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-						<a href="profiloAsta.jsp?idAsta=${i.ID}">
+		<c:forEach var = "i" items="<%= listaAste %>">
+	
+			<div class="flex-diviso2 cell">
+				<div>
+    				<a href="profiloAsta.jsp?idAsta=${i.ID}">
+    					<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				</a>
+   	 			</div>	 	
+    			<div>
+					<div class="testoAsta">		
+						<h1><a href="profiloAsta.jsp?idAsta=${i.ID}">
     						<input type="hidden" name="IdAsta" value="${i.ID}"/>
     						<c:out value = "${i.titolo}"/>
-    					</a>
-    				</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
-					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta all'inglese"/></h2>		     
-   				</div>
-  			</div> 	
-  		</div>
+    					</a></h1>
+						<p><c:out value = "${i.descrizione}"/></p>
+						<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
+						<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
+						<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+						<h2><c:out value = "Asta all'inglese"/></h2>		     
+   					</div>
+  				</div> 	
+  			</div>
+  		</c:forEach>
 	</c:if>
 	
-	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
+	<c:if test= "${tipoAsta == 'astaTempoFisso'}">
 	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAsta.jsp?idAsta=${i.ID}">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-						<a href="profiloAsta.jsp?idAsta=${i.ID}">
+		<c:forEach var = "i" items="<%= listaAste %>">
+	
+			<div class="flex-diviso2 cell">
+				<div>
+    				<a href="profiloAsta.jsp?idAsta=${i.ID}">
+    					<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				</a>
+   	 			</div>	
+    			<div>
+					<div class="testoAsta">		
+						<h1><a href="profiloAsta.jsp?idAsta=${i.ID}">
     						<input type="hidden" name="IdAsta" value="${i.ID}"/>
     						<c:out value = "${i.titolo}"/>
-    					</a>
-    				</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta a tempo fisso"/></h2>		     
-   				</div>
-  			</div> 		
-  		</div>
+    					</a></h1>
+						<p><c:out value = "${i.descrizione}"/></p>
+						<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+						<h2><c:out value = "Asta a tempo fisso"/></h2>		     
+   					</div>
+  				</div> 		
+  			</div>
+  		</c:forEach>
 	</c:if>
-	   	
-	</c:forEach>
-<!--FINE BODY ASTE-->		
 	
-	<!-- funziona ma non conosco il tag <option> 
-	<c:forEach var="element" items="< % = listaAsta % > ">
-	  	<option value="${element}">${element}</option>
-	 </c:forEach>
-	-->	
-   
+ 
 <!--Footer:-->
 
 <div class="footer">

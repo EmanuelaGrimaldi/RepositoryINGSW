@@ -3,21 +3,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
+<%@page import = "implementazione.AstaRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Asta, entità.Utente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
-<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+<link rel="stylesheet" type="text/css" href="css/profiloAstaStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-<title>Home: DietiDeals24</title>
+<title>DietiDeals24</title>
 </head>
 <body>
-
 <!--INIZIO HEADER-->
 <div class="over_header">
 	<div class="loginButton">
@@ -80,84 +77,81 @@
 </div>
 
 <!-- FINE HEADER -->
-			
+ 
 	<%	
-	List<Asta> listaAsta;
-	listaAsta = AstaRepositoryImpl.getInstance().findAll();		
+    //per prendere ID dall'url
+    String stringAstaID = request.getParameter("idAsta");
+	int intAstaID = Integer.valueOf(stringAstaID);
+ 	Asta asta = AstaRepositoryImpl.getInstance().findbyID(intAstaID);
+ 	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(asta.getProprietario_FK());
 	%>
+	
+	
+<c:set var="Asta" value="${asta}" />
 
-<!--INIZIO BODY ASTE-->	
-	<c:forEach var = "i" items="<%= listaAsta %>">
+<h1>ID ASTA:  <%= asta.getID() %></h1>
+
+<div class="background">
+
+	<div class="flex-diviso2">
 	
-	<c:if test= "${i.tipologia == 'astaInglese'}">
-	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAsta.jsp?idAsta=${i.ID}">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	 	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-						<a href="profiloAsta.jsp?idAsta=${i.ID}">
-    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<c:out value = "${i.titolo}"/>
-    					</a>
-    				</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
-					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta all'inglese"/></h2>		     
-   				</div>
-  			</div> 	
-  		</div>
-	</c:if>
-	
-	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
-	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAsta.jsp?idAsta=${i.ID}">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-						<a href="profiloAsta.jsp?idAsta=${i.ID}">
-    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<c:out value = "${i.titolo}"/>
-    					</a>
-    				</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta a tempo fisso"/></h2>		     
-   				</div>
-  			</div> 		
-  		</div>
-	</c:if>
-	   	
-	</c:forEach>
-<!--FINE BODY ASTE-->		
-	
-	<!-- funziona ma non conosco il tag <option> 
-	<c:forEach var="element" items="< % = listaAsta % > ">
-	  	<option value="${element}">${element}</option>
-	 </c:forEach>
-	-->	
-   
+		<div class="divSX">
+    		<img src= "<%=asta.getFotoAsta1() %>" 
+    		alt="Immagine prodotto" class="immagineAsta">  
+    		<div class ="descrizioneAsta">
+    			 <p><%=asta.getDescrizione()%></p>
+    		</div>  
+    	</div>
+    
+		<div  class="divDX">
+			<div class="squareInfoAsta">
+				<h1>Base d'asta: <%=asta.getOffertaIniziale() %></h1>
+				<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %></h2>
+				<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %></h3>
+				<br>
+				<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
+			</div>
+			<br><br>
+			<div class="Offerta">
+				FAI LA TUA OFFERTA
+			</div>	
+			<div class="profiloVenditore">
+					<img src= "<%= venditore.getFotoProfilo() %>" 
+    				alt="Propic Venditore"
+    				class="fotoVenditore"> 
+    				
+    			<div class="nomeVenditore">
+    				<%= venditore.getNome() %> <%= venditore.getCognome() %>
+    			</div>
+    				
+    			<div class="scrittaVisitaProfilo">
+    				<a href="profiloVenditore.jsp?idUtente=<%= venditore.getID_Utente() %>">
+    					<input type="hidden" name="idUtente" value="<%= venditore.getID_Utente() %>"/>
+    					Visita il profilo
+    				</a>
+    			</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
 <!--Footer:-->
 
 <div class="footer">
-	<p> DietiDeals24 &#169;</p>
+	<p> DietiDeals24 &#169</p>
 </div>
-
+</body>
+</html><html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
 
 </body>
 </html>

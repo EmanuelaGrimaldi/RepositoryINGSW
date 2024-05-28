@@ -1,11 +1,9 @@
-<%@page import="servlet.getAsteByTipologia"%>
-<%@page import="servlet.getAsteByCategoria"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "javaJSP.getAllAste, servlet.getAsteHome,implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
+<%@page import = "implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
@@ -16,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<title>Giocattoli: DietiDeals24</title>
+<title>DietiDeals24</title>
 </head>
 <body>
 
@@ -44,10 +42,13 @@
   			Tipi di Asta
     		<i class="fa fa-caret-down"></i>
    		</button>
-   		<div class="dropdown-content">
-      		<a href="homeByAstaInglese.jsp">Asta all'inglese</a> 
-      		<a href="homeByAstaTempoFisso.jsp">Asta a tempo fisso</a>
-      		
+     	<div class="dropdown-content">
+   			<a href="homeByTipologia.jsp?tipologia=astaInglese">
+    				<input type="hidden" name="tipologia" value="astaInglese"/>
+      				Asta all'inglese</a> 
+			<a href="homeByTipologia.jsp?tipologia=astaTempoFisso">
+    				<input type="hidden" name="tipologia" value="astaTempoFisso"/>
+      				Asta a tempo fisso</a> 		
     	</div>
   </div>
   <div class="dropdown"> 
@@ -56,22 +57,35 @@
     		<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="homeByTabletTelefonia.jsp">Tablet e telefonia</a>
-      		<a href="homeByGiocattoli.jsp">Giocattoli</a>
-      		<a href="homeByElettronica.jsp">Elettronica</a>
-     	 	<a href="homeByArte.jsp">Arte</a>
-    	    <a href="homeByImmobili.jsp">Immobili</a>
-    	    <a href="homeByAntiquariato.jsp">Antiquariato</a>
+      		<a href="homeByCategoria.jsp?categoria=TabletTelefonia">
+    				<input type="hidden" name="categoria" value="TabletTelefonia"/>
+    				Tablet e telefonia</a>
+      		<a href="homeByCategoria.jsp?categoria=Giocattoli">
+    				<input type="hidden" name="categoria" value="Giocattoli"/>
+    				Giocattoli</a>
+      		<a href="homeByCategoria.jsp?categoria=Elettronica">
+    				<input type="hidden" name="categoria" value="Elettronica"/>
+    				Elettronica</a>
+     	 	<a href="homeByCategoria.jsp?categoria=Arte">
+    				<input type="hidden" name="categoria" value="Arte"/>
+    				Arte</a>
+    	    <a href="homeByCategoria.jsp?categoria=Immobili">
+    				<input type="hidden" name="categoria" value="Immobili"/>
+    				Immobili</a>
+    	    <a href="homeByCategoria.jsp?categoria=Antiquariato">
+    				<input type="hidden" name="categoria" value="Antiquariato"/>
+    				Antiquariato</a>
     	</div>
   </div>
 </div>
 
 <!-- FINE HEADER -->
-		
-		
-	<%	List<Asta> listaAsteByCategoria;
-		listaAsteByCategoria = AstaRepositoryImpl.getInstance().findByCategoria("TabletTelefonia");
-			
+	
+	<%	
+    //per prendere ID dall'url
+    String stringCategoria = request.getParameter("categoria");
+	List<Asta> listaAsteByCategoria;
+	listaAsteByCategoria = AstaRepositoryImpl.getInstance().findByCategoria(stringCategoria);		
 	%>
 
 	<!--INIZIO BODY ASTE-->	
