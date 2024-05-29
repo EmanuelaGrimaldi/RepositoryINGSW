@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
 <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -95,77 +94,33 @@
 		<div class="flex-diviso2">
 			<div>
 				<h4>Nome:</h4>
-				<!-- <input type="text" class="inputTesto"> -->
-				<input type="text" placeholder="Enter Nome" name="nome" required>
+				<input type="text" placeholder="Enter Nome" name="nome" required class="inputTesto">
 			</div>
 			<div>
 				<h4>Cognome:</h4>
-				<!-- <input type="text" class="inputTesto"> -->
-				<input type="text" placeholder="Enter Cognome" name="cognome"
-					required>
+				<input type="text" placeholder="Enter Cognome" name="cognome" class="inputTesto"required>
 			</div>
 			<div>
 				<h4>Email:</h4>
-				<!-- <input type="text" class="inputTesto"> -->
-				<input type="text" placeholder="Enter Email" name="email" required>
+				<input type="text" placeholder="Enter Email" name="email" required class="inputTesto">
 			</div>
 			<div>
 				<h4>Crea la tua Password:</h4>
-				<!-- <input type="text" class="inputTesto"> -->
-				<input type="password" placeholder="Enter Password" name="password"
-					required>
+				<input type="password" placeholder="Enter Password" name="password" required class="inputTesto">
 			</div>
-
-			<!-- non c'è la data di nascita nel db -->
 			 <div>
-				<h4>Data di nascita:</h4>
-				<!-- <input type="date" class="inputTesto">  -->  
-				<input type="date" name="dataDiNascita" required>
+				<h4>Data di nascita:</h4> 
+				<input type="date" name="dataDiNascita" required class="inputTesto">
 			</div>
-			<div>
+			<div >
 				<input type="submit" value="avanti" class="avantiButton"/>
 			</div>
 		</div>
 
 	</form>
-<!--
-	<div>
-		<a href="IscrizioneUtenteParte2.jsp">
-			<button type="button" class="avantiButton">Avanti</button>
-		</a>
-	</div>
-	 
-	<!--
-<div class="flex-diviso2">	
-
-	<div>
-		<h4>Email:</h4>
-		<input type="text" class="inputTesto">
-	</div>
 	
-	<div>
-		<h4>crea la tua Password:</h4>
-		<input type="text" class="inputTesto">
-	</div>	
 	
-	<div>
-		<h4>Nome e Cognome:</h4>
-		<input type="text" class="inputTesto">
-	</div>	
-	
-	<div>
-		<h4>Data di nascita:</h4>
-		<input type="date" class="inputTesto">
-	</div>
-</div>
-
-
- -->
-
-
-
-
-	<!--Footer:-->
+<!--Footer:-->
 	<br>
 	<br>
 	<br>

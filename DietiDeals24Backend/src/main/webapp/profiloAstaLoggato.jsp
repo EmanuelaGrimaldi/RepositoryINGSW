@@ -15,24 +15,61 @@
 <title>DietiDeals24</title>
 </head>
 <body>
-<!--INIZIO HEADER-->
-<div class="over_header">
-	<div class="loginButton">
-		<i class="fa-regular fa-user">
-			<a href="login.jsp">Login</a>
-		</i>	
-	</div>
+<!--INIZIO HEADER LOGGATO-->
+
+	<%	
+    //per prendere ID dall'url
+    String stringVenditoreID = request.getParameter("idUtente");
+	int intVenditoreID = Integer.valueOf(stringVenditoreID);
+ 	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
+ 	%>
+ 	<%	
+    //per prendere IDAsta dall'url
+    String stringAstaID = request.getParameter("idAsta");
+	int intAstaID = Integer.valueOf(stringAstaID);
+ 	Asta asta = AstaRepositoryImpl.getInstance().findbyID(intAstaID);
+ 	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(asta.getProprietario_FK());
+	%>
+
+        <div class="over_header">
+			<div class="loginButton ">
+				<img src=<%= utente.getFotoProfilo() %> alt="Immagine profilo" class="immagineVenditoreLoggato">
 	
-</div>	
+			<div class="nomeVenditoreLoggato">
+				<div class ="dropdown">
+					<button class="dropbtn"> <%= utente.getNome()%> <%= utente.getCognome()%>    		
+					<i class="fa fa-caret-down"></i>
+   					</button>
+   				
+   					<div class="dropdown-content">
+   						<a href="profiloUtenteLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">
+    						<input type="hidden" name="idUtente" value="idUtente"/>
+      						Il mio profilo
+      					</a> 
+						<a href="">
+							<!--DA IMPLEMENTARE profiloNotificheLoggato.jsp-->
+    						<input type="hidden" name="idUtente" value="idUtente"/>
+      						Le mie notifiche
+      					</a>
+						<a href="index.jsp">
+      						Logout
+      					</a>		
+    				</div>
+   				</div>	
+   			</div>	
+   			</div>
+  	</div>
+				
+
 <div class="header">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			<a href="index.jsp">DietiDeals24</a>
+			<a href="indexLoggato.jsp">DietiDeals24</a>
 		</div>
 </div>		
 <div class="under-header">
   	<div class="homeButton">
-  		<a href="index.jsp">Home</a> 
+  		<a href="indexLoggato.jsp">Home</a> 
   	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
@@ -40,51 +77,51 @@
     		<i class="fa fa-caret-down"></i>
    		</button>
      	<div class="dropdown-content">
-   			<a href="homeByTipologia.jsp?tipologia=astaInglese">
+   			<a href="homeByTipologiaLoggato.jsp?tipologia=astaInglese&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="tipologia" value="astaInglese"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
       				Asta all'inglese</a> 
-			<a href="homeByTipologia.jsp?tipologia=astaTempoFisso">
+			<a href="homeByTipologiaLoggato.jsp?tipologia=astaTempoFisso&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="tipologia" value="astaTempoFisso"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
       				Asta a tempo fisso</a> 		
     	</div>
-  </div>
+  	</div>
   <div class="dropdown"> 
   		<button class="dropbtn">
   			Categorie
     		<i class="fa fa-caret-down"></i>
    		</button>
     	<div class="dropdown-content">
-      		<a href="homeByCategoria.jsp?categoria=TabletTelefonia">
+      		<a href="homeByCategoriaLoggato.jsp?categoria=TabletTelefonia&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="TabletTelefonia"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
     				Tablet e telefonia</a>
-      		<a href="homeByCategoria.jsp?categoria=Giocattoli">
+      		<a href="homeByCategoriaLoggato.jsp?categoria=Giocattoli&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Giocattoli"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
     				Giocattoli</a>
-      		<a href="homeByCategoria.jsp?categoria=Elettronica">
+      		<a href="homeByCategoriaLoggato.jsp?categoria=Elettronica&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Elettronica"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
     				Elettronica</a>
-     	 	<a href="homeByCategoria.jsp?categoria=Arte">
+     	 	<a href="homeByCategoriaLoggato.jsp?categoria=Arte&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Arte"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
     				Arte</a>
-    	    <a href="homeByCategoria.jsp?categoria=Immobili">
+    	    <a href="homeByCategoriaLoggato.jsp?categoria=Immobili&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Immobili"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
     				Immobili</a>
-    	    <a href="homeByCategoria.jsp?categoria=Antiquariato">
+    	    <a href="homeByCategoriaLoggato.jsp?categoria=Antiquariato&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Antiquariato"/>
+    				<input type="hidden" name="idUtente" value="idUtente"/>
     				Antiquariato</a>
     	</div>
   </div>
 </div>
 
-<!-- FINE HEADER -->
- 
-	<%	
-    //per prendere ID dall'url
-    String stringAstaID = request.getParameter("idAsta");
-	int intAstaID = Integer.valueOf(stringAstaID);
- 	Asta asta = AstaRepositoryImpl.getInstance().findbyID(intAstaID);
- 	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(asta.getProprietario_FK());
-	%>
+<!-- FINE HEADER LOGGATO-->
 	
 	
 <c:set var="Asta" value="${asta}" />
@@ -139,8 +176,9 @@
     			</div>
     				
     			<div class="scrittaVisitaProfilo">
-    				<a href="profiloVenditore.jsp?idUtente=<%= venditore.getID_Utente() %>">
-    					<input type="hidden" name="idUtente" value="<%= venditore.getID_Utente() %>"/>
+    				<a href="profiloVenditoreLoggato.jsp?idVenditore=<%= venditore.getID_Utente() %>&idUtente=<%= utente.getID_Utente()%>">
+    					<input type="hidden" name="idVenditore" value="<%= venditore.getID_Utente() %>"/>
+    					<input type="hidden" name="idUtente" value="idUtente"/>
     					Visita il profilo
     				</a>
     			</div>

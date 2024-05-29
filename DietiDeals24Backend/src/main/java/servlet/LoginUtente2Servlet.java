@@ -14,6 +14,7 @@ import implementazione.UtenteRepositoryImpl;
 
 public class LoginUtente2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	int IDcount = 115;
 
 	public LoginUtente2Servlet() {
 		super();
@@ -30,12 +31,14 @@ public class LoginUtente2Servlet extends HttpServlet {
 		u.setBiografia((String) request.getAttribute("biografia"));
 		u.setGeolocalizzazione((String) request.getAttribute("posizioneGeografica"));
 		u.setLinkSocial((String) request.getAttribute("social"));
+		u.setID_Utente(IDcount);
 		
 		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();
 
 		uRepo.save(u);
 
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("indexLoggato.jsp?idUtente=" + IDcount).forward(request, response);
+		IDcount++;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

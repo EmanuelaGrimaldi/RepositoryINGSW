@@ -88,43 +88,34 @@
 	<br>
 	<br>
 
-
-
 	<form name="loginForm2" method="get" action="LoginUtente2Servlet">
 		<div class="flex-diviso2">
 
 			<div>
 				<h4>Inserisci qui la tua foto profilo:</h4>
 				<i class="fa-solid fa-file-circle-plus immagineProfilo"></i> 
-				<input type="text" name="fotoProfilo">
 			</div>
 
 			<div>
 				<h4>Parlaci di te:</h4>
 				<input type="text"
-					placeholder="Inserisci una tua Biografia" name="biografia"
-					class="shortBio">
+					placeholder="Inserisci una tua Biografia" name="biografia" class="shortBio">
 			</div>
-
+			<br><br>
 			<div>
 				<h4>Posizione geografica:</h4>
 				<input type="text"
-					placeholder="inserisci la tua posizione geografica"
-					name="posizioneGeografica">
+					placeholder="inserisci una short bio!"
+					name="posizioneGeografica" class="inputTesto">
 			</div>
 
 			<div>
 				<h4>Link ai tuoi socials:</h4>
-				<input type="text" class="fa-solid fa-circle-plus plusButton"
-					placeholder="Inserisci il tuo social preferito" name="social">
+				<input type="text"	placeholder="Inserisci il tuo social preferito" name="social" class="inputTesto">
 			</div>
 
 			<br>
-			<div>
-				<div>
-					<input type="submit" value="Fine" class="avantiButton" />
-				</div>
-			</div>
+					<input type="submit" value="Fine" class="avantiButton"/>
 		</div>
 		
 		
