@@ -117,11 +117,11 @@
 			</div>
 
 			<!-- non c'è la data di nascita nel db -->
-			<!-- <div>
+			 <div>
 				<h4>Data di nascita:</h4>
-				<input type="date" class="inputTesto">  
+				<!-- <input type="date" class="inputTesto">  -->  
 				<input type="date" name="dataDiNascita" required>
-			</div> -->
+			</div>
 			<div>
 				<input type="submit" value="avanti" class="avantiButton"/>
 			</div>

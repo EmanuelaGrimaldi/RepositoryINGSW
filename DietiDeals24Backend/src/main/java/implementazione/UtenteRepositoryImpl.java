@@ -36,28 +36,22 @@ public class UtenteRepositoryImpl extends JPARepositoryImpl<Utente, Integer> imp
 
 			et.begin();
 			q = em.createNativeQuery(
-					"select * from " + entityClass.getSimpleName() + " where EmailUtente='" + email + "'",
+					"select * from " + entityClass.getSimpleName() + " where EmailUtente= :email ",
 					this.entityClass);
-
-			if (q != null)
-				utente = (Utente) q.getSingleResult();
-
-			else {
-				Utente u = new Utente();
-				u.setNome("null");
-				u.setCognome("null");
-				u.setID_Utente(-1);
-				u.setEmailUtente("null");
-			}
+			
+			q.setParameter("email", email);
+			
 			et.commit();
+			
+			if (q != null)
+				utente = (Utente) q.getSingleResult(); //q.getParameter("EmailUtente");
+
 		} 
 		catch (NumberFormatException e) 
 		{
 			System.err.println(
-					"\nFacendo la query ho trovato null e ho ritornato un oggetto utente.nome=*;\n" + e.getMessage());
-			Utente u = new Utente();
-			u.setNome("*");
-
+					"\nFacendo la query ho trovato null e ho ritornato null;\n" + e.getMessage());
+			Utente u = null;
 			return u;
 		} 
 		catch (Exception e) 
@@ -67,11 +61,7 @@ public class UtenteRepositoryImpl extends JPARepositoryImpl<Utente, Integer> imp
 			if (et != null && et.isActive())
 				et.rollback();
 
-			Utente u = new Utente();
-			u.setNome("null");
-			u.setCognome("null");
-			u.setID_Utente(-1);
-			u.setEmailUtente("null");
+			Utente u = null;
 			return u;
 
 		}

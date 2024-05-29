@@ -1,5 +1,8 @@
 package entità;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,40 +13,41 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "utente")
 public class Utente {
-	
+
 	@Column(name = "nome", nullable = false, length = 30)
 	private String nome;
-	
+
 	@Column(name = "cognome", nullable = false, length = 30)
 	private String cognome;
-		
+
 	@Column(name = "biografia", nullable = true, length = 1000)
 	private String biografia;
-		
+
 	@Column(name = "geolocalizzazione", nullable = true, length = 50)
 	private String geolocalizzazione;
-	
+
 	@Column(name = "linksocial", nullable = true, length = 300)
 	private String linkSocial;
-	
+
 	@Column(name = "fotoprofilo", nullable = true, length = 1000)
 	private String fotoProfilo;
 
 	@Column(name = "emailutente", nullable = false, length = 40)
 	private String emailUtente;
-	  
+
 	@Column(name = "passwordutente", nullable = false, length = 40)
 	private String passwordUtente;
-	
+
+	@Column(name = "DataNascita", nullable = true)
+	private LocalDate dataNascita;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idutente", nullable = false)
 	private int ID_Utente;
 
+	// Getters_setters_toString
 
-	//Getters_setters_toString
-	
-	
 	public String getNome() {
 		return nome;
 	}
@@ -116,15 +120,20 @@ public class Utente {
 		ID_Utente = iD_Utente;
 	}
 
+	public LocalDate getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(LocalDate localDate) {
+		this.dataNascita = localDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Utente [nome=" + nome + ", cognome=" + cognome + ", biografia=" + biografia + ", geolocalizzazione="
-				+ geolocalizzazione + ", linkSocial=" + linkSocial + ", fotoProfilo=" + fotoProfilo
-				+ ", emailUtente=" + emailUtente + ", passwordUtente=" + passwordUtente + ", ID_Utente=" + ID_Utente
-				+ "]";
+				+ geolocalizzazione + ", linkSocial=" + linkSocial + ", fotoProfilo=" + fotoProfilo + ", emailUtente="
+				+ emailUtente + ", passwordUtente=" + passwordUtente + ", dataNascita=" + dataNascita + ", ID_Utente="
+				+ ID_Utente + "]";
 	}
-	
 
-	
 }
-

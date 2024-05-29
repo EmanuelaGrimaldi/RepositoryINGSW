@@ -1,3 +1,4 @@
+<%@page import="entità.Utente"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -100,19 +101,21 @@
 
 			<div>
 				<h4>Parlaci di te:</h4>
-				<input type="text" > 
-				<input type="text" placeholder="Inserisci una tua Biografia" name="biografia" class="shortBio" >
+				<input type="text"
+					placeholder="Inserisci una tua Biografia" name="biografia"
+					class="shortBio">
 			</div>
 
 			<div>
 				<h4>Posizione geografica:</h4>
-				<input type="text" class="inputTesto"> 
-				<input type="text" placeholder="inserisci la tua posizione geografica" name="posizioneGeografica">
+				<input type="text"
+					placeholder="inserisci la tua posizione geografica"
+					name="posizioneGeografica">
 			</div>
 
 			<div>
-				<h4>Link ai tuoi socials:</h4> 
-				<input type="text" class="fa-solid fa-circle-plus plusButton" 
+				<h4>Link ai tuoi socials:</h4>
+				<input type="text" class="fa-solid fa-circle-plus plusButton"
 					placeholder="Inserisci il tuo social preferito" name="social">
 			</div>
 
@@ -123,6 +126,22 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		<%
+		//create the object you want to pass 
+		
+		Utente obj = (Utente) request.getAttribute("utente");
+
+		obj.setFotoProfilo((String) request.getAttribute("fotoProfilo"));
+		obj.setBiografia((String) request.getAttribute("biografia"));
+		obj.setGeolocalizzazione((String) request.getAttribute("posizioneGeografica"));
+		obj.setLinkSocial((String) request.getAttribute("social"));
+		
+		session.setAttribute("utente", obj);
+		//request.setAttribute("utente", obj);
+		%>
 	</form>
 
 

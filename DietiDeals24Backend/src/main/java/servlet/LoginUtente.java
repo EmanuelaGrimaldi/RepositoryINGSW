@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import repository.UtenteRepository;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import entità.Utente;
 import implementazione.UtenteRepositoryImpl;
@@ -35,32 +37,23 @@ public class LoginUtente extends HttpServlet {
 		utente.setCognome(request.getParameter("cognome"));
 		utente.setEmailUtente(request.getParameter("email"));
 		utente.setPasswordUtente(request.getParameter("password"));
-		// utente.setDataDiNascita ma non c'è
-
-		// per ora è questo ma poi si cambia in base all'esigenza.
-		String profiloVenditore_site = "/DietiDeals24Backend/src/main/webapp/profiloVenditore.jsp";
-		String errore_site = "/DietiDeals24Backend/src/main/webapp/login.jsp";
-
+		
+		utente.setDataNascita(LocalDate.parse(request.getParameter("dataDiNascita")));
+		
 		UtenteRepository utenteRepo = UtenteRepositoryImpl.getInstance();
 
 		if (!utenteRepo.emailAlreadyExist(utente.getEmailUtente())) {
-			// il tipo non esisite gia e si puo continuare con l'iscrizione
+			
 			request.setAttribute("utente", utente);
 			request.getRequestDispatcher("IscrizioneUtenteParte2.jsp").forward(request, response);
+			
 		} else {
-			// che faccio quando mette una email gia presente?
+			
+			// fare interface errore
 			request.getRequestDispatcher("iscrizioneUtenteParte1.jsp").forward(request, response);
-			// parte la notifica / siconola il testo idk
+			
 		}
 
-		/*
-		 * if(!utenteRepo.emailAlreadyExist(utente.getEmailUtente())) {
-		 * utenteRepo.save(utente); response.setStatus(response.SC_ACCEPTED);
-		 * response.setHeader("Location", profiloVenditore_site);
-		 * response.sendRedirect(profiloVenditore_site); } else {
-		 * response.setStatus(response.SC_UNAUTHORIZED); response.setHeader("Location",
-		 * errore_site); response.sendRedirect(errore_site); }
-		 */
 
 	}
 

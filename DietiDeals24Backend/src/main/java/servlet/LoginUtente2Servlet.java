@@ -22,12 +22,13 @@ public class LoginUtente2Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		Utente u = (Utente) request.getAttribute("utente");
+		
+		Utente u = (Utente) request.getSession().getAttribute("utente"); //request.getAttribute("utente");
+		
+		System.out.println("\n"+u.getBiografia()); // non funziona
 		u.setFotoProfilo((String) request.getAttribute("fotoProfilo"));
 		u.setBiografia((String) request.getAttribute("biografia"));
+		u.setGeolocalizzazione((String) request.getAttribute("posizioneGeografica"));
 		u.setLinkSocial((String) request.getAttribute("social"));
 		
 		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();
@@ -39,7 +40,6 @@ public class LoginUtente2Servlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 	}
 
 }
