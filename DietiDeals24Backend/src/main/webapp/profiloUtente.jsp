@@ -1,20 +1,24 @@
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import = "implementazione.AstaRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Asta, entità.Utente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
-<link rel="stylesheet" type="text/css" href="css/profiloVenditoreStyle.css">
 <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+<link rel="stylesheet" type="text/css" href="css/profiloVenditoreStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<title>DietiDeals24</title>
+
+<title>Il mio profilo</title>
 </head>
 <body>
+
 <!--INIZIO HEADER-->
 <div class="over_header">
 	<div class="loginButton">
@@ -77,31 +81,32 @@
 </div>
 
 <!-- FINE HEADER -->
- 
+			
 	<%	
     //per prendere ID dall'url
     String stringVenditoreID = request.getParameter("idUtente");
-	int intVenditoreID = Integer.valueOf(stringVenditoreID);
- 	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
+	//int intVenditoreID = Integer.valueOf(stringVenditoreID);
+	int intVenditoreID = 104;
+ 	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
 	List<Asta> listaAsta;
 	listaAsta = AstaRepositoryImpl.getInstance().findAstaByProprietarioFK(intVenditoreID);
 	%>
  	
  	<div class="headerVenditore">
  		<div class="divSX">
-    		<img src=<%= venditore.getFotoProfilo() %> alt="Immagine profilo" class="immagineVenditore">    
+    		<img src=<%= utente.getFotoProfilo() %> alt="Immagine profilo" class="immagineVenditore">    
     	</div>
  		<div class="divDX">
- 			<h4 class="nomeVenditore"><%= venditore.getNome() %> <%= venditore.getCognome() %></h4>
- 			<h4><%= venditore.getGeolocalizzazione() %></h4>
- 			<p><%= venditore.getBiografia() %></p>
- 			<h4><i class="fa-solid fa-link iconaLink">&nbsp <%= venditore.getLinkSocial() %></i></h4>
+ 			<h4 class="nomeVenditore"><%= utente.getNome() %> <%= utente.getCognome() %></h4>
+ 			<h4><%= utente.getGeolocalizzazione() %></h4>
+ 			<p><%= utente.getBiografia() %></p>
+ 			<i class="fa-solid fa-link iconaLink">&nbsp <%= utente.getLinkSocial() %></i>
  		</div>
  	</div>
   	
 <!-- FINE HEADER VENDITORE -->
 
-<div class="asteVenditore">Aste venditore:</div>	 	
+<div class="asteVenditore">Le mie aste:</div>	 	
 
 <!--INIZIO BODY ASTE-->	
 	<c:forEach var = "i" items="<%= listaAsta %>">
@@ -156,12 +161,13 @@
 	   	
 	</c:forEach>
 <!--FINE BODY ASTE-->
- 	
-
+   
 <!--Footer:-->
 
 <div class="footer">
-	<p> DietiDeals24 &#169</p>
+	<p> DietiDeals24 &#169;</p>
 </div>
+
+
 </body>
-</html></html>
+</html>

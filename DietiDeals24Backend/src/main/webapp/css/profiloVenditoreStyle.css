@@ -2,10 +2,10 @@
 
 .headerVenditore{
 	display: flex;
-  	align-items: flex-start;
+  	 align-items: stretch;
   	justify-content: center; 
-	margin: 20px 15%;
-	width:70%;
+	margin: 20px 22%;
+	width:55%;
 	height: 250px;
 	background: #9CB4E3;
 }
@@ -22,19 +22,19 @@
 	color: white;
 }
 
-.headerVenditore div .divSX{
-	width: 40%;
+.divSX{
+	width: 30%;
 	height: 100%;
 	text-align:center;
 	font-family:Gotham;
-	padding:30px;
 	overflow:hidden
 }
 
-.headerVenditore div .divDX{
-	width: 60%;
-	text-align:center;
+.divDX{
+	width: 70%;
+	text-align:left;
 	font-family:Gotham;	
+	margin: 10px auto;
 }
 
 h4 {
@@ -56,17 +56,16 @@ h4 {
 .immagineVenditore{
 	display:block;
 	width: 230px;
-  	padding: auto;
-  	float: right;
+  	padding: 0 20%;
     object-fit: cover;
     margin: 10px;
 	}
 	
 .iconaLink{
 	color:white;
-	padding:10px 20px;
 	color: white;
 	font-family:Serif;
+	text-align:left;
 }
 .iconaLink:hover {
 	color: #1A1170;

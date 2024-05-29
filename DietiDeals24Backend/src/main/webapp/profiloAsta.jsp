@@ -89,28 +89,42 @@
 	
 <c:set var="Asta" value="${asta}" />
 
-<h1>ID ASTA:  <%= asta.getID() %></h1>
+<h1><%= asta.getTitolo() %></h1>
 
 <div class="background">
 
 	<div class="flex-diviso2">
 	
 		<div class="divSX">
-    		<img src= "<%=asta.getFotoAsta1() %>" 
-    		alt="Immagine prodotto" class="immagineAsta">  
+    		<img src= "<%=asta.getFotoAsta1() %>" alt="Immagine prodotto" class="immagineAsta">  
     		<div class ="descrizioneAsta">
-    			 <p><%=asta.getDescrizione()%></p>
+    				<p><%=asta.getDescrizione()%></p>
     		</div>  
     	</div>
-    
+		
 		<div  class="divDX">
-			<div class="squareInfoAsta">
-				<h1>Base d'asta: <%=asta.getOffertaIniziale() %></h1>
-				<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %></h2>
-				<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %></h3>
-				<br>
-				<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
+			
+			<c:set var="tipoAsta" value="<%=asta.getTipologia()%>" />
+			
+			<c:choose>
+				<c:when test="${ tipoAsta == 'astaInglese'}">
+					<div class="squareInfoAsta">
+					<h1>Base d'asta: <%=asta.getOffertaIniziale() %>0€</h1>
+					<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+					<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %>0€</h3>
+					<br>
+					<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
 			</div>
+    			</c:when>
+    			<c:otherwise>
+    				<div class="squareInfoAsta">
+						<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+						<br><br>
+						<h4>Data di scadenza: <%=asta.getDataFine() %></h4>
+					</div>
+    			</c:otherwise> 
+   			</c:choose>
+   			
 			<br><br>
 			<div class="Offerta">
 				FAI LA TUA OFFERTA
