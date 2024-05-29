@@ -95,7 +95,7 @@
  			<h4 class="nomeVenditore"><%= venditore.getNome() %> <%= venditore.getCognome() %></h4>
  			<h4><%= venditore.getGeolocalizzazione() %></h4>
  			<p><%= venditore.getBiografia() %></p>
- 			<i class="fa-solid fa-link iconaLink">&nbsp <%= venditore.getElencoSocial() %></i>
+ 			<i class="fa-solid fa-link iconaLink">&nbsp <%= venditore.getLinkSocial() %></i>
  		</div>
  	</div>
   	

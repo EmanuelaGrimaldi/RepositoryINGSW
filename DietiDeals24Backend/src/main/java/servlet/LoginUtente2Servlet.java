@@ -28,7 +28,7 @@ public class LoginUtente2Servlet extends HttpServlet {
 		Utente u = (Utente) request.getAttribute("utente");
 		u.setFotoProfilo((String) request.getAttribute("fotoProfilo"));
 		u.setBiografia((String) request.getAttribute("biografia"));
-		u.setElencoSocial((String) request.getAttribute("social"));
+		u.setLinkSocial((String) request.getAttribute("social"));
 		
 		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();
 

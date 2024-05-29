@@ -6,7 +6,7 @@
 
 CREATE TABLE IF NOT EXISTS asta 
 (
-	Titolo VARCHAR(30) NOT NULL,
+	Titolo VARCHAR(120) NOT NULL,
 	Descrizione VARCHAR(150),
 	Categoria ENUM ('TabletTelefonia', 'Giocattoli', 'Elettronica', 'Arte', 'Immobili', 'Antiquariato') NOT NULL,
 	Tipologia ENUM ('astaTempoFisso', 'astaInglese') NOT NULL,
@@ -41,12 +41,14 @@ CREATE TABLE IF NOT EXISTS utente
 (
 	Nome VARCHAR(30) NOT NULL,
 	Cognome VARCHAR(30) NOT NULL,
+	DataNascita DATETIME NOT NULL,
 	Biografia VARCHAR(1000),
  	Geolocalizzazione VARCHAR(50) ,
- 	ElencoSocial VARCHAR(1000),
+ 	LinkSocial VARCHAR(300),
  	FotoProfilo VARCHAR(1000),
 	EmailUtente varchar(40) NOT NULL,
  	PasswordUtente varchar(30)NOT NULL,
+
 
 	IDUtente INT AUTO_INCREMENT NOT NULL,
 

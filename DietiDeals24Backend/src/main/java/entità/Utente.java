@@ -23,8 +23,8 @@ public class Utente {
 	@Column(name = "geolocalizzazione", nullable = true, length = 50)
 	private String geolocalizzazione;
 	
-	@Column(name = "elencosocial", nullable = true, length = 1000)
-	private String elencoSocial;
+	@Column(name = "linksocial", nullable = true, length = 300)
+	private String linkSocial;
 	
 	@Column(name = "fotoprofilo", nullable = true, length = 1000)
 	private String fotoProfilo;
@@ -76,12 +76,12 @@ public class Utente {
 		this.geolocalizzazione = geolocalizzazione;
 	}
 
-	public String getElencoSocial() {
-		return elencoSocial;
+	public String getLinkSocial() {
+		return linkSocial;
 	}
 
-	public void setElencoSocial(String elencoSocial) {
-		this.elencoSocial = elencoSocial;
+	public void setLinkSocial(String linkSocial) {
+		this.linkSocial = linkSocial;
 	}
 
 	public String getFotoProfilo() {
@@ -119,7 +119,7 @@ public class Utente {
 	@Override
 	public String toString() {
 		return "Utente [nome=" + nome + ", cognome=" + cognome + ", biografia=" + biografia + ", geolocalizzazione="
-				+ geolocalizzazione + ", elencoSocial=" + elencoSocial + ", fotoProfilo=" + fotoProfilo
+				+ geolocalizzazione + ", linkSocial=" + linkSocial + ", fotoProfilo=" + fotoProfilo
 				+ ", emailUtente=" + emailUtente + ", passwordUtente=" + passwordUtente + ", ID_Utente=" + ID_Utente
 				+ "]";
 	}
