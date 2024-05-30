@@ -125,9 +125,12 @@
 	%>
 
 <!--INIZIO BODY ASTE-->	
+
+	<c:set var="idUtenteLoggato" value="<%= utente.getID_Utente()%>" />
+
 	<c:forEach var = "i" items="<%= listaAsta %>">
 	
-	<c:if test= "${i.tipologia == 'astaInglese'}">
+	<c:if test= "${i.tipologia == 'astaInglese'&& ${i.ID != idUtenteLoggato}">
 	
 		<div class="flex-diviso2 cell">
 			<div>
@@ -157,7 +160,7 @@
   		</div>
 	</c:if>
 	
-	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
+	<c:if test= "${i.tipologia == 'astaTempoFisso'&& ${i.ID != idUtenteLoggato}">
 	
 		<div class="flex-diviso2 cell">
 			<div>

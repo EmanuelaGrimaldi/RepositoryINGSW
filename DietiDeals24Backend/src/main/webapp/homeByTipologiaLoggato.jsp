@@ -125,11 +125,13 @@
 <!-- FINE HEADER LOGGATO-->
 
 	<c:set var="tipoAsta" value="<%=stringTipologia%>" />
+	<c:set var="idUtenteLoggato" value="<%= utente.getID_Utente()%>" />
 	
 	<c:if test= "${tipoAsta == 'astaInglese'}">
 	
 		<c:forEach var = "i" items="<%= listaAste %>">
 	
+			<c:if test= "${i.proprietario_FK != idUtenteLoggato}">
 			<div class="flex-diviso2 cell">
 				<div>
     				<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
@@ -154,6 +156,7 @@
    					</div>
   				</div> 	
   			</div>
+  			</c:if>
   		</c:forEach>
 	</c:if>
 	
@@ -161,6 +164,7 @@
 	
 		<c:forEach var = "i" items="<%= listaAste %>">
 	
+			<c:if test= "${i.proprietario_FK != idUtenteLoggato}">
 			<div class="flex-diviso2 cell">
 				<div>
     				<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
@@ -183,6 +187,7 @@
    					</div>
   				</div> 		
   			</div>
+  			</c:if>
   		</c:forEach>
 	</c:if>
 	
