@@ -47,9 +47,8 @@
     						<input type="hidden" name="idUtente" value="idUtente"/>
       						Il mio profilo
       					</a> 
-						<a href="">
-							<!--DA IMPLEMENTARE profiloNotificheLoggato.jsp-->
-    						<input type="hidden" name="idUtente" value="idUtente"/>
+						<a href="elencoNotificheLoggato.jsp?idUtente=<%=utente.getID_Utente()%>">
+							<input type="hidden" name="idUtente" value="idUtente"/>
       						Le mie notifiche
       					</a>
 						<a href="index.jsp">

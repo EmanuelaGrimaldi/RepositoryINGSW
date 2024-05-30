@@ -3,18 +3,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "implementazione.AstaRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Asta, entità.Utente"%>
+<%@page import = "implementazione.NotificheRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Notifiche, entità.Utente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
-<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+<link rel="stylesheet" type="text/css" href="css/profiloAstaStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<title>Home: DietiDeals24</title>
+<title>Le mie Notifiche</title>
 </head>
 <body>
 
@@ -26,6 +26,12 @@
 	int intVenditoreID = Integer.valueOf(stringVenditoreID);
  	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
  	%>
+ 	<%
+	List<Notifiche> listaNotifiche;
+ 	listaNotifiche = NotificheRepositoryImpl.getInstance().findNotificheByIDutenteFK(intVenditoreID);
+ 	int countNotifiche=0;
+	%>
+	
 	<div class ="bluePadding"></div>
         <div class="over_header">
 			<div class="loginButton ">
@@ -118,78 +124,32 @@
 </div>
 
 <!-- FINE HEADER LOGGATO-->
-			
-	<%	
-	List<Asta> listaAsta;
-	listaAsta = AstaRepositoryImpl.getInstance().findAll();		
-	%>
 
-<!--INIZIO BODY ASTE-->	
-	<c:forEach var = "i" items="<%= listaAsta %>">
-	
-	<c:if test= "${i.tipologia == 'astaInglese'}">
-	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	 	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-						<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
-    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<input type="hidden" name="idUtente" value="idUtente"/>
-    						<c:out value = "${i.titolo}"/>
-    					</a>
-    				</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
-					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta all'inglese"/></h2>		     
-   				</div>
-  			</div> 	
-  		</div>
-	</c:if>
-	
-	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
-	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-						<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
-    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<input type="hidden" name="idUtente" value="idUtente"/>
-    						<c:out value = "${i.titolo}"/>
-    					</a>
-    				</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta a tempo fisso"/></h2>		     
-   				</div>
-  			</div> 		
-  		</div>
-	</c:if>
+<h1>Le mie notifiche:</h1>	 	
+
+<!--INIZIO BODY NOTIFICHE-->	
+	<c:forEach var = "i" items="<%= listaNotifiche %>">
+		<br>
+		<div class="designNotifica">
+			<a href="profiloNotificheLoggato.jsp?idNotifica=${i.ID_notifiche}&idUtente=<%= intVenditoreID%>">
+				<input type="hidden" name="idUtente" value="idUtente"/>
+				<input type="hidden" name="idNotifica" value="${i.ID_notifiche}"/>
+				&#8226 <c:out value = "${i.titolo}"/>
+			</a>
+		</div>
+		<%= countNotifiche++ %>
 	   	
 	</c:forEach>
-<!--FINE BODY ASTE-->	
+<!--FINE BODY NOTIFICHE-->
+
+<c:set var="numeroNotifiche" value="<%= countNotifiche %>" />
+
+<c:if test="${numeroNotifiche < 4}">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</c:if>
    
 <!--Footer:-->
-
+<br><br><br>
 <div class="footer">
 	<p> DietiDeals24 &#169;</p>
 </div>

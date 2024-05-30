@@ -140,5 +140,18 @@ h1{
   	cursor: pointer;
 }
 
+.designNotifica{
+	color: #9CB4E3;
+	margin: 10px 0 0 20%;
+	height:50px;
+	width:60%;
+	text-align: left;
+	font-size: 22px;
+	font-family:Gotham;
+	border:2px solid black;
+	padding: 20px 0 0 15px;
+}
 
-
+.designNotifica:hover {
+  	text-decoration: underline;
+}
