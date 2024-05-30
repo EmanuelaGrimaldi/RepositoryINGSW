@@ -12,27 +12,28 @@ import java.io.IOException;
 import entità.Utente;
 import implementazione.UtenteRepositoryImpl;
 
-public class LoginUtente2Servlet extends HttpServlet {
+public class LoginUtente2Servlet extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
 	int IDcount = 115;
 
-	public LoginUtente2Servlet() {
+	public LoginUtente2Servlet()
+	{
 		super();
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		Utente u = (Utente) request.getSession().getAttribute("utente"); //request.getAttribute("utente");
-		
-		System.out.println("\n"+u.getBiografia()); // non funziona
-		u.setFotoProfilo((String) request.getAttribute("fotoProfilo"));
-		u.setBiografia((String) request.getAttribute("biografia"));
-		u.setGeolocalizzazione((String) request.getAttribute("posizioneGeografica"));
-		u.setLinkSocial((String) request.getAttribute("social"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+		Utente u = (Utente) request.getSession().getAttribute("utente");
+
+		u.setFotoProfilo((String) request.getParameter("fotoProfilo"));
+		u.setBiografia((String) request.getParameter("biografia"));
+		u.setGeolocalizzazione((String) request.getParameter("posizioneGeografica"));
+		u.setLinkSocial((String) request.getParameter("social"));
 		u.setID_Utente(IDcount);
-		
+
 		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();
 
 		uRepo.save(u);
@@ -41,8 +42,9 @@ public class LoginUtente2Servlet extends HttpServlet {
 		IDcount++;
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 	}
 
 }
+
