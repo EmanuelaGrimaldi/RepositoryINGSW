@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<title>DietiDeals24</title>
+<title>Home: DietiDeals24</title>
 </head>
 <body>
 <!--INIZIO HEADER LOGGATO-->
@@ -30,7 +30,7 @@
 	List<Asta> listaAsteByCategoria;
 	listaAsteByCategoria = AstaRepositoryImpl.getInstance().findByCategoria(stringCategoria);		
 	%>
-
+	<div class ="bluePadding"></div>
         <div class="over_header">
 			<div class="loginButton ">
 				<img src=<%= utente.getFotoProfilo() %> alt="Immagine profilo" class="immagineVenditoreLoggato">
@@ -64,12 +64,13 @@
 <div class="header">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			<a href="indexLoggato.jsp">DietiDeals24</a>
+			DietiDeals24
 		</div>
 </div>		
 <div class="under-header">
   	<div class="homeButton">
-  		<a href="indexLoggato.jsp">Home</a> 
+			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
+			<input type="hidden" name="idUtente" value="idUtente"/> 
   	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">

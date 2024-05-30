@@ -26,7 +26,7 @@
 	int intVenditoreID = Integer.valueOf(stringVenditoreID);
  	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
  	%>
-
+	<div class ="bluePadding"></div>
         <div class="over_header">
 			<div class="loginButton ">
 				<img src=<%= utente.getFotoProfilo() %> alt="Immagine profilo" class="immagineVenditoreLoggato">
@@ -60,13 +60,14 @@
 <div class="header">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			<a href="indexLoggato.jsp">DietiDeals24</a>
+			DietiDeals24
 		</div>
 </div>		
 <div class="under-header">
   	<div class="homeButton">
-  		<a href="indexLoggato.jsp">Home</a> 
-  	</div> 		
+			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
+			<input type="hidden" name="idUtente" value="idUtente"/> 
+  	</div>  		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta

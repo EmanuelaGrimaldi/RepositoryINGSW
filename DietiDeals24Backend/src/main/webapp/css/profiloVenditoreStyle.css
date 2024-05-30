@@ -61,11 +61,19 @@ h4 {
     margin: 10px;
 	}
 	
+.immagineProfiloUtente{
+	width: 100%;
+	height: 100%;
+    object-fit: contain;
+	text-align:center;
+}
+	
 .iconaLink{
 	color:white;
 	color: white;
 	font-family:Serif;
 	text-align:left;
+	padding:5px 20px;
 }
 .iconaLink:hover {
 	color: #1A1170;

@@ -20,6 +20,7 @@
 
 <!--INIZIO HEADER-->
 
+<div class ="bluePadding"></div>
 	<div class="over_header">
 		<div class="loginButton">
 			<i class="fa-regular fa-user">
@@ -31,7 +32,7 @@
 <div class="header">
 		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			<a href="index.jsp">DietiDeals24</a>
+			DietiDeals24
 		</div>
 </div>		
 <div class="under-header">

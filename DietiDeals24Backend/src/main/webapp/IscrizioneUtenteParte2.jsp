@@ -16,6 +16,7 @@
 </head>
 <body>
 	<!--INIZIO HEADER-->
+	<div class ="bluePadding"></div>
 	<div class="over_header">
 		<div class="loginButton">
 			<i class="fa-regular fa-user"> <a href="login.jsp">Login</a>

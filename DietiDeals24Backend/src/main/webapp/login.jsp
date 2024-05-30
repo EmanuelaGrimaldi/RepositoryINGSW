@@ -14,6 +14,9 @@
 </head>
 <body>
 <!--INIZIO HEADER-->
+
+<div class ="bluePadding"></div>
+
 <div class="over_header">
 	<div class="loginButton">
 		<i class="fa-regular fa-user">
@@ -114,8 +117,10 @@
 	<!--
 	Da implementare form/servlet che se email e psw sono corretti, al click di avantiButton:
 	request.getRequestDispatcher("indexLoggato.jsp?idUtente=" + utente.ID_Utente).forward(request, response);
+	Per ora passo temporaneamente l'index da loggato per comodità
 	-->
-	<a href="">
+	<a href="indexLoggato.jsp?idUtente=112">
+	<input type="hidden" name="idUtente" value="112"/>
 		<button type="button" class="avantiButtonLogin">Avanti</button>
 	</a>
 </div>
