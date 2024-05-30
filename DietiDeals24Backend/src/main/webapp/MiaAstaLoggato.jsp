@@ -5,20 +5,16 @@
 <!DOCTYPE html>
 <%@page import = "implementazione.AstaRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Asta, entità.Utente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
-<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
-<link rel="stylesheet" type="text/css" href="css/profiloVenditoreStyle.css">
+<link rel="stylesheet" type="text/css" href="css/profiloAstaStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-<title>Il mio profilo</title>
+<title>DietiDeals24</title>
 </head>
 <body>
-
 <!--INIZIO HEADER LOGGATO-->
 
 	<%	
@@ -27,9 +23,12 @@
 	int intVenditoreID = Integer.valueOf(stringVenditoreID);
  	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
  	%>
- 	<%
-	List<Asta> listaAsta;
-	listaAsta = AstaRepositoryImpl.getInstance().findAstaByProprietarioFK(intVenditoreID);
+ 	<%	
+    //per prendere IDAsta dall'url
+    String stringAstaID = request.getParameter("idAsta");
+	int intAstaID = Integer.valueOf(stringAstaID);
+ 	Asta asta = AstaRepositoryImpl.getInstance().findbyID(intAstaID);
+ 	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(asta.getProprietario_FK());
 	%>
 	<div class ="bluePadding"></div>
         <div class="over_header">
@@ -71,7 +70,7 @@
   	<div class="homeButton">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
 			<input type="hidden" name="idUtente" value="idUtente"/> 
-  	</div>  		
+  	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
@@ -123,86 +122,74 @@
 </div>
 
 <!-- FINE HEADER LOGGATO-->
-			
- 	
- 	<div class="headerVenditore">
- 		<div class="divSX">
-    		<img src=<%= utente.getFotoProfilo() %> alt="Immagine profilo" class="immagineProfiloUtente">    
+	
+	
+<c:set var="Asta" value="${asta}" />
+
+<h1><%= asta.getTitolo() %></h1>
+
+<div class="background">
+
+	<div class="flex-diviso2">
+	
+		<div class="divSX">
+    		<img src= "<%=asta.getFotoAsta1() %>" alt="Immagine prodotto" class="immagineAsta">  
+    		<div class ="descrizioneAsta">
+    				<p><%=asta.getDescrizione()%></p>
+    		</div>  
     	</div>
- 		<div class="divDX">
- 			<h4 class="nomeVenditore"><%= utente.getNome() %> <%= utente.getCognome() %></h4>
- 			<h4><%= utente.getGeolocalizzazione() %></h4>
- 			<p><%= utente.getBiografia() %></p>
- 			<i class="fa-solid fa-link iconaLink">&nbsp <%= utente.getLinkSocial() %></i>
- 		</div>
- 	</div>
-  	
-<!-- FINE HEADER VENDITORE -->
+		
+		<div  class="divDX">
+			
+			<c:set var="tipoAsta" value="<%=asta.getTipologia()%>" />
+			
+			<c:choose>
+				<c:when test="${ tipoAsta == 'astaInglese'}">
+					<div class="squareInfoAsta">
+					<h1>Base d'asta: <%=asta.getOffertaIniziale() %>0€</h1>
+					<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+					<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %>0€</h3>
+					<br>
+					<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
+			</div>
+    			</c:when>
+    			<c:otherwise>
+    				<div class="squareInfoAsta">
+						<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+						<br><br>
+						<h4>Data di scadenza: <%=asta.getDataFine() %></h4>
+					</div>
+    			</c:otherwise> 
+   			</c:choose>
+   			
+			<br><br>
+			<div class="Offerta">
+				Modifica
+				<i class="fa-regular fa-pen-to-square"></i>
+			</div>	
+			<div class="profiloVenditore">
+					<img src= "<%= venditore.getFotoProfilo() %>" 
+    				alt="Propic Venditore"
+    				class="fotoVenditore"> 
+    				
+    			<div class="nomeVenditore">
+    				<%= venditore.getNome() %> <%= venditore.getCognome() %>
+    			</div>
+    				
+			</div>
+		</div>
+	</div>
 
-<div class="asteVenditore">Le mie aste:</div>	 	
 
-<!--INIZIO BODY ASTE-->	
-	<c:forEach var = "i" items="<%= listaAsta %>">
-	
-	
-	<c:if test= "${i.tipologia == 'astaInglese'}">
-	
-		<div class="flex-diviso2 cell">
-			<div>
-    			<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-   	 			</a>
-   	 		</div>	 	
-    		<div>
-				<div class="testoAsta">		
-					<h1>
-					<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
-						<c:out value = "${i.titolo}"/></a>
-					</h1>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
-					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta all'inglese"/></h2>		     
-   				</div>
-  			</div> 	
-  		</div>
-	</c:if>
-	
-	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
-	
-		<div class="flex-diviso2 cell">
-			<div>
-			<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
-    				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
-    			</a>
-   	 		</div>	
-    		<div>
-				<div class="testoAsta">		
-						<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
-    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<c:out value = "${i.titolo}"/>
-    					</a>
-					<p><c:out value = "${i.descrizione}"/></p>
-					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
-					<h2><c:out value = "Asta a tempo fisso"/></h2>		     
-   				</div>
-  			</div> 		
-  		</div>
-	</c:if>
-	   	
-	</c:forEach>
-<!--FINE BODY ASTE-->
-   
-<!--Footer:-->
-
-<div class="footer">
-	<p> DietiDeals24 &#169;</p>
 </div>
 
 
+
+
+<!--Footer:-->
+
+<div class="footer">
+	<p> DietiDeals24 &#169</p>
+</div>
 </body>
 </html>
