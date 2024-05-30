@@ -137,11 +137,19 @@
  		</div>
  	</div>
   	
-<!-- FINE HEADER VENDITORE -->
+<!-- FINE HEADER VENDITORE -->	
 
-<div class="asteVenditore">Le mie aste:</div>	 	
+<!--Bottone x nuove aste-->	
+
+	<a href="creaNuovaAstaLoggato.jsp?idUtente=<%= utente.getID_Utente()%>&&tipologia=astaInglese">
+    	<input type="hidden" name="idUtente" value="idUtente"/>
+    	<input type="hidden" name="tipologia" value="astaInglese"/>
+		<div class="nuovaAstaButton">Crea nuova asta</div>
+	</a>
 
 <!--INIZIO BODY ASTE-->	
+
+	<div class="asteVenditore">Le mie aste:</div>
 	<c:forEach var = "i" items="<%= listaAsta %>">
 	
 	

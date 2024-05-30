@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+
+
+h4 {
+	text-align: center;
+	font-size: 24px;
+	font-family:Gotham;
+	margin : 15px auto;
+}
+
+h1{
+	text-align: center;
+	font-size: 30px;
+	font-family:Gotham;
+	margin : -60px auto 30px auto;
+	
+}
+
+h3{
+	text-align: center;
+	font-size: 22px;
+	font-family:Gotham;
+	padding: 10px 0;
+}
+
+.inputTesto{
+	display: flex;
+	margin : 10px auto;
+	width: 25%;
+	height: 22px;
+	align-items: center;
+    justify-content: center;
+}
+
+.inputTimer{
+	display: flex;
+	margin : 10px auto;
+	width: 80px;
+	height: 22px;
+	align-items: center;
+    justify-content: center;
+}
+
+.inputStretto{
+	display: flex;
+	margin : 10px auto;
+	width: 120px;
+	height: 22px;
+	align-items: center;
+    justify-content: center;
+}
+
+.inputDescrizione{
+	display: flex;
+	margin : 10px auto;
+	width: 25%;
+	height: 40px;
+	align-items: center;
+  	justify-content: center;
+}
+
+.blueBackground{
+	text-align: center;
+	background-color: #9CB4E3;
+	color:white;
+}
+
+.pubblicaAstaButton{
+	background-color: #9CB4E3;
+  	text-align: center;
+  	margin: 20px 0 0 48%;
+  	padding: 10px;
+  	color: white;
+	
+}
+
+
+.freccia-indietro{
+	display:block; 
+	margin: 40px 0 0 300px;
+	font-size: 50px;
+	color: black;
+	
+}
+
+.menuCategoria{
+display: flex;
+	margin : 10px auto;
+	width: 25%;
+	height: 22px;
+	align-items: center;
+    justify-content: center;
+    margin: 0 0 0 35%;	
+}
+
+.squareTipologia{
+	margin: 15px 35%;
+	border:2px solid black;
+}

@@ -26,6 +26,7 @@
 	int intVenditoreID = Integer.valueOf(stringVenditoreID);
  	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
  	%>
+ 	
 	<div class ="bluePadding"></div>
         <div class="over_header">
 			<div class="loginButton ">
@@ -130,7 +131,8 @@
 
 	<c:forEach var = "i" items="<%= listaAsta %>">
 	
-	<c:if test= "${i.tipologia == 'astaInglese'&& ${i.ID != idUtenteLoggato}">
+	<c:if test= "${i.tipologia == 'astaInglese'}">
+	<c:if test= "${i.proprietario_FK != idUtenteLoggato}">
 	
 		<div class="flex-diviso2 cell">
 			<div>
@@ -158,9 +160,10 @@
    				</div>
   			</div> 	
   		</div>
-	</c:if>
+	</c:if></c:if>
 	
-	<c:if test= "${i.tipologia == 'astaTempoFisso'&& ${i.ID != idUtenteLoggato}">
+	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
+	<c:if test= "${i.proprietario_FK != idUtenteLoggato}">
 	
 		<div class="flex-diviso2 cell">
 			<div>
@@ -186,7 +189,7 @@
    				</div>
   			</div> 		
   		</div>
-	</c:if>
+	</c:if></c:if>
 	   	
 	</c:forEach>
 <!--FINE BODY ASTE-->	

@@ -26,4 +26,14 @@
     <url-pattern>/LoginUtente2Servlet</url-pattern>
     <url-pattern>/loginpt2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNuovaAsta</display-name>
+    <servlet-name>AddNuovaAsta</servlet-name>
+    <servlet-class>servlet.AddNuovaAsta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNuovaAsta</servlet-name>
+    <url-pattern>/AddNuovaAsta</url-pattern>
+  </servlet-mapping>
 </web-app>
