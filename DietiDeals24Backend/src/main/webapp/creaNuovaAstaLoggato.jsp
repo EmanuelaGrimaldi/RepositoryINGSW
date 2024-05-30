@@ -181,9 +181,9 @@
 					<input type="text" name="descrizione" required class="inputDescrizione">
 				</div>
 				
-				<div class="menuCategoria">
+				<div>
 					<h4>Categoria Articolo:</h4>
-				 	<select name="categoria">
+				 	<select name="categoria" class="finestraCategoria">
 						<option value="TabletTelefonia">Tablet e telefonia</option>
      					<option value="Giocattoli">Giocattoli</option>
      					<option value="Elettronica">Elettronica</option>
@@ -214,6 +214,12 @@
 					<h4>Soglia di rialzo:</h4>
 					<input type="text" name="sogliaRialzo" required class="inputStretto">
 				</div>	
+				
+				<div>
+					<h4>Aggiungi qui una foto dell'oggetto:</h4>
+					<i class="fa-solid fa-file-circle-plus addImmagineProfilo"></i> 
+				</div>
+				
 				<div>
 					<input type="submit" value="Pubblica" class="pubblicaAstaButton"/>
 				</div>
