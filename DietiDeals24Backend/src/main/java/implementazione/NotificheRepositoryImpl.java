@@ -3,6 +3,8 @@ package implementazione;
 import java.util.ArrayList;
 import java.util.List;
 import entità.Notifiche;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import repository.NotificheRepository;
 
 public class NotificheRepositoryImpl extends JPARepositoryImpl<Notifiche, Integer> implements NotificheRepository {
@@ -16,24 +18,40 @@ private static NotificheRepository instance = new NotificheRepositoryImpl();
         return instance;
     }
     
+	@SuppressWarnings("unchecked")
 	public List<Notifiche> findNotificheByIDutenteFK( int intVenditoreID){
     	
-		List<Notifiche> listaNotifiche = new ArrayList<Notifiche>();
-    	
-    	Notifiche temp = new Notifiche();
-    	temp.setTitolo("Vengo dal codice prova!");
-    	temp.setTesto("Testo prova prova provaaaaaa");
-    	temp.setID_Utente_FK(intVenditoreID);
-    	listaNotifiche.add(temp);
-    	
-    	temp = new Notifiche();
-    	temp.setTitolo("Che si trova in NotificheRepositoryImpl");
-    	temp.setTesto("Testo prova prova provaaaaaa");
-    	temp.setID_Utente_FK(intVenditoreID);
-    	listaNotifiche.add(temp);
-    	
-    	
-    	return listaNotifiche;
+    	EntityManager em = null;
+		EntityTransaction et = null;
+		List<Notifiche> listaNotifichediUtente = null;
+		
+		try 
+		{
+			em = emf.createEntityManager();
+			et = em.getTransaction();
+			
+			et.begin();			
+			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
+									" where IDutenteFK = :idUtente", this.entityClass);
+			q.setParameter("idUtente", intVenditoreID);
+			listaNotifichediUtente = q.getResultList();
+			et.commit();
+		} 
+		catch (Exception e) 
+		{
+			System.err.println("Errorino uwu :" + e.getMessage());
+			
+			if (et != null && et.isActive()) 
+				et.rollback();				
+			
+		}
+		finally 
+		{
+			if(em != null)
+				em.close();
+		}
+		
+	return listaNotifichediUtente;
     }
 
 }

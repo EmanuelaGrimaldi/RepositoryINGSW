@@ -162,7 +162,7 @@ h1{
 	display:none;
 }
 
-.modal-content {
+.modal-content-redBorder {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -175,6 +175,21 @@ h1{
   animation-name: animatetop;
   animation-duration: 0.5s;
   border:3px solid red;
+}
+
+.modal-content-blueBorder {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  border:3px solid  #1A1170;
 }
 
 /* Add Animation */
@@ -250,4 +265,12 @@ h1{
 	padding: 10px 0;	
 }
 
-
+.inputRilancio{
+	display: flex;
+	width: 25%;
+	font-family:Gotham;
+	font-size:20px;
+	height: 30px;
+	display: inline-block;
+	justify-content: center;
+}

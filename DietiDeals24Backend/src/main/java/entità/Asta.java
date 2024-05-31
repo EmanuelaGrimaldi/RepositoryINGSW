@@ -2,6 +2,9 @@ package entità;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -56,7 +59,7 @@ public class Asta {
 	//Per_aste_inglesi
 	
 	@Column(name = "timer", nullable = true)
-	private Time timer;
+	private LocalTime timer;
 	
 	@Column(name = "sogliarialzo", nullable = true)
 	private float sogliaRialzo;
@@ -65,7 +68,7 @@ public class Asta {
 	//Per_aste_tempoFisso
 	
 	@Column(name = "datafine", nullable = true)
-	private Date dataFine;
+	private LocalDate dataFine;
 	
 	
 	//PK_e_FK
@@ -185,12 +188,12 @@ public class Asta {
 		this.fotoAsta5 = fotoAsta5;
 	}
 
-	public Time getTimer() {
-		return timer;
+	public String getTimer() {
+		return timer.toString();
 	}
 
-	public void setTimer(Time timer) {
-		this.timer = timer;
+	public void setTimer(LocalTime time) {
+		this.timer = time;
 	}
 
 	public float getSogliaRialzo() {
@@ -201,12 +204,12 @@ public class Asta {
 		this.sogliaRialzo = sogliaRialzo;
 	}
 
-	public Date getDataFine() {
+	public LocalDate getDataFine() {
 		return dataFine;
 	}
 
-	public void setDataFine(Date dataFine) {
-		this.dataFine = dataFine;
+	public void setDataFine(LocalDate date) {
+		this.dataFine = date;
 	}
 
 	public int getID() {

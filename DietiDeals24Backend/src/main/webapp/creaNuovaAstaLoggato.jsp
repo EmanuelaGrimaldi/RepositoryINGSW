@@ -130,10 +130,9 @@
 
 <h1>Per favore inserisci qui i dati richiesti</h1>
 	
-	<form name="nuovaAstaForm" method="post" action="addNuovaAsta">
+	<form name="nuovaAstaForm" method="get" action="addNuovaAstaServlet">
 	
-<!-- IF ASTA INGLESE-->
-			
+<!-- IF ASTA INGLESE-->		
 		<c:if test = "${tipologia == 'astaInglese'}">			
 			<h4>Che tipo di asta vuoi creare?</h4>
 				
@@ -148,23 +147,22 @@
     			<div class="blueBackground"><h3>Asta all'Inglese</h3></div>
     		</a>
     		</div>	
-		</c:if>
-		
+		</c:if>		
 					
 <!-- IF ASTA TEMPO FISSO-->
-	
-	
 		<c:if test = "${tipologia == 'astaTempoFisso'}">
 			<h4>Che tipo di asta vuoi creare?</h4>	
 				
 				<div class ="squareTipologia">	
 				<a href="creaNuovaAstaLoggato.jsp?tipologia=astaTempoFisso&idUtente=<%= utente.getID_Utente()%>">
 					<input type="hidden" name="idUtente" value="idUtente"/>
+					<input type="hidden" name="tipologia" required class="astaTempoFisso">
   					<div class="blueBackground"><h3>Asta a tempo fisso</h3></div>
 				</a>
 					
 				<a href="creaNuovaAstaLoggato.jsp?tipologia=astaInglese&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="tipologia" required class="astaInglese">
     				<h3>Asta all'Inglese</h3>
     			</a>
     			</div>		
@@ -180,6 +178,23 @@
 					<h4>Descrizione:</h4>
 					<input type="text" name="descrizione" required class="inputDescrizione">
 				</div>
+   				
+   				<c:if test = "${tipologia == 'astaTempoFisso'}">	
+					<div>
+						<h4>Data di scadenza:</h4>
+						<input type="date" name="dataScadenza" required class="inputStretto">
+					</div>
+				</c:if>
+				<c:if test = "${tipologia == 'astaInglese'}">		
+					<div>
+						<h4>Timer:</h4>
+						<input type="datetime" name="timer" required class="inputTimer">
+					</div>
+					<div>
+						<h4>Soglia di rialzo:</h4>
+						<input type="number" name="sogliaRialzo" required class="inputStretto">
+					</div>
+				</c:if>
 				
 				<div>
 					<h4>Categoria Articolo:</h4>
@@ -192,27 +207,10 @@
      					<option value="Antiquariato">Antiquariato</option>
    					</select>
    				</div>
-   				
-   				<c:if test = "${tipologia == 'astaTempoFisso'}">	
-					<div>
-						<h4>Data di scadenza:</h4>
-						<input type="date" name="dataScadenza" required class="inputStretto">
-					</div>
-				</c:if>
-				<c:if test = "${tipologia == 'astaInglese'}">		
-					<div>
-						<h4>Timer:</h4>
-						<input type="time" name="timer" required class="inputTimer">
-					</div>
-				</c:if>
 				
 				<div>
 					<h4>Base d'asta:</h4>
-					<input type="text" name="baseAsta" required class="inputStretto">
-				</div>
-				<div>
-					<h4>Soglia di rialzo:</h4>
-					<input type="text" name="sogliaRialzo" required class="inputStretto">
+					<input type="number" name="baseAsta" required class="inputStretto">
 				</div>	
 				
 				<div>

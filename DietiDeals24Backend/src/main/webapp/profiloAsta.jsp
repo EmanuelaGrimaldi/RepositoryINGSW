@@ -90,7 +90,7 @@
 	<!-- The Modal:POPUP_ERRORE -->
 	<div id="myModal" class="modal">
   		<!-- Modal content -->
-  		<div class="modal-content">
+  		<div class="modal-content-redBorder">
    	 		<div class="modal-header">
    	   			<span class="close">&times;</span>
   	    		<h2>ATTENZIONE!</h2>

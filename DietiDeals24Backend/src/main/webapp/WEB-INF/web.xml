@@ -36,4 +36,14 @@
     <servlet-name>AddNuovaAsta</servlet-name>
     <url-pattern>/AddNuovaAsta</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RilancioAstaServlet</display-name>
+    <servlet-name>RilancioAstaServlet</servlet-name>
+    <servlet-class>servlet.RilancioAstaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RilancioAstaServlet</servlet-name>
+    <url-pattern>/RilancioAstaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -30,6 +30,7 @@
  	Asta asta = AstaRepositoryImpl.getInstance().findbyID(intAstaID);
  	Utente venditore = UtenteRepositoryImpl.getInstance().findbyID(asta.getProprietario_FK());
 	%>
+	
 	<div class ="bluePadding"></div>
         <div class="over_header">
 			<div class="loginButton ">
@@ -123,28 +124,62 @@
 
 <!-- FINE HEADER LOGGATO-->
 
+	<c:set var="tipoAsta" value="<%=asta.getTipologia()%>" />
+
 	<!-- The Modal:POPUP_ERRORE -->
 	<div id="myModal" class="modal">
-  		<!-- Modal content -->
-  		<div class="modal-content">
-   	 		<div class="modal-header">
-   	   			<span class="close">&times;</span>
-  	    		<h2>titolo!</h2>
-  	  		</div>
- 	   		<div class="modal-body">
- 	   			<br>
- 	     		<p>contenuti.</p>
- 	     		<br><br>
- 	   		</div>
-  	  		<div class="modal-footer">
-  	  		
-  	  		<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">
-				<input type="hidden" name="idUtente" value="idUtente"/> 
-  	    		<div class="popupButtonLogin">Rilancio!</div>
-  	    	</a>
-  	    		<br>
-  	  		</div>
- 	 	</div>
+	
+  		<div class="modal-content-blueBorder">
+			<c:if test= "${tipoAsta == 'astaInglese'}">
+	
+			<form name="RilancioForm" method="get" action="RilancioAstaServlet">
+	   	 		<div class="modal-header">
+   	   				<span class="close">&times;</span>
+  	    			<h2>Nuova offerta:</h2>
+  	  			</div>
+ 	   			<div class="modal-body">
+ 	   				<br>
+ 	     			<p>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</p>
+ 	     			<p>Soglia di Rialzo: <%=asta.getSogliaRialzo() %>0€</p>
+ 	     			<%  
+ 	     			float a = asta.getOffertaPiuAlta();
+ 	     			float b = asta.getSogliaRialzo();
+ 	     			float somma = a + b;
+ 	     			%>
+ 	     			<br>
+ 	     			<h2>Costo rilancio: <%= somma %>0€</h2>
+ 	     			<br>
+ 	   			</div>
+  	  			<div class="modal-footer">
+  	  				<input type="submit" value="RILANCIO!" class="popupButtonLogin"/>
+  	    			<br>
+  	  			</div>
+  	  		</form>
+  	  			
+			</c:if>
+			<c:if test= "${tipoAsta == 'astaTempoFisso'}">
+	
+	   	 		<div class="modal-header">
+   	   				<span class="close">&times;</span>
+  	    			<h2>Nuova offerta:</h2>
+  	  			</div>
+ 	   			<div class="modal-body">
+ 	   				<br>
+ 	     			<p>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</p>
+ 	     			<p>Di quanto vuoi rilanciare?</p>
+ 	     			<br>
+ 	     			<input type="text" name="cifraRilancio" min="0" class="inputRilancio"/>
+ 	     			<br><br>
+ 	   			</div>
+  	  			<div class="modal-footer">
+	  	  			<a href="elencoNotificheLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">
+					<input type="hidden" name="idUtente" value="idUtente"/> 
+  	    			<div class="popupButtonLogin">Rilancio!</div>
+  	    			</a><br>
+  	  			</div>
+  	  			
+  			</c:if>	
+  		</div>
 	</div>
 	
 	
@@ -165,17 +200,16 @@
 		
 		<div  class="divDX">
 			
-			<c:set var="tipoAsta" value="<%=asta.getTipologia()%>" />
 			
 			<c:choose>
 				<c:when test="${ tipoAsta == 'astaInglese'}">
 					<div class="squareInfoAsta">
-					<h1>Base d'asta: <%=asta.getOffertaIniziale() %>0€</h1>
-					<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
-					<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %>0€</h3>
-					<br>
-					<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
-			</div>
+						<h1>Base d'asta: <%=asta.getOffertaIniziale() %>0€</h1>
+						<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+						<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %>0€</h3>
+						<br>
+						<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
+					</div>
     			</c:when>
     			<c:otherwise>
     				<div class="squareInfoAsta">
