@@ -58,11 +58,11 @@
 				
 
 <div class="header">
-		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			DietiDeals24
+			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
-</div>		
+</div>	
+<div class ="bluePadding"></div>		
 <div class="under-header">
   	<div class="homeButton">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>

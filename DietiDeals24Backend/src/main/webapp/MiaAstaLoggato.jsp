@@ -61,11 +61,11 @@
 				
 
 <div class="header">
-		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			DietiDeals24
+			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
-</div>		
+</div>	
+<div class ="bluePadding"></div>	
 <div class="under-header">
   	<div class="homeButton">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
@@ -128,14 +128,15 @@
 	<c:set var="idAsta" value="<%=asta.getID() %>" />
 	<c:set var="idUtente" value="<%=intVenditoreID %>" />
 	
+<!--INIZIO FORM POPUP-->
 
-<form name="aggioraMiaAstaForm" method="get" action="AggiornaMiaAstaServlet">
-	
+
 	<c:choose>
 		<c:when test="${ tipoAsta == 'astaInglese'}">
+			<form name="aggioraMiaAstaForm" method="get" action="AggiornaMiaAstaServlet">
 			<div id="myModal" class="modal">
   				<!-- Modal content -->
-  				<div class="modificaMiaAsta">
+  				<div class="modal-content-blueBorder ">
    	 				<div class="modal-header">
    	   					<span class="close">&times;</span>
   	    				<h2></h2>
@@ -143,22 +144,27 @@
  	   				<div class="modal-body">
  	   					<br>
  	     				<p>Soglia di rialzo:</p>
- 	     				<input type="text" name="nuovaSogliaRialzo" class="inputTesto">
+ 	     				<input type="number" name="nuovaSogliaRialzo" class="inputTesto">
  	     				<p>Timer:</p>
  	     				<input type="time" name="nuovoTimer" class="inputTesto">
  	     				<br><br>
  	   				</div>
   	  				<div class="modal-footer">
+  	  					<input type="hidden" name="idUtente" value="<%=intVenditoreID %>"/>
+  	  					<input type="hidden" name="idAsta" value="<%=asta.getID() %>"/>
+  	  					<input type="hidden" name="tipoAsta" value="<%=asta.getTipologia()%>"/>
   	    				<input type="submit" value="Salva modifiche" class="popupButtonLogin"/>
   	    				<br>
   	  				</div>
  	 			</div>
 			</div>
+			</form>
     	</c:when>
     	<c:otherwise>
+    		<form name="aggioraMiaAstaForm" method="get" action="AggiornaMiaAstaServlet">
 			<div id="myModal" class="modal">
   				<!-- Modal content -->
-  				<div class="modal-content-redBorder">
+  				<div class="modal-content-blueBorder">
    	 				<div class="modal-header">
    	   					<span class="close">&times;</span>
   	    				<h2></h2>
@@ -170,19 +176,21 @@
  	     				<br><br>
  	   				</div>
   	  				<div class="modal-footer">
-  	    				<div class="popupButtonLogin">Salva modifiche</div>
+  	  					<input type="hidden" name="idUtente" value="<%=intVenditoreID %>"/>
+  	  					<input type="hidden" name="idAsta" value="<%=asta.getID() %>"/>
+  	  					<input type="hidden" name="tipoAsta" value="<%=asta.getTipologia()%>"/>
+  	    				<input type="submit" value="Salva modifiche" class="popupButtonLogin"/>
   	    				<br>
   	  				</div>
  	 			</div>
 			</div>
+			</form>
     	</c:otherwise> 
    	</c:choose>
-</form>
+   	
+   	
+<!--FINE FORM POPUP-->
 
-
-
-
-	
 	
 <c:set var="Asta" value="${asta}" />
 
@@ -223,7 +231,7 @@
    			
 			<br><br>
 			<button id="modificaButton" class="Offerta">
-				Modifica<i class="fa-regular fa-pen-to-square"></i>
+				Modifica <i class="fa-regular fa-pen-to-square"></i>
 			</button>	
 			<div class="profiloVenditore">
 					<img src= "<%= venditore.getFotoProfilo() %>" 

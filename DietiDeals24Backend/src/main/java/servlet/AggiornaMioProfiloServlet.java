@@ -33,30 +33,26 @@ public class AggiornaMioProfiloServlet extends HttpServlet {
 		
 		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();	
 		Utente u = uRepo.findbyID(idVenditoreINT);
-		String temp;
+		String stringa;
 		
-		temp = request.getParameter("nuovaBiografia");
-		
-		if (temp != null) {
-			u.setBiografia(temp);
+			
+		stringa = request.getParameter("nuovaPosizione");
+		if (!stringa.isEmpty()){
+			u.setGeolocalizzazione(stringa);	
 		}
 		
-		temp = request.getParameter("nuovaPosizione");
-		
-		if (temp != null) {
-			u.setGeolocalizzazione(temp);
+		stringa = request.getParameter("nuovoSocial");
+		if (!stringa.isEmpty()){
+			u.setLinkSocial(stringa);
 		}
-		
-		temp = request.getParameter("nuovoSocial");
-		
-		if (temp != null) {
-			u.setLinkSocial(temp);
+			
+		stringa = request.getParameter("nuovaEmail");
+		if (!stringa.isEmpty()){
+			u.setEmailUtente(stringa);
 		}
-		
-		temp = request.getParameter("nuovaEmail");
-		
-		if (temp != null) {
-			u.setEmailUtente(temp);
+		stringa = request.getParameter("nuovaBiografia");
+		if (!stringa.isEmpty()){
+			u.setBiografia(stringa);
 		}
 		
 		uRepo.update(u);

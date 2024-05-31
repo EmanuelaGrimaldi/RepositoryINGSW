@@ -35,7 +35,11 @@ public class AggiornaMiaAstaServlet extends HttpServlet {
 		Asta a = aRepo.findbyID(idAstaINT);
 		
 		if (tipologia.equals("astaInglese")) {
-			a.setSogliaRialzo(Integer.valueOf(request.getParameter("nuovaSogliaRialzo")));
+			
+			String stringa = request.getParameter("nuovaSogliaRialzo");
+			if (!stringa.isEmpty()){
+				a.setSogliaRialzo(Integer.valueOf(stringa));	
+			}
 			DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("00:00:00");
 			LocalTime time = LocalTime.parse(request.getParameter("nuovoTimer"), formatterTime );
 			a.setTimer(time);	

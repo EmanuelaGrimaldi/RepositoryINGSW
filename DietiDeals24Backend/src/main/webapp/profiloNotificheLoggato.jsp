@@ -64,11 +64,11 @@
 				
 
 <div class="header">
-		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			DietiDeals24
+			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
-</div>		
+</div>	
+<div class ="bluePadding"></div>	
 <div class="under-header">
   	<div class="homeButton">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
@@ -128,20 +128,24 @@
 
 <c:set var="Notifiche" value="${notifica}" />
 
- //WORK IN PROGRESS
+
  
-<h1><%= notifica.getTitolo() %></h1>
+<div class="titoloNotifica">&#x2022 <%= notifica.getTitolo() %> &#x2022</div>
 
 
-    	<div class ="descrizioneAsta">
+    	<div class ="descrizioneNotifica">
     			<p><%=notifica.getTesto() %></p>
     	</div>  
     	
     	<a href="elencoNotificheLoggato.jsp?idUtente=<%=intVenditoreID%>">
 			<input type="hidden" name="idUtente" value="idUtente"/>
 			<button type="button" class="notificaIndietroButton">Indietro</button>
-	</a>
+		</a>
 		
-
+		
+<br><br><br><br><br><br><br><br><br><br><br>
+<div class="footer">
+	<p> DietiDeals24 &#169;</p>
+</div>
 </body>
 </html>

@@ -4,24 +4,5 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>AggiornaMiaAstaServlet</display-name>
-    <servlet-name>AggiornaMiaAstaServlet</servlet-name>
-    <servlet-class>servlet.AggiornaMiaAstaServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AggiornaMiaAstaServlet</servlet-name>
-    <url-pattern>/AggiornaMiaAstaServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AggiornaMioProfiloServlet</display-name>
-    <servlet-name>AggiornaMioProfiloServlet</servlet-name>
-    <servlet-class>servlet.AggiornaMioProfiloServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AggiornaMioProfiloServlet</servlet-name>
-    <url-pattern>/AggiornaMioProfiloServlet</url-pattern>
-  </servlet-mapping>
+  
 </web-app>

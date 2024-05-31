@@ -95,7 +95,6 @@ h4 {
 	color: white;
 	font-family:Gotham;
 	font-size: 40px;
-  	text-align:center;
   	padding: 5px;
   	width: 20%;
   	margin: 10px 0 10px 55%;
@@ -113,4 +112,120 @@ h4 {
   	padding: 0 0 0 93%;
     color: white;
     cursor: pointer;
+}
+
+/*Per_Pop-up_errore*/
+
+.modal{
+	display:none;
+	width:110%;
+	height:110%;
+	
+}
+
+.modal-content{
+  	margin: auto;
+  	position: absolute;
+    top: 200px;
+    left: 35%;
+ 	width: 30%;
+  	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  	-webkit-animation-name: animatetop;
+  	-webkit-animation-duration: 0.4s;
+  	animation-name: animatetop;
+  	animation-duration: 0.5s;
+  	border:5px solid #1A1170;
+    padding: 0px; 
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  background-color: #9CB4E3;
+  font-family:Gotham
+}
+
+.modal-body {
+	padding: 2px 16px;
+	background-color: #9CB4E3;
+	color: white;
+  	text-align: center;
+ 	font-size: 22px;
+ 	font-family:Gotham;
+	}
+
+.modal-footer {
+  	padding: 2px 16px;
+    background-color: #9CB4E3;
+  	color: white;
+  	font-family:Gotham;
+  	height: 80px;
+}
+
+.popupButtonLogin{
+	display: flex;
+	justify-content: center;
+	color: #1A1170;
+	background-color: white;
+	font-family:Gotham;
+	font-size:20px;
+	height:28px;
+	width:35%;
+	border:3px solid #1A1170;
+	border-radius: 12px;
+	text-align: center;
+	margin: 10px auto;	
+}
+
+.titoloPopup{
+	text-align:center;
+	color: white;
+	font-family:Gotham;
+	font-size: 40px;
+  	padding: 5px;
+}
+
+p{text-align:center;font-family:Gotham}
+
+.inputTesto{
+	width: 35%;
+	height: 22px;
+	display: inline-block;
+	justify-content: center;
+	margin: 10px 0;
+}
+
+.inputBiografia{
+	width: 70%;
+	height: 22px;
+	display: inline-block;
+	justify-content: center;
+	margin: 10px 0;
 }

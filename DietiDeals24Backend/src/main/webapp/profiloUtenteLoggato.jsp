@@ -62,11 +62,11 @@
 				
 
 <div class="header">
-		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			DietiDeals24
+			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
-</div>		
+</div>	
+<div class ="bluePadding"></div>		
 <div class="under-header">
   	<div class="homeButton">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
@@ -126,35 +126,37 @@
 
 	<c:set var="idUtente" value="<%=intVenditoreID %>" />
 	
-
+<!--INIZIO FORM POPUP-->
 	<form name="aggiornaMioProfiloForm" method="get" action="AggiornaMioProfiloServlet">
-	
+		
 			<div id="myModal" class="modal">
-  				<!-- Modal content -->
-  				<div class="modificaMiaAsta">
+  				<div class="modal-content">
    	 				<div class="modal-header">
    	   					<span class="close">&times;</span>
-  	    				<h2></h2>
+   	   					<br>
+  	    				<div class="titoloPopup">Inserisci qui i tuoi nuovi dati:</div>
   	  				</div>
  	   				<div class="modal-body">
  	   					<br>
  	     				<p>Biografia:</p>
- 	     				<input type="text" name="nuovaBiografia" class="inputTesto">
+ 	     				<input type="text" placeholder="<%= utente.getBiografia() %>" name="nuovaBiografia" class="inputBiografia">
  	     				<p>Posizione:</p>
- 	     				<input type="text" name="nuovaPosizione" class="inputTesto">
+ 	     				<input type="text" placeholder="<%= utente.getGeolocalizzazione() %>" name="nuovaPosizione" class="inputTesto">
  	     				<p>Link al Social:</p>
- 	     				<input type="text" name="nuovoSocial" class="inputTesto">
+ 	     				<input type="text" placeholder="<%= utente.getLinkSocial() %>" name="nuovoSocial" class="inputTesto">
  	     				<p>Email:</p>
- 	     				<input type="text" name="nuovaEmail" class="inputTesto">     				
+ 	     				<input type="text" placeholder="<%= utente.getEmailUtente() %>" name="nuovaEmail" class="inputTesto">     				
  	     				<br><br>
  	   				</div>
   	  				<div class="modal-footer">
+  	  					<input type="hidden" name="idUtente" value="<%=intVenditoreID %>"/>
   	    				<input type="submit" value="Salva modifiche" class="popupButtonLogin"/>
   	    				<br>
   	  				</div>
  	 			</div>
 			</div>
 	</form>		
+<!--INIZIO FORM POPUP-->
  	
  	<div class="headerVenditore">
  		<div class="divSX">
@@ -221,10 +223,12 @@
    	 		</div>	
     		<div>
 				<div class="testoAsta">		
+						<h1>
 						<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
     						<input type="hidden" name="IdAsta" value="${i.ID}"/>
     						<c:out value = "${i.titolo}"/>
     					</a>
+    					</h1>
 					<p><c:out value = "${i.descrizione}"/></p>
 					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
 					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>

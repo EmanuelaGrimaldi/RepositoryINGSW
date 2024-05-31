@@ -26,11 +26,11 @@
 	
 </div>	
 <div class="header">
-		<!--INSERIRE LOGO QUI:-->
 		<div class="DietiDeals24_header">
-			<a href="index.jsp">DietiDeals24</a>
+			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
-</div>		
+</div>	
+<div class ="bluePadding"></div>		
 <div class="under-header">
   	<div class="homeButton">
   		<a href="index.jsp">Home</a> 
@@ -95,7 +95,7 @@
 	
 	
 	
-	<form name="loginUtenteForm" method="get" action="loginUtenteEsistenteServlet">
+	<form name="loginUtenteForm" method=post action="LoginUtenteEsistenteServlet">
 	
 		<div class="flex-diviso2">
 	
