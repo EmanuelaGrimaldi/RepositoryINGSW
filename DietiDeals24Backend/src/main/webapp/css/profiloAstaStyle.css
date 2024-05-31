@@ -241,6 +241,7 @@ h1{
     background-color: #9CB4E3;
   	color: white;
   	font-family:Gotham;
+  	height: 80px;
 }
 
 .faiOffertaButton{
@@ -252,6 +253,8 @@ h1{
 }
 
 .popupButtonLogin{
+	display: flex;
+	justify-content: center;
 	color: #1A1170;
 	background-color: white;
 	font-family:Gotham;
@@ -261,8 +264,7 @@ h1{
 	border:3px solid #1A1170;
 	border-radius: 12px;
 	text-align: center;
-	margin: 10px auto;
-	padding: 10px 0;	
+	margin: 10px auto;	
 }
 
 .inputRilancio{
@@ -273,4 +275,13 @@ h1{
 	height: 30px;
 	display: inline-block;
 	justify-content: center;
+}
+
+.modificaMiaAsta{
+	border:3px solid #1A1170;
+	width: 60%;
+	margin: 0 0 0 20%;
+	font-family:Gotham;
+	padding:15px 35px;
+	background: #9CB4E3;
 }

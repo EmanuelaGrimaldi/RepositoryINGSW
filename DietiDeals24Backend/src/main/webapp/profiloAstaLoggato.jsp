@@ -130,9 +130,10 @@
 	<div id="myModal" class="modal">
 	
   		<div class="modal-content-blueBorder">
+  		
+  		<form name="RilancioForm" method="get" action="RilancioAstaServlet">
 			<c:if test= "${tipoAsta == 'astaInglese'}">
 	
-			<form name="RilancioForm" method="get" action="RilancioAstaServlet">
 	   	 		<div class="modal-header">
    	   				<span class="close">&times;</span>
   	    			<h2>Nuova offerta:</h2>
@@ -151,10 +152,11 @@
  	     			<br>
  	   			</div>
   	  			<div class="modal-footer">
+  	  				<input type="hidden" name="idUtente" value="<%=intVenditoreID%>"/>
+  	  				<input type="hidden" name="idAsta" value="<%=intAstaID%>"/>
   	  				<input type="submit" value="RILANCIO!" class="popupButtonLogin"/>
   	    			<br>
   	  			</div>
-  	  		</form>
   	  			
 			</c:if>
 			<c:if test= "${tipoAsta == 'astaTempoFisso'}">
@@ -172,13 +174,13 @@
  	     			<br><br>
  	   			</div>
   	  			<div class="modal-footer">
-	  	  			<a href="elencoNotificheLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">
-					<input type="hidden" name="idUtente" value="idUtente"/> 
-  	    			<div class="popupButtonLogin">Rilancio!</div>
-  	    			</a><br>
+					<input type="hidden" name="idUtente" value="<%=intVenditoreID%>"/>
+  	  				<input type="hidden" name="idAsta" value="<%=intAstaID%>"/>
+  	    			<input type="submit" value="RILANCIO!" class="popupButtonLogin"/>
   	  			</div>
   	  			
   			</c:if>	
+  		</form>
   		</div>
 	</div>
 	

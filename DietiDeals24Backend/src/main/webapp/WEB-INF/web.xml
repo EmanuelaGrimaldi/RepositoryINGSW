@@ -6,44 +6,22 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>LoginUtente</display-name>
-    <servlet-name>LoginUtente</servlet-name>
-    <servlet-class>servlet.LoginUtente</servlet-class>
+    <display-name>AggiornaMiaAstaServlet</display-name>
+    <servlet-name>AggiornaMiaAstaServlet</servlet-name>
+    <servlet-class>servlet.AggiornaMiaAstaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LoginUtente</servlet-name>
-    <url-pattern>/LoginUtente</url-pattern>
-    <url-pattern>/login</url-pattern>
+    <servlet-name>AggiornaMiaAstaServlet</servlet-name>
+    <url-pattern>/AggiornaMiaAstaServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>LoginUtente2Servlet</display-name>
-    <servlet-name>LoginUtente2Servlet</servlet-name>
-    <servlet-class>servlet.LoginUtente2Servlet</servlet-class>
+    <display-name>AggiornaMioProfiloServlet</display-name>
+    <servlet-name>AggiornaMioProfiloServlet</servlet-name>
+    <servlet-class>servlet.AggiornaMioProfiloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LoginUtente2Servlet</servlet-name>
-    <url-pattern>/LoginUtente2Servlet</url-pattern>
-    <url-pattern>/loginpt2</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AddNuovaAsta</display-name>
-    <servlet-name>AddNuovaAsta</servlet-name>
-    <servlet-class>servlet.AddNuovaAsta</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddNuovaAsta</servlet-name>
-    <url-pattern>/AddNuovaAsta</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RilancioAstaServlet</display-name>
-    <servlet-name>RilancioAstaServlet</servlet-name>
-    <servlet-class>servlet.RilancioAstaServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RilancioAstaServlet</servlet-name>
-    <url-pattern>/RilancioAstaServlet</url-pattern>
+    <servlet-name>AggiornaMioProfiloServlet</servlet-name>
+    <url-pattern>/AggiornaMioProfiloServlet</url-pattern>
   </servlet-mapping>
 </web-app>

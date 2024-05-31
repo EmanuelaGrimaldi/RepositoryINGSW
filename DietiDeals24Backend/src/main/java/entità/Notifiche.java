@@ -20,13 +20,11 @@ public class Notifiche
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_notifiche", nullable = false)
-	private int ID_notifiche;
+	@Column(name = "IDnotifiche", nullable = false)
+	private int IDnotifiche;
 	
-	@Column(name = "ID_Utente_FK", nullable = false)
-	private int ID_Utente_FK;
-	
-	
+	@Column(name = "IDUtenteFK", nullable = false)
+	private int IDUtenteFK;
 	
 
 	public String getTitolo() {
@@ -46,25 +44,25 @@ public class Notifiche
 	}
 
 	public int getID_notifiche() {
-		return ID_notifiche;
+		return IDnotifiche;
 	}
 
-	public void setID_notifiche(int iD_notifiche) {
-		ID_notifiche = iD_notifiche;
+	public void setID_notifiche(int iDnotifiche) {
+		IDnotifiche = iDnotifiche;
 	}
 
-	public int getID_Utente_FK() {
-		return ID_Utente_FK;
+	public int getIDUtenteFK() {
+		return IDUtenteFK;
 	}
 
-	public void setID_Utente_FK(int iD_Utente_FK) {
-		ID_Utente_FK = iD_Utente_FK;
+	public void setIDUtenteFK(int iDUtenteFK) {
+		IDUtenteFK = iDUtenteFK;
 	}
 	
 	@Override
 	public String toString() {
-		return "Notifiche [titolo=" + titolo + ", testo=" + testo + ", ID_notifiche=" + ID_notifiche + ", ID_Utente_FK="
-				+ ID_Utente_FK + "]";
+		return "Notifiche [titolo=" + titolo + ", testo=" + testo + ", IDnotifiche=" + IDnotifiche + ", IDUtenteFK="
+				+ IDUtenteFK + "]";
 	}
 	
 }

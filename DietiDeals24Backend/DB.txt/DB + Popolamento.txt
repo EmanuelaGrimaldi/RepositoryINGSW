@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS partecipazioneutenteasta
 
 CREATE TABLE IF NOT EXISTS notifiche 
 (	
-	Titolo varchar(50) NOT NULL,
-	Testo varchar(150) NOT NULL,
+	Titolo varchar(200) NOT NULL,
+	Testo varchar(500) NOT NULL,
     	
 	IDnotifiche INT AUTO_INCREMENT NOT NULL,
     	IDutenteFK int NOT NULL,

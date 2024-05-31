@@ -2,7 +2,7 @@
 
 .headerVenditore{
 	display: flex;
-  	 align-items: stretch;
+  	align-items: stretch;
   	justify-content: center; 
 	margin: 20px 22%;
 	width:55%;
@@ -105,4 +105,12 @@ h4 {
 	background: #9CB4E3;
 	color: white;
   	cursor: pointer;
+}
+
+.iconapenna{
+	display:flex;
+	font-size: 30px;
+  	padding: 0 0 0 93%;
+    color: white;
+    cursor: pointer;
 }

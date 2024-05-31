@@ -93,37 +93,35 @@
 
 <br><br>
 	
-<div class="flex-diviso2">	
-
-	<div>
-		<h2>ID Utente:</h2>
-		<input type="text" class="inputTesto">
-	</div>
 	
-	<div>
-		<h2>Password:</h2>
-		<input type="text" class="inputTesto">
-	</div>		
-</div>
+	
+	<form name="loginUtenteForm" method="get" action="loginUtenteEsistenteServlet">
+	
+		<div class="flex-diviso2">
+	
+			<div>
+				<h2>Email:</h2>
+				<input type="text" name="inputEmail" class="inputTesto">
+			</div>
+	
+			<div>
+				<h2>Password:</h2>
+				<input type="password" name="inputPassword" class="inputTesto">
+			</div>		
+		</div>
+		<div>
+			<input type="submit" value="Avanti" class="avantiButtonLogin"/>
+		</div>
 
+	</form>
+	
+<br>
 <div>
 	<a href="iscrizioneUtenteParte1.jsp">
 	<h3>Non sei già iscritto?Clicca qui!</h3>
 	</a>
 </div>
-<br>
-<div>
 
-	<!--
-	Da implementare form/servlet che se email e psw sono corretti, al click di avantiButton:
-	request.getRequestDispatcher("indexLoggato.jsp?idUtente=" + utente.ID_Utente).forward(request, response);
-	Per ora passo temporaneamente l'index da loggato per comodità
-	-->
-	<a href="indexLoggato.jsp?idUtente=112">
-	<input type="hidden" name="idUtente" value="112"/>
-		<button type="button" class="avantiButtonLogin">Avanti</button>
-	</a>
-</div>
 
 
 

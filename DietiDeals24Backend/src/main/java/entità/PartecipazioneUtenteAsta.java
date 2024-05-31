@@ -11,10 +11,26 @@ import jakarta.persistence.Table;
 @Table(name = "PartecipazioneUtenteAsta")
 public class PartecipazioneUtenteAsta {
 	
-	@Column(name = "ID_Utente", nullable = false)
-	private int ID_Utente;
+	@Column(name = "IDUtente", nullable = false)
+	private int IDUtente;
 
-	@Column(name = "ID_Asta", nullable = false)
-	private int ID_Asta;
+	@Column(name = "IDAsta", nullable = false)
+	private int IDAsta;
+
+	public int getIDUtente() {
+		return IDUtente;
+	}
+
+	public void setIDUtente(int iDUtente) {
+		IDUtente = iDUtente;
+	}
+
+	public int getIDAsta() {
+		return IDAsta;
+	}
+
+	public void setIDAsta(int iDAsta) {
+		IDAsta = iDAsta;
+	}
 	
 }

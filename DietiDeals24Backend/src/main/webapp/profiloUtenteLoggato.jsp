@@ -123,13 +123,45 @@
 </div>
 
 <!-- FINE HEADER LOGGATO-->
-			
+
+	<c:set var="idUtente" value="<%=intVenditoreID %>" />
+	
+
+	<form name="aggiornaMioProfiloForm" method="get" action="AggiornaMioProfiloServlet">
+	
+			<div id="myModal" class="modal">
+  				<!-- Modal content -->
+  				<div class="modificaMiaAsta">
+   	 				<div class="modal-header">
+   	   					<span class="close">&times;</span>
+  	    				<h2></h2>
+  	  				</div>
+ 	   				<div class="modal-body">
+ 	   					<br>
+ 	     				<p>Biografia:</p>
+ 	     				<input type="text" name="nuovaBiografia" class="inputTesto">
+ 	     				<p>Posizione:</p>
+ 	     				<input type="text" name="nuovaPosizione" class="inputTesto">
+ 	     				<p>Link al Social:</p>
+ 	     				<input type="text" name="nuovoSocial" class="inputTesto">
+ 	     				<p>Email:</p>
+ 	     				<input type="text" name="nuovaEmail" class="inputTesto">     				
+ 	     				<br><br>
+ 	   				</div>
+  	  				<div class="modal-footer">
+  	    				<input type="submit" value="Salva modifiche" class="popupButtonLogin"/>
+  	    				<br>
+  	  				</div>
+ 	 			</div>
+			</div>
+	</form>		
  	
  	<div class="headerVenditore">
  		<div class="divSX">
     		<img src=<%= utente.getFotoProfilo() %> alt="Immagine profilo" class="immagineProfiloUtente">    
     	</div>
  		<div class="divDX">
+ 			<i id="modificaProfiloPen" class="fa-regular fa-pen-to-square iconapenna"></i>
  			<h4 class="nomeVenditore"><%= utente.getNome() %> <%= utente.getCognome() %></h4>
  			<h4><%= utente.getGeolocalizzazione() %></h4>
  			<p><%= utente.getBiografia() %></p>
@@ -211,6 +243,32 @@
 	<p> DietiDeals24 &#169;</p>
 </div>
 
+ <script>
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var modificaProfiloPen = document.getElementById("modificaProfiloPen");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+modificaProfiloPen.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>

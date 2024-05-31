@@ -122,6 +122,66 @@
 </div>
 
 <!-- FINE HEADER LOGGATO-->
+
+
+	<c:set var="tipoAsta" value="<%=asta.getTipologia()%>" />
+	<c:set var="idAsta" value="<%=asta.getID() %>" />
+	<c:set var="idUtente" value="<%=intVenditoreID %>" />
+	
+
+<form name="aggioraMiaAstaForm" method="get" action="AggiornaMiaAstaServlet">
+	
+	<c:choose>
+		<c:when test="${ tipoAsta == 'astaInglese'}">
+			<div id="myModal" class="modal">
+  				<!-- Modal content -->
+  				<div class="modificaMiaAsta">
+   	 				<div class="modal-header">
+   	   					<span class="close">&times;</span>
+  	    				<h2></h2>
+  	  				</div>
+ 	   				<div class="modal-body">
+ 	   					<br>
+ 	     				<p>Soglia di rialzo:</p>
+ 	     				<input type="text" name="nuovaSogliaRialzo" class="inputTesto">
+ 	     				<p>Timer:</p>
+ 	     				<input type="time" name="nuovoTimer" class="inputTesto">
+ 	     				<br><br>
+ 	   				</div>
+  	  				<div class="modal-footer">
+  	    				<input type="submit" value="Salva modifiche" class="popupButtonLogin"/>
+  	    				<br>
+  	  				</div>
+ 	 			</div>
+			</div>
+    	</c:when>
+    	<c:otherwise>
+			<div id="myModal" class="modal">
+  				<!-- Modal content -->
+  				<div class="modal-content-redBorder">
+   	 				<div class="modal-header">
+   	   					<span class="close">&times;</span>
+  	    				<h2></h2>
+  	  				</div>
+ 	   				<div class="modal-body">
+ 	   					<br>
+ 	     				<p>Data di scadenza:</p>
+ 	     				<input type="date" name="nuovoDataScadenza" class="inputTesto">
+ 	     				<br><br>
+ 	   				</div>
+  	  				<div class="modal-footer">
+  	    				<div class="popupButtonLogin">Salva modifiche</div>
+  	    				<br>
+  	  				</div>
+ 	 			</div>
+			</div>
+    	</c:otherwise> 
+   	</c:choose>
+</form>
+
+
+
+
 	
 	
 <c:set var="Asta" value="${asta}" />
@@ -141,8 +201,6 @@
 		
 		<div  class="divDX">
 			
-			<c:set var="tipoAsta" value="<%=asta.getTipologia()%>" />
-			
 			<c:choose>
 				<c:when test="${ tipoAsta == 'astaInglese'}">
 					<div class="squareInfoAsta">
@@ -156,6 +214,7 @@
     			<c:otherwise>
     				<div class="squareInfoAsta">
 						<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+						<h3>La base d'asta che hai inserito per questo bene è di  <%=asta.getOffertaIniziale() %>0€</h3>
 						<br><br>
 						<h4>Data di scadenza: <%=asta.getDataFine() %></h4>
 					</div>
@@ -163,10 +222,9 @@
    			</c:choose>
    			
 			<br><br>
-			<div class="Offerta">
-				Modifica
-				<i class="fa-regular fa-pen-to-square"></i>
-			</div>	
+			<button id="modificaButton" class="Offerta">
+				Modifica<i class="fa-regular fa-pen-to-square"></i>
+			</button>	
 			<div class="profiloVenditore">
 					<img src= "<%= venditore.getFotoProfilo() %>" 
     				alt="Propic Venditore"
@@ -191,5 +249,35 @@
 <div class="footer">
 	<p> DietiDeals24 &#169</p>
 </div>
+
+
+ <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var modificaButton = document.getElementById("modificaButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+modificaButton.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
 </body>
 </html>
