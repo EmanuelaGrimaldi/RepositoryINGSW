@@ -1,10 +1,8 @@
 package entità;
 
-import java.sql.Date;
-import java.sql.Time;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +27,7 @@ public class Asta {
 	private String tipologia;
 
 	@Column(name = "datainizio", nullable = false)
-	private Date dataInizio;
+	private LocalDate dataInizio;
 	
 	@Column(name = "offertainiziale", nullable = false)
 	private float offertaIniziale;
@@ -74,7 +72,6 @@ public class Asta {
 	//PK_e_FK
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idasta", nullable = false)
 	public int ID;
 	 
@@ -116,12 +113,12 @@ public class Asta {
 		this.tipologia = tipologia;
 	}
 
-	public Date getDataInizio() {
+	public LocalDate getDataInizio() {
 		return dataInizio;
 	}
 
-	public void setDataInizio(Date dataInizio) {
-		this.dataInizio = dataInizio;
+	public void setDataInizio(LocalDate date) {
+		this.dataInizio = date;
 	}
 
 	public float getOffertaIniziale() {

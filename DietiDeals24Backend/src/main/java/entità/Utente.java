@@ -42,7 +42,6 @@ public class Utente {
 	private LocalDate dataNascita;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idutente", nullable = false)
 	private int ID_Utente;
 

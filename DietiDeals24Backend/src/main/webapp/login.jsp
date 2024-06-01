@@ -102,11 +102,13 @@
 			<div>
 				<h2>Email:</h2>
 				<input type="text" name="inputEmail" class="inputTesto">
+				
 			</div>
 	
 			<div>
 				<h2>Password:</h2>
 				<input type="password" name="inputPassword" class="inputTesto">
+				
 			</div>		
 		</div>
 		<div>

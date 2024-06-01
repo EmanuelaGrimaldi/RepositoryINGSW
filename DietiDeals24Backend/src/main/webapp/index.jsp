@@ -87,6 +87,19 @@
 	List<Asta> listaAsta;
 	listaAsta = AstaRepositoryImpl.getInstance().findAll();		
 	%>
+	
+	
+	
+	
+<!--INIZIO TIMERTASK-->	
+	<%	
+	int i = 0; 	
+	if (i == 0){
+		i=1;
+	}
+	%>
+	
+<!--FINE TIMERTASK-->	
 
 <!--INIZIO BODY ASTE-->	
 	<c:forEach var = "i" items="<%= listaAsta %>">

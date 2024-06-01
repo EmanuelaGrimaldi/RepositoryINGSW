@@ -1,6 +1,7 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,15 +12,17 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import entità.Asta;
 import implementazione.AstaRepositoryImpl;
 
+@WebServlet("/AddNuovaAstaServlet")
 public class AddNuovaAstaServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-	int IDCountAsta = 240;
+	static int IDCountAsta = 250;
 	Date dataFine;
 	Time timer;
+	Asta a = new Asta();
        
     public AddNuovaAstaServlet() {
         super();
@@ -27,34 +30,50 @@ public class AddNuovaAstaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Asta a = (Asta) request.getSession().getAttribute("asta");
+		int idUtenteINT = Integer.valueOf(request.getParameter("idUtente"));
+		String tipologiaAsta = (request.getParameter("tipologia"));
+		LocalDate date = LocalDate.now();
+		LocalTime time;
+		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("00:00:00");
+		DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			
-		a.setTitolo((String) request.getParameter("titoloAsta"));
-		a.setDescrizione((String) request.getParameter("descrizione"));
-		a.setCategoria((String) request.getParameter("categoria"));
-		a.setTipologia((String) request.getParameter("tipologia"));
-
-		Calendar calendar = Calendar.getInstance();
-		Date currentDate = (Date) calendar.getTime(); 
-		a.setDataInizio(currentDate);
+		a.setTitolo(request.getParameter("titoloAsta"));
+		a.setDescrizione(request.getParameter("descrizione"));
+		a.setCategoria(request.getParameter("categoria"));
+		a.setTipologia(tipologiaAsta);
+		a.setDataInizio(date);
 		a.setOffertaIniziale(Integer.valueOf(request.getParameter("baseAsta")));
 		a.setOffertaPiuAlta(Integer.valueOf(request.getParameter("baseAsta")));
 		a.setIDOffertaPiuAlta(0);
-		 //a.setFotoAsta1((String) request.getAttribute("fotoProfilo"));
+		a.setFotoAsta1("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6as2TZiSKC0WS-bzq9ulMIVXNO6xankJYHA&s"); 
 		
-		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("00:00:00");
-		LocalTime time = LocalTime.parse(request.getParameter("timer"), formatterTime );
-		a.setTimer(time);
 		
-		a.setSogliaRialzo(Integer.valueOf(request.getParameter("sogliaRialzo")));
-	
-		DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy:mm:dd");
-		LocalDate date = LocalDate.parse(request.getParameter("date"), formatterDate );
-		a.setDataFine(date);
+		
+		if (tipologiaAsta.equals("astaInglese")) {
+			
+			System.out.println("IL PARAMETRO TIMER E: " + request.getParameter("timer") );
+			time = LocalTime.parse(request.getParameter("timer"));
+
+			
+			a.setTimer(time);
+			a.setSogliaRialzo(Integer.valueOf(request.getParameter("sogliaRialzo")));
+			
+			//data_fine null
+			a.setDataFine(date);
+			
+		}else {		
+			date = LocalDate.parse(request.getParameter("dataScadenza"));
+			a.setDataFine(date);
+			
+			//timer_e_soglia_rialzo null
+			time = LocalTime.parse("00:00:00", formatterTime );
+			a.setTimer(time);
+			a.setSogliaRialzo(0);
+			
+		}
 
 		a.setID(IDCountAsta);
 		IDCountAsta++;
-		int idUtenteINT = Integer.valueOf(request.getParameter("idUtente"));
 		
 		a.setProprietario_FK(idUtenteINT);
 		
@@ -69,6 +88,7 @@ public class AddNuovaAstaServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

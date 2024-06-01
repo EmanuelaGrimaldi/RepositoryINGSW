@@ -44,11 +44,11 @@
    				
    					<div class="dropdown-content">
    						<a href="profiloUtenteLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">
-    						<input type="hidden" name="idUtente" value="idUtente"/>
+    						<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
       						Il mio profilo
       					</a> 
 						<a href="elencoNotificheLoggato.jsp?idUtente=<%=utente.getID_Utente()%>">
-							<input type="hidden" name="idUtente" value="idUtente"/>
+							<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
       						Le mie notifiche
       					</a>
 						<a href="index.jsp">
@@ -70,7 +70,7 @@
 <div class="under-header">
   	<div class="homeButton">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
-			 <input type="hidden" name="idUtente" value="idUtente"/> 
+			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 
   	</div> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
@@ -80,11 +80,11 @@
      	<div class="dropdown-content">
    			<a href="homeByTipologiaLoggato.jsp?tipologia=astaInglese&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="tipologia" value="astaInglese"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
       				Asta all'inglese</a> 
 			<a href="homeByTipologiaLoggato.jsp?tipologia=astaTempoFisso&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="tipologia" value="astaTempoFisso"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
       				Asta a tempo fisso</a> 		
     	</div>
   	</div>
@@ -96,27 +96,27 @@
     	<div class="dropdown-content">
       		<a href="homeByCategoriaLoggato.jsp?categoria=TabletTelefonia&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="TabletTelefonia"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				Tablet e telefonia</a>
       		<a href="homeByCategoriaLoggato.jsp?categoria=Giocattoli&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Giocattoli"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				Giocattoli</a>
       		<a href="homeByCategoriaLoggato.jsp?categoria=Elettronica&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Elettronica"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				Elettronica</a>
      	 	<a href="homeByCategoriaLoggato.jsp?categoria=Arte&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Arte"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				Arte</a>
     	    <a href="homeByCategoriaLoggato.jsp?categoria=Immobili&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Immobili"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				Immobili</a>
     	    <a href="homeByCategoriaLoggato.jsp?categoria=Antiquariato&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="categoria" value="Antiquariato"/>
-    				<input type="hidden" name="idUtente" value="idUtente"/>
+    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				Antiquariato</a>
     	</div>
   </div>
@@ -136,7 +136,7 @@
 				<div>
     				<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     					<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    					<input type="hidden" name="idUtente" value="idUtente"/>
+    					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
     				</a>
    	 			</div>	 	
@@ -144,7 +144,7 @@
 					<div class="testoAsta">		
 						<h1><a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<input type="hidden" name="idUtente" value="idUtente"/>
+    						<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     						<c:out value = "${i.titolo}"/>
     					</a></h1>
 						<p><c:out value = "${i.descrizione}"/></p>
@@ -169,7 +169,7 @@
 				<div>
     				<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     					<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    					<input type="hidden" name="idUtente" value="idUtente"/>
+    					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
     				</a>
    	 			</div>	
@@ -177,7 +177,7 @@
 					<div class="testoAsta">		
 						<h1><a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     						<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    						<input type="hidden" name="idUtente" value="idUtente"/>
+    						<input type="hidden" name="idUtente" value="id<%= utente.getID_Utente()%>Utente"/>
     						<c:out value = "${i.titolo}"/>
     					</a></h1>
 						<p><c:out value = "${i.descrizione}"/></p>
