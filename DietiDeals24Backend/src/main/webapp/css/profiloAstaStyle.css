@@ -11,7 +11,7 @@ h1{
   	justify-content: center; 
 	margin: 0 15%;
 	width:70%;
-	height: 750px;	
+	height: 730px;	
 }
 
 .flex-diviso2{
@@ -319,4 +319,21 @@ h1{
 	font-size:35px;
 	margin: 20px auto;
 	text-align: center;
+}
+
+.EliminaButton{
+	background: #1A1170;
+	text-align:center;
+	color: white;
+	font-family:Gotham;
+	font-size: 40px;
+  	cursor: pointer;
+  	padding: 12px;
+  	width: 50%;
+  	margin: 0 0 70px 25%;
+	
+}
+
+.EliminaButton:hover{
+	background: red;
 }

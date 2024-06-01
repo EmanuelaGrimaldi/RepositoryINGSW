@@ -248,6 +248,10 @@
 
 
 </div>
+	<form name="EliminaMiaAstaForm" method="post" action="EliminaMiaAstaServlet">
+		<button id="modificaButton" class="EliminaButton">Elimina</button>
+	</form>
+		
 
 
 
