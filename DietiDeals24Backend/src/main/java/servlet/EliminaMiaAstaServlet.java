@@ -5,34 +5,40 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import repository.AstaRepository;
+
 import java.io.IOException;
 
-@WebServlet("/EliminaMiaAstaServlet")
-public class EliminaMiaAstaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EliminaMiaAstaServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+import implementazione.AstaRepositoryImpl;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+@WebServlet("/EliminaMiaAstaServlet")
+public class EliminaMiaAstaServlet extends HttpServlet
+{
+	private static final long serialVersionUID = 1L;
+
+	public EliminaMiaAstaServlet()
+	{
+		super();
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+		response.getWriter().append("Served at: ").append(request.getContextPath()); // non so cosa faccia questo hahah
+		int idUtenteINT = Integer.valueOf(request.getParameter("idUtente"));
+		String idA = request.getParameter("idAsta");
+		
+		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
+		aRepo.deletebyID(Integer.parseInt(idA));
+		
+		
+		request.getRequestDispatcher("profiloUtenteLoggato.jsp?idUtente=" + idUtenteINT).forward(request, response);
 	}
 
 }

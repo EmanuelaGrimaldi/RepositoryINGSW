@@ -249,6 +249,9 @@
 
 </div>
 	<form name="EliminaMiaAstaForm" method="post" action="EliminaMiaAstaServlet">
+		
+		<input type="hidden" name="idAsta" value="<%=asta.getID() %>"/>
+		<input type="hidden" name="idUtente" value="<%=intVenditoreID %>"/>
 		<button id="modificaButton" class="EliminaButton">Elimina</button>
 	</form>
 		

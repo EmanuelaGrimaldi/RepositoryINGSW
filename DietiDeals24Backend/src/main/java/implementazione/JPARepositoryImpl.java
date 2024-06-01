@@ -59,7 +59,7 @@ public abstract class JPARepositoryImpl<T, ID> implements JPARepository<T, ID> {
 			et = em.getTransaction();
 			
 			et.begin();
-			em.remove(em.merge(entity));		
+			em.remove(em.merge(entity));
 			et.commit();
 		} catch (Exception e) {
 			System.err.println("Errorino uwu :" + e.getMessage());
