@@ -4,14 +4,4 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>EliminaMiaAstaServlet</display-name>
-    <servlet-name>EliminaMiaAstaServlet</servlet-name>
-    <servlet-class>servlet.EliminaMiaAstaServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EliminaMiaAstaServlet</servlet-name>
-    <url-pattern>/EliminaMiaAstaServlet</url-pattern>
-  </servlet-mapping>
 </web-app>
