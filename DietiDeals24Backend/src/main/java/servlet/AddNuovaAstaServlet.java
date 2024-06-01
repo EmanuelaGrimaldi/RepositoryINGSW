@@ -12,6 +12,8 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 import entità.Asta;
 import implementazione.AstaRepositoryImpl;
 
@@ -19,7 +21,7 @@ import implementazione.AstaRepositoryImpl;
 public class AddNuovaAstaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	static int IDCountAsta = 250;
+	static int IDCountAsta = 260;
 	Date dataFine;
 	Time timer;
 	Asta a = new Asta();
@@ -34,7 +36,7 @@ public class AddNuovaAstaServlet extends HttpServlet {
 		String tipologiaAsta = (request.getParameter("tipologia"));
 		LocalDate date = LocalDate.now();
 		LocalTime time;
-		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("00:00:00");
+		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm:ss");	////// la string in jsp deve avere questa fomrattazione
 		DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			
 		a.setTitolo(request.getParameter("titoloAsta"));
@@ -51,17 +53,18 @@ public class AddNuovaAstaServlet extends HttpServlet {
 		
 		if (tipologiaAsta.equals("astaInglese")) {
 			
-			System.out.println("IL PARAMETRO TIMER E: " + request.getParameter("timer") );
-			time = LocalTime.parse(request.getParameter("timer"));
+			time = LocalTime.parse(request.getParameter("timer"), formatterTime);
 
-			
 			a.setTimer(time);
 			a.setSogliaRialzo(Integer.valueOf(request.getParameter("sogliaRialzo")));
 			
 			//data_fine null
 			a.setDataFine(date);
 			
-		}else {		
+			
+		}else {
+						
+			System.out.println("\n\n\n\n\nIL PARAMETRO date E: " + request.getParameter("dataScadenza"));
 			date = LocalDate.parse(request.getParameter("dataScadenza"));
 			a.setDataFine(date);
 			
@@ -69,6 +72,7 @@ public class AddNuovaAstaServlet extends HttpServlet {
 			time = LocalTime.parse("00:00:00", formatterTime );
 			a.setTimer(time);
 			a.setSogliaRialzo(0);
+			a.setTipologia("astaTempoFisso");
 			
 		}
 

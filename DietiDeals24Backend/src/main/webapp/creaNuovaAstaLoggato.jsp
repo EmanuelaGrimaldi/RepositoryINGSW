@@ -134,7 +134,8 @@
 	<form name="nuovaAstaForm" method="get" action="AddNuovaAstaServlet">
 	
 <!-- IF ASTA INGLESE-->		
-		<c:if test = "${tipologia == 'astaInglese'}">			
+		<c:if test = "${tipologia == 'astaInglese'}">	
+			<c:set var="tipologia" value="astaInglese" />		
 			<h4>Che tipo di asta vuoi creare?</h4>
 				
 			<div class ="squareTipologia">		
@@ -152,7 +153,7 @@
 					
 <!-- IF ASTA TEMPO FISSO-->
 		<c:if test = "${tipologia == 'astaTempoFisso'}">
-		
+			<c:set var="tipologia" value="astaTempoFisso" />
 			<h4>Che tipo di asta vuoi creare?</h4>	
 				
 				<div class ="squareTipologia">	
@@ -182,13 +183,13 @@
    				<c:if test = "${tipologia == 'astaTempoFisso'}">	
 					<div>
 						<h4>Data di scadenza:</h4>
-						<input type="date" name="dataScadenza" required class="inputStretto">
+						<input type="date" name="dataScadenza" class="inputStretto">
 					</div>
 				</c:if>
 				<c:if test = "${tipologia == 'astaInglese'}">		
 					<div>
 						<h4>Timer:</h4>
-						<input type="datetime" name="timer" required class="inputTimer">
+						<input type="datetime" name="timer" class="inputTimer">
 					</div>
 					<div>
 						<h4>Soglia di rialzo:</h4>
