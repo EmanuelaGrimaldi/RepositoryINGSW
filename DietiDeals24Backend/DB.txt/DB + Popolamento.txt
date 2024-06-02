@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS asta
 	OffertaIniziale float NOT NULL,
 	OffertaPiuAlta float,
 	IDOffertaPiuAlta int,
-	FotoAsta longblob,
+	FotoAsta VARCHAR(1000),
 
 	-- Per aste inglesi
 	Timer TIME,
@@ -48,24 +48,17 @@ CREATE TABLE IF NOT EXISTS utente
   );
 
 
-CREATE TABLE IF NOT EXISTS partecipazioneutenteasta
-(
-	IDUtente INT,
-   	IDAsta INT,
-    
-	PRIMARY KEY (IDUtente, IDAsta)
-	
-);
-
-
 CREATE TABLE IF NOT EXISTS notifiche 
 (	
 	Titolo varchar(200) NOT NULL,
 	Testo varchar(500) NOT NULL,
     	
 	IDnotifiche INT AUTO_INCREMENT NOT NULL,
-    	IDutenteFK int NOT NULL,
+	IDProprietarioNotifica int NOT NULL,
+
 	IDAsta int DEFAULT 0,
+	IDUtenteCompratore int DEFAULT 0,
+	IDutenteVenditore int DEFAULT 0,
 
 	PRIMARY KEY (IDnotifiche)
 );
@@ -74,12 +67,8 @@ CREATE TABLE IF NOT EXISTS notifiche
 ALTER TABLE auctionlinedb.ASTA
 add FOREIGN KEY (ProprietarioFK) REFERENCES auctionlinedb.utente(IDUtente);
 
-ALTER TABLE auctionlinedb.partecipazioneUtenteAsta
-add FOREIGN KEY (IDAsta) REFERENCES asta(IDAsta),
-add FOREIGN KEY (IDUtente) REFERENCES utente(IDUtente);
-
 ALTER TABLE auctionlinedb.notifiche
-add FOREIGN KEY (IDUtenteFK) REFERENCES utente(IDUtente);
+add FOREIGN KEY (IDProprietarioNotifica) REFERENCES auctionlinedb.utente(IDUtente);
 
 -- Popolamento utenti
 
@@ -283,7 +272,7 @@ VALUES("Nokia 6150 NUOVO!!",
  100,
  0,
  "https://i.ebayimg.com/thumbs/images/g/5iMAAOSwJelkNZvt/s-l640.jpg",
-'20:00:00', '20:00:00'
+'20:00:00', '20:00:00',
  30,
 209,
 107);
@@ -701,7 +690,17 @@ VALUES("Monolocale Roma centro",
 
 -- NOTIFICHE
 
-INSERT INTO auctionlinedb.notifiche(titolo, testo, IDutenteFK)
+INSERT INTO auctionlinedb.notifiche(titolo, testo, IDProprietarioNotifica)
 VALUES ("Benvenuto su DietiDeals24!",
 	"Benvenuto nella nostra piattaforma, qui ogni bene troverà una nuova casa.",
-	101)
+	101);
+
+
+-- EVENT 
+
+CREATE EVENT aggiornaTimer
+ON SCHEDULE EVERY 1 MINUTE
+STARTS CURRENT_TIMESTAMP DO 
+update asta 
+set timer = SUBTIME(timer, '00:01:00')
+where timer != "00:00:00";

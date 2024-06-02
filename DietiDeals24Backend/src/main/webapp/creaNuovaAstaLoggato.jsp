@@ -213,11 +213,6 @@
 					<input type="number" name="baseAsta" required class="inputStretto" min="1">
 				</div>	
 				
-				<div>
-					<h4>Aggiungi qui una foto dell'oggetto:</h4>
-					<i class="fa-solid fa-file-circle-plus addImmagineProfilo"></i>
-					<input type="hidden" name="inputfoto" value="inserisci-foto-da-rivedere"> 
-				</div>
 				<br>
 				<div>
 					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>

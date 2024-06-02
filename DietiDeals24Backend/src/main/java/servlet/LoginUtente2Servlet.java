@@ -28,7 +28,7 @@ public class LoginUtente2Servlet extends HttpServlet
 
 		Utente u = (Utente) request.getSession().getAttribute("utente");
 
-		u.setFotoProfilo((String) request.getParameter("fotoProfilo"));
+		u.setFotoProfilo((String) request.getParameter("https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/man-user-circle-icon.png"));
 		u.setBiografia((String) request.getParameter("biografia"));
 		u.setGeolocalizzazione((String) request.getParameter("posizioneGeografica"));
 		u.setLinkSocial((String) request.getParameter("social"));

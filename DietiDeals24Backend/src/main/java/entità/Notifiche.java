@@ -19,16 +19,20 @@ public class Notifiche
 	private String testo;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDnotifiche", nullable = false)
+	@Column(name = "idnotifiche", nullable = false)
 	private int IDnotifiche;
 	
-	@Column(name = "IDUtenteFK", nullable = false)
-	private int IDUtenteFK;
+	@Column(name = "idproprietarionotifica", nullable = false)
+	private int IDProprietarioNotifica;
 	
-	@Column(name = "IDAsta", nullable = false)
+	@Column(name = "idasta", nullable = false)
 	private int IDAsta;
 	
+	@Column(name = "idutentevenditore", nullable = false)
+	private int IDUtenteVenditore;
+	
+	@Column(name = "idutentecompratore", nullable = false)
+	private int IDUtenteCompratore;
 
 	public String getTitolo() {
 		return titolo;
@@ -46,20 +50,20 @@ public class Notifiche
 		this.testo = testo;
 	}
 
-	public int getIDUtenteFK() {
-		return IDUtenteFK;
-	}
-
-	public void setIDUtenteFK(int iDUtenteFK) {
-		IDUtenteFK = iDUtenteFK;
-	}
-
 	public int getIDnotifiche() {
 		return IDnotifiche;
 	}
 
 	public void setIDnotifiche(int iDnotifiche) {
 		IDnotifiche = iDnotifiche;
+	}
+
+	public int getIDProprietarioNotifica() {
+		return IDProprietarioNotifica;
+	}
+
+	public void setIDProprietarioNotifica(int iDProprietarioNotifica) {
+		IDProprietarioNotifica = iDProprietarioNotifica;
 	}
 
 	public int getIDAsta() {
@@ -69,6 +73,24 @@ public class Notifiche
 	public void setIDAsta(int iDAsta) {
 		IDAsta = iDAsta;
 	}
+
+	public int getIDUtenteVenditore() {
+		return IDUtenteVenditore;
+	}
+
+	public void setIDUtenteVenditore(int iDUtenteVenditore) {
+		IDUtenteVenditore = iDUtenteVenditore;
+	}
+
+	public int getIDUtenteCompratore() {
+		return IDUtenteCompratore;
+	}
+
+	public void setIDUtenteCompratore(int iDUtenteCompratore) {
+		IDUtenteCompratore = iDUtenteCompratore;
+	}
+
+	
 	
 
 	

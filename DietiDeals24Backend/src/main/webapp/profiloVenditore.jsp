@@ -111,7 +111,7 @@
 		<div class="flex-diviso2 cell">
 			<div>
     			<a href="miaAsta.jsp">
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
    	 			</a>
    	 		</div>	 	
     		<div>
@@ -135,7 +135,7 @@
 			<div>
     			<a href="miaAsta.jsp?idAsta=${i.ID}">
     				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
     			</a>
    	 		</div>	
     		<div>

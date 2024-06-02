@@ -1,8 +1,16 @@
+.titoloAsta{
+	text-align:center;
+	font-family:Gotham;
+	font-size: 38px;
+	margin: 20px 0 0 0;
+}
+
+
 h1{
 	text-align:center;
 	font-family:Gotham;
-	font-size: 30px;
-	margin: 20px 0 0 0;
+	font-size: 25px;
+	margin: 10px auto;
 }
 
 .background{
@@ -124,6 +132,16 @@ h1{
 	font-family:Gotham;
 	font-size: 30px;
 	margin:20px 0 0 0;
+}
+
+.infoVenditore{
+	color: white;
+	height: 50%;
+	text-align:center;
+	font-family:Gotham;
+	font-size: 20px;
+	margin:20px 0 0 0;
+	
 }
 
 .scrittaVisitaProfilo{
@@ -255,6 +273,10 @@ h1{
 	height:100%;
 }
 
+.faiOffertaButton:hover{
+	background:red;
+}
+
 .popupButtonLogin{
 	display: flex;
 	justify-content: center;
@@ -336,4 +358,30 @@ h1{
 
 .EliminaButton:hover{
 	background: red;
+}
+.dettagliAsta{
+	text-align:center;
+	color: #1A1170;
+	font-family:Gotham;
+	font-size:26px;
+}
+.riquadroInformazioni{
+	text-align:left;
+	border:1px solid #d3d3d3;
+	margin: 20px auto;
+	padding: 10px auto;
+	width:60%;
+	
+}
+
+.BlackLink{
+	Color:Black;
+	font-family:Gotham;
+	font-size:22px;
+}
+	
+.BlackLink:hover{
+	  color: #9CB4E3!important;
+  	cursor: pointer;
+  	text-decoration: underline;
 }

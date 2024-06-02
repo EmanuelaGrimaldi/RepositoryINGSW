@@ -3,7 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "implementazione.NotificheRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Notifiche, entità.Utente"%>
+<%@page import = "implementazione.NotificheRepositoryImpl, implementazione.UtenteRepositoryImpl, implementazione.AstaRepositoryImpl,
+					java.util.List, entità.Notifiche, entità.Utente, entità.Asta"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
@@ -23,8 +24,8 @@
 	<%	
     //per prendere ID dall'url
     String stringVenditoreID = request.getParameter("idUtente");
-	int intVenditoreID = Integer.valueOf(stringVenditoreID);
- 	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
+	int intIDutente = Integer.valueOf(stringVenditoreID);
+ 	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intIDutente);
  	%>
  	<%
  	
@@ -126,22 +127,90 @@
 
 <c:set var="Notifiche" value="${notifica}" />
 
-
- 
 <div class="titoloNotifica">&#x2022 <%= notifica.getTitolo() %> &#x2022</div>
 
 
     	<div class ="descrizioneNotifica">
     			<p><%=notifica.getTesto() %></p>
-    	</div>  
     	
-    	<a href="elencoNotificheLoggato.jsp?idUtente=<%=intVenditoreID%>">
-			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
+    		<div>
+    			<c:set var="idAstaNotifica" value="<%=notifica.getIDAsta() %>" />
+    			<c:set var="idVenditore" value="<%=notifica.getIDUtenteVenditore() %>" />
+    			<c:set var="idproprietario" value="<%=intIDutente%>" />
+    		
+    			<c:if test= "${idAstaNotifica != '0'}">
+    			<br>
+    			<div class="dettagliAsta">--- DETTAGLI ASTA: ---</div>
+    			<br>
+    			<div class="riquadroInformazioni">
+    			<%Asta asta = AstaRepositoryImpl.getInstance().findbyID(notifica.getIDAsta());%>
+    			<a href="profiloAstaLoggato.jsp?idAsta=<%=notifica.getIDAsta()%>&idUtente=<%=intIDutente%>" class="BlackLink">
+    				<input type="hidden" name="IdAsta" value="<%=notifica.getIDAsta() %>"/>
+    				<input type="hidden" name="idUtente" value="<%=intIDutente%>"/>
+    				&#x2022 BENE ALL'ASTA:<br>
+    				Titolo:<%=asta.getTitolo() %> <br>
+    				Costo attuale:<%=asta.getOffertaPiuAlta() %>0€<br>
+    			</a>
+    			</div>
+    			<c:choose>
+       		  	<c:when test = "${idVenditore == idproprietario}">
+       		  		<div class="riquadroInformazioni">
+           			<a href="profiloUtenteLoggato.jsp?idUtente=<%=intIDutente%>" class="BlackLink">
+    						<input type="hidden" name="idUtente" value="<%=intIDutente%>"/>
+      						&#x2022 PROFILO VENDITORE:<br>
+      						Nome:<%=utente.getNome() %><br>
+      						Cognome:<%=utente.getCognome()%><br>
+      						Posizione:<%=utente.getGeolocalizzazione() %><br>
+      				</a>
+      				</div>
+      				<%Utente utenteCompratore = UtenteRepositoryImpl.getInstance().findbyID(notifica.getIDUtenteCompratore());%>
+      				<div class="riquadroInformazioni">
+      				<a href="profiloVenditoreLoggato.jsp?idVenditore=<%=utenteCompratore.getID_Utente()%>&idUtente=<%=intIDutente%>" class="BlackLink">
+    					<input type="hidden" name="idVenditore" value="<%=utenteCompratore.getID_Utente()%>"/>
+    					<input type="hidden" name="idUtente" value="<%=intIDutente%>"/>
+    					&#x2022 PROFILO COMPRATORE:<br>
+    					Nome:<%=utenteCompratore.getNome() %><br>
+      					Cognome:<%=utenteCompratore.getCognome()%><br>
+      					Posizione:<%=utenteCompratore.getGeolocalizzazione() %><br>
+    				</a>
+    				</div>
+				</c:when>
+	         	<c:otherwise>
+	         	<%Utente utenteVenditore = UtenteRepositoryImpl.getInstance().findbyID(notifica.getIDUtenteVenditore());%>
+	         		<div class="riquadroInformazioni">
+	            	<a href="profiloVenditoreLoggato.jsp?idVenditore=<%=utenteVenditore.getID_Utente()%>&idUtente=<%=intIDutente%>" class="BlackLink">
+    					<input type="hidden" name="idVenditore" value="<%=utenteVenditore.getID_Utente()%>"/>
+    					<input type="hidden" name="idUtente" value="<%=intIDutente%>"/>
+      						&#x2022 PROFILO VENDITORE:<br>
+      						Nome:<%=utenteVenditore.getNome() %><br>
+      						Cognome:<%=utenteVenditore.getCognome()%><br>
+      						Posizione:<%=utenteVenditore.getGeolocalizzazione() %><br>
+      				</a>
+      				</div>
+      				<div class="riquadroInformazioni">
+      				<a href="profiloUtenteLoggato.jsp?idUtente=<%=intIDutente%>" class="BlackLink">
+    						<input type="hidden" name="idUtente" value="<%=intIDutente%>"/>
+      						&#x2022 PROFILO COMPRATORE:<br>
+      						Nome:<%=utente.getNome() %><br>
+      						Cognome:<%=utente.getCognome()%><br>
+      						Posizione:<%=utente.getGeolocalizzazione() %><br>
+      				</a>
+      				</div>
+         		</c:otherwise>
+      			</c:choose>		
+    	</c:if>
+    		
+    		</div>
+    	</div> 
+    	
+    	
+    	<a href="elencoNotificheLoggato.jsp?idUtente=<%=intIDutente%>">
+			<input type="hidden" name="idUtente" value="<%=intIDutente%>"/>
 			<button type="button" class="notificaIndietroButton">Indietro</button>
 		</a>
 		
 		
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
 <div class="footer">
 	<p> DietiDeals24 &#169;</p>
 </div>

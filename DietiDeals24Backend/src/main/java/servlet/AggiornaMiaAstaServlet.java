@@ -33,8 +33,6 @@ public class AggiornaMiaAstaServlet extends HttpServlet {
 		int idAstaINT = Integer.valueOf(request.getParameter("idAsta"));
 		int idVenditoreINT = Integer.valueOf(request.getParameter("idUtente"));
 		String stringa;
-		Date nuovaDataScadenza;
-		Time nuovoTimer;
 		
 		AstaRepository aRepo = AstaRepositoryImpl.getInstance();	
 		Asta a = aRepo.findbyID(idAstaINT);

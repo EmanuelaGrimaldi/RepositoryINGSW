@@ -135,7 +135,7 @@
     				<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     					<input type="hidden" name="IdAsta" value="${i.ID}"/>
     					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-    					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    					<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
     				</a>
    	 			</div>	 	
     			<div>
@@ -168,7 +168,7 @@
     				<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     					<input type="hidden" name="IdAsta" value="${i.ID}"/>
     					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-    					<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    					<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
     				</a>
    	 			</div>	
     			<div>

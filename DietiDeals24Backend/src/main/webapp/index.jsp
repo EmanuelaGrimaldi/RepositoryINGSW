@@ -77,6 +77,11 @@
     				Antiquariato</a>
     	</div>
   </div>
+      	<div class="lenteRicerca">
+      	<a href="index.jsp" class="homeButton">
+    		<i class="fa-solid fa-magnifying-glass"></i>
+    	</a>
+    	</div>
 </div>
 
 <!-- FINE HEADER -->
@@ -108,7 +113,7 @@
 			<div>
     			<a href="profiloAsta.jsp?idAsta=${i.ID}">
     				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
     			</a>
    	 		</div>	 	
     		<div>
@@ -136,7 +141,7 @@
 			<div>
     			<a href="profiloAsta.jsp?idAsta=${i.ID}">
     				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
     			</a>
    	 		</div>	
     		<div>

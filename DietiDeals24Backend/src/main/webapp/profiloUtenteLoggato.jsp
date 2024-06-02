@@ -190,7 +190,7 @@
 		<div class="flex-diviso2 cell">
 			<div>
     			<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
    	 			</a>
    	 		</div>	 	
     		<div>
@@ -216,7 +216,7 @@
 			<div>
 			<a href="MiaAstaLoggato.jsp?idAsta=${i.ID}&&idUtente=<%= utente.getID_Utente()%>">
     				<input type="hidden" name="IdAsta" value="${i.ID}"/>
-    				<img src="${i.fotoAsta1}" alt="Immagine prodotto" class="immagineAsta">
+    				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
     			</a>
    	 		</div>	
     		<div>

@@ -1,12 +1,11 @@
 package entità;
 
 
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -38,7 +37,7 @@ public class Asta {
 	@Column(name = "idoffertapiualta", nullable = true)
 	private int IDOffertaPiuAlta;
 	
-	@Column(name = "fotoasta1", nullable = true, length = 500)
+	@Column(name = "fotoasta", nullable = true)
 	private String fotoAsta;
 	
 	
@@ -144,20 +143,20 @@ public class Asta {
 		this.fotoAsta = fotoAsta;
 	}
 
-	public String getTimer() {
-		return timer.toString();
+	public LocalTime getTimer() {
+		return timer;
 	}
 
 	public void setTimer(LocalTime timer) {
 		this.timer = timer;
 	}
-	
-	public String getTimerReset() {
-		return timerReset.toString();
+
+	public LocalTime getTimerReset() {
+		return timerReset;
 	}
 
 	public void setTimerReset(LocalTime timerReset) {
-		this.timer = timerReset;
+		this.timerReset = timerReset;
 	}
 
 	public float getSogliaRialzo() {
@@ -192,14 +191,9 @@ public class Asta {
 		this.proprietario_FK = proprietario_FK;
 	}
 
-	@Override
-	public String toString() {
-		return "Asta [titolo=" + titolo + ", descrizione=" + descrizione + ", categoria=" + categoria + ", tipologia="
-				+ tipologia + ", dataInizio=" + dataInizio + ", offertaIniziale=" + offertaIniziale
-				+ ", offertaPiuAlta=" + offertaPiuAlta + ", IDOffertaPiuAlta=" + IDOffertaPiuAlta + ", fotoAsta="
-				+ fotoAsta + ", timer=" + timer + ", timerReset=" + timerReset + ", sogliaRialzo=" + sogliaRialzo
-				+ ", dataFine=" + dataFine + ", ID=" + ID + ", proprietario_FK=" + proprietario_FK + "]";
-	}
+
+
+
 
   
 

@@ -92,11 +92,6 @@
 		<div class="flex-diviso2">
 
 			<div>
-				<h4>Inserisci qui la tua foto profilo:</h4>
-				<i class="fa-solid fa-file-circle-plus immagineProfilo"></i> 
-			</div>
-
-			<div>
 				<h4>Parlaci di te:</h4>
 				<input type="text"
 					placeholder="Inserisci una tua Biografia" name="biografia" class="shortBio">
@@ -125,7 +120,6 @@
 		
 		Utente obj = (Utente) request.getAttribute("utente");
 
-		obj.setFotoProfilo((String) request.getAttribute("fotoProfilo"));
 		obj.setBiografia((String) request.getAttribute("biografia"));
 		obj.setGeolocalizzazione((String) request.getAttribute("posizioneGeografica"));
 		obj.setLinkSocial((String) request.getAttribute("social"));

@@ -68,7 +68,7 @@
 </div>	
 <div class ="bluePadding"></div>	
 <div class="under-header">
-			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
+			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>" class="homeButton">Home</a>
 			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
@@ -185,14 +185,14 @@
 	
 <c:set var="Asta" value="${asta}" />
 
-<h1><%= asta.getTitolo() %></h1>
+<div class="titoloAsta"><%= asta.getTitolo() %></div>
 
 <div class="background">
 
 	<div class="flex-diviso2">
 	
 		<div class="divSX">
-    		<img src= "<%=asta.getFotoAsta1() %>" alt="Immagine prodotto" class="immagineAsta">  
+    		<img src= "<%=asta.getFotoAsta() %>" alt="Immagine prodotto" class="immagineAsta">  
     		<div class ="descrizioneAsta">
     				<p><%=asta.getDescrizione()%></p>
     		</div>  
@@ -205,10 +205,10 @@
 				<c:when test="${ tipoAsta == 'astaInglese'}">
 					<div class="squareInfoAsta">
 						<h1>Base d'asta: <%=asta.getOffertaIniziale() %>0€</h1>
-						<h2>Offerta Corrente: <%=asta.getOffertaPiuAlta() %>0€</h2>
+						<h2>OFFERTA CORRENTE: <%=asta.getOffertaPiuAlta() %>0€</h2>
 						<h3>Soglia di Rialzo: <%=asta.getSogliaRialzo() %>0€</h3>
 						<br>
-						<h4>Timer: <%=asta.getTimer() %> allo scadere.</h4>
+						<h4>Quest'asta scadrà tra <%=asta.getTimer() %> ore!</h4>
 					</div>
     			</c:when>
     			<c:otherwise>
@@ -229,6 +229,9 @@
     				
     			<div class="nomeVenditore">
     				<%= venditore.getNome() %> <%= venditore.getCognome() %>
+    				<div class="infoVenditore">
+    					<%= venditore.getBiografia() %>
+    				</div>
     			</div>
     				
     			<div class="scrittaVisitaProfilo">

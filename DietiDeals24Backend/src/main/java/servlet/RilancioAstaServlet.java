@@ -7,18 +7,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import repository.AstaRepository;
 import repository.NotificheRepository;
-import repository.PartecipazioneUtenteAstaRepository;
 import repository.UtenteRepository;
-
 import java.io.IOException;
-
 import entità.Asta;
 import entità.Notifiche;
-import entità.PartecipazioneUtenteAsta;
 import entità.Utente;
 import implementazione.AstaRepositoryImpl;
 import implementazione.NotificheRepositoryImpl;
-import implementazione.PartecipazioneUtenteAstaRepositoryImpl;
 import implementazione.UtenteRepositoryImpl;
 
 @WebServlet("/RilancioAstaServlet")
@@ -43,10 +38,11 @@ public class RilancioAstaServlet extends HttpServlet {
 		
 		float ultimaOfferta = a.getOffertaPiuAlta();
 		float prezzoRilancio = 0, somma;
+		int IDVenditore = a.getProprietario_FK();
 		
 		if ("astaInglese".contentEquals(a.getTipologia())) {
 			prezzoRilancio = a.getSogliaRialzo();
-			//a.getTimer() = a.getTimerReset();
+			a.setTimer(a.getTimerReset());
 		}else {
 			prezzoRilancio = Integer.valueOf(request.getParameter("cifraRilancio"));
 		}
@@ -63,31 +59,28 @@ public class RilancioAstaServlet extends HttpServlet {
 		NotificheRepository nRepo = NotificheRepositoryImpl.getInstance();		
 		Notifiche notificaVenditore = new Notifiche(), notificaCompratore = new Notifiche();
 		
-		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();	
-		Utente utenteVenditore = uRepo.findbyID(a.getProprietario_FK());
+		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();
+		Utente utenteVenditore = uRepo.findbyID(IDVenditore);
 		
 		notificaVenditore.setTitolo("Qualcuno ha effettuato un rilancio per la tua asta: " + a.getTitolo());
 		notificaVenditore.setTesto("L'utente: " + utenteVenditore.getNome() + " " + utenteVenditore.getCognome() + " ha effettuato un nuovo rilancio per l'asta " 
-							+ a.getTitolo() + " facendo cosi salire il prezzo dell'asta a " + somma + "euro!");
-		notificaVenditore.setIDUtenteFK(a.getProprietario_FK());
+									+ a.getTitolo() + " facendo cosi salire il prezzo dell'asta a " + somma + "0 euro!");
 		notificaVenditore.setIDAsta(idAstaINT);
+		notificaVenditore.setIDProprietarioNotifica(IDVenditore);
+		notificaVenditore.setIDUtenteVenditore(IDVenditore);
+		notificaVenditore.setIDUtenteCompratore(idUtenteCompratore);
 		nRepo.save(notificaVenditore);
-		
 		
 		notificaCompratore.setTitolo("Hai appena effettuato un rilancio per l'asta: " + a.getTitolo());
 		notificaCompratore.setTesto("Hai appena effettuato un nuovo rilancio per l'asta " 
-							+ a.getTitolo() + ", se nessun altro effettuerà un rilancio vincerai il bene per soli " + somma + "euro!");
-		notificaCompratore.setIDUtenteFK(idUtenteCompratore);
+									+ a.getTitolo() + ", se nessun altro effettuerà un rilancio vincerai il bene per soli " + somma + "0 euro!");
+		notificaCompratore.setIDAsta(idAstaINT);
+		notificaCompratore.setIDUtenteVenditore(IDVenditore);
+		notificaCompratore.setIDProprietarioNotifica(idUtenteCompratore);
+		notificaCompratore.setIDUtenteCompratore(idUtenteCompratore);
 		nRepo.save(notificaCompratore);
-		
+			
 		aRepo.update(a);
-		
-		PartecipazioneUtenteAsta pua = new PartecipazioneUtenteAsta();
-		PartecipazioneUtenteAstaRepository puaRepo = PartecipazioneUtenteAstaRepositoryImpl.getInstance();
-		
-		pua.setIDAsta(idAstaINT);
-		pua.setIDUtente(idUtenteCompratore);
-		puaRepo.save(pua);
 
 		request.getRequestDispatcher("elencoNotificheLoggato.jsp?idUtente=" + idUtenteCompratore).forward(request, response);
 	}

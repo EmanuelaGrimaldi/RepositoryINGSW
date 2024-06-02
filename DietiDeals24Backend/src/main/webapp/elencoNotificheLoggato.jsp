@@ -23,12 +23,12 @@
 	<%	
     //per prendere ID dall'url
     String stringVenditoreID = request.getParameter("idUtente");
-	int intVenditoreID = Integer.valueOf(stringVenditoreID);
- 	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
+	int intIDutente = Integer.valueOf(stringVenditoreID);
+ 	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intIDutente);
  	%>
  	<%
 	List<Notifiche> listaNotifiche;
- 	listaNotifiche = NotificheRepositoryImpl.getInstance().findNotificheByIDutenteFK(intVenditoreID);
+ 	listaNotifiche = NotificheRepositoryImpl.getInstance().findNotificheByIDProprietarioNotifica(intIDutente);
  	int countNotifiche=0;
 	%>
 	
@@ -129,9 +129,9 @@
 	<c:forEach var = "i" items="<%= listaNotifiche %>">
 		<br>
 		<div class="designNotifica">
-			<a href="profiloNotificheLoggato.jsp?idNotifica=${i.ID_notifiche}&idUtente=<%= intVenditoreID%>">
+			<a href="profiloNotificheLoggato.jsp?idNotifica=${i.IDnotifiche}&idUtente=<%= intIDutente%>">
 				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-				<input type="hidden" name="idNotifica" value="${i.ID_notifiche}"/>
+				<input type="hidden" name="idNotifica" value="${i.IDnotifiche}"/>
 				&#8226 <c:out value = "${i.titolo}"/>
 			</a>
 		</div>

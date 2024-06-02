@@ -1,6 +1,6 @@
 package implementazione;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import entità.Notifiche;
 import jakarta.persistence.EntityManager;
@@ -19,7 +19,7 @@ private static NotificheRepository instance = new NotificheRepositoryImpl();
     }
     
 	@SuppressWarnings("unchecked")
-	public List<Notifiche> findNotificheByIDutenteFK( int intVenditoreID){
+	public List<Notifiche> findNotificheByIDProprietarioNotifica( int intUtenteID){
     	
     	EntityManager em = null;
 		EntityTransaction et = null;
@@ -32,8 +32,8 @@ private static NotificheRepository instance = new NotificheRepositoryImpl();
 			
 			et.begin();			
 			q = em.createNativeQuery("select * from " + entityClass.getSimpleName() + 
-									" where IDutenteFK = :idUtente", this.entityClass);
-			q.setParameter("idUtente", intVenditoreID);
+									" where IDProprietarioNotifica = :idUtente", this.entityClass);
+			q.setParameter("idUtente",  intUtenteID);
 			listaNotifichediUtente = q.getResultList();
 			et.commit();
 		} 
@@ -53,5 +53,6 @@ private static NotificheRepository instance = new NotificheRepositoryImpl();
 		
 	return listaNotifichediUtente;
     }
+
 
 }

@@ -199,7 +199,7 @@
 	<div class="flex-diviso2">
 	
 		<div class="divSX">
-    		<img src= "<%=asta.getFotoAsta1() %>" alt="Immagine prodotto" class="immagineAsta">  
+    		<img src= "<%=asta.getFotoAsta() %>" alt="Immagine prodotto" class="immagineAsta">  
     		<div class ="descrizioneAsta">
     				<p><%=asta.getDescrizione()%></p>
     		</div>  
