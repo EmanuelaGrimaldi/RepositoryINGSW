@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS notifiche
     	
 	IDnotifiche INT AUTO_INCREMENT NOT NULL,
     	IDutenteFK int NOT NULL,
-	IDAsta int NOT NULL,
+	IDAsta int DEFAULT 0,
 
 	PRIMARY KEY (IDnotifiche)
 );
@@ -133,7 +133,7 @@ VALUES("Giovanni","Russo","1988-08-08","Amo la mia famiglia","Palermo","TikTok",
 
 -- Antiquariato
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1,Timer, TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta,Timer, TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Set di sei sedie antiche francesi",
 "Vendo set di sedie senza schienale, originariamente francesi e di ottima manufattura.",
 'Antiquariato',
@@ -148,7 +148,7 @@ VALUES("Set di sei sedie antiche francesi",
 113);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto misto di oggetti in ceramica",
 "Lotto composto da pezzi singoli di diversa natura, in foto vi sono tutti i pezzi. Condizioni ottime, nuovi.",
 'Antiquariato',
@@ -165,7 +165,7 @@ VALUES("Lotto misto di oggetti in ceramica",
 110);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Macchina da scrivere degli anni 30",
 "Era di mio nonno, in qualche modo funziona ancora. Fuori produzione da più di 50 anni.",
 'Antiquariato',
@@ -180,7 +180,7 @@ VALUES("Macchina da scrivere degli anni 30",
 101);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Statua dea Bastet placcata in oro",
 "Di origine egiziana, ottime condizioni, leggera in quanto vuota, metallo totalmente placcato d'oro.",
 'Antiquariato',
@@ -196,7 +196,7 @@ VALUES("Statua dea Bastet placcata in oro",
 103);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Tavolo Comò anni 60",
 "Tavolo circondato da cassetti, alcuni anche segreti. Ristrutturato di recente, unico nel suo genere!",
 'Antiquariato',
@@ -210,7 +210,7 @@ VALUES("Tavolo Comò anni 60",
 204,
 114);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Grammofono con dentino rotto",
 "Ha oltre 50 anni, essendo il dentino l'unico danno, se riparato diventa un grammofono perfettamente funzionante.",
 'Antiquariato',
@@ -229,7 +229,7 @@ VALUES("Grammofono con dentino rotto",
 -- TabletTelefonia
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Apple iPad Air 13 (M2): display Liquid Retina, 256GB",
 "disponibile a 1099 euro nei nostri Apple store.",
 'TabletTelefonia',
@@ -243,7 +243,7 @@ VALUES("Apple iPad Air 13 (M2): display Liquid Retina, 256GB",
 206,
 112);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto di telefoni Nokia inizio anni 2000",
 "Alcuni funzionanti, altri non, altri ancora chiusi nel proprio imballaggio.",
 'TabletTelefonia',
@@ -259,7 +259,7 @@ VALUES("Lotto di telefoni Nokia inizio anni 2000",
 111);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer, TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Telefono vecchio di 100 anni",
 "Ancora funzionante, è un vero pezzo da collezione!",
 'TabletTelefonia',
@@ -273,7 +273,7 @@ VALUES("Telefono vecchio di 100 anni",
 208,
 102);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Nokia 6150 NUOVO!!",
 "Scatolo, caricatore e cover tutto incluso. E' un pezzo più unico che raro.",
 'TabletTelefonia',
@@ -288,7 +288,7 @@ VALUES("Nokia 6150 NUOVO!!",
 209,
 107);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Lotto tre tablet PC modello TTAB510",
 "Nuovi. Cover inclusa. Vendo perché sono gli ultimi modelli che mi sono rimasti al negozio, valgono circa 350 euro l'uno.",
 'TabletTelefonia',
@@ -302,7 +302,7 @@ VALUES("Lotto tre tablet PC modello TTAB510",
 210,
 111);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Tablets e MP3: Ipad, ASUS, SONY.",
 "Lotto composto da: tre tablet, un ipad, una tavoletta grafica e un MP3",
 'TabletTelefonia',
@@ -321,7 +321,7 @@ VALUES("Tablets e MP3: Ipad, ASUS, SONY.",
 -- Giocattoli
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Robot giocattolo rarissimo giapponese",
 "Edizione limitata , luogo di produzione: Giappone.",
 'Giocattoli',
@@ -335,7 +335,7 @@ VALUES("Robot giocattolo rarissimo giapponese",
 212,
 101);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Collezione completa di trattori DeAgostini, anno 2001",
 "Nuovi, ogni pezzo ha il proprio scatolo",
 'Giocattoli',
@@ -351,7 +351,7 @@ VALUES("Collezione completa di trattori DeAgostini, anno 2001",
 103);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Coppia bambole da giardino",
 "Alte 110cm, le vendo perché di notte si spostano da sole.",
 'Giocattoli',
@@ -365,7 +365,7 @@ VALUES("Coppia bambole da giardino",
 214,
 102);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto robottini",
 "Rivendo lotto di robottini trovati in un mercatino l'anno scorso in vacanza a Firenze.",
 'Giocattoli',
@@ -380,7 +380,7 @@ VALUES("Lotto robottini",
 215,
 107);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Collezione Hot Wheels",
 "Quasi completa, mancano tre macchinine. Confezione inclusa",
 'Giocattoli',
@@ -394,7 +394,7 @@ VALUES("Collezione Hot Wheels",
 216,
 114);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto di bambole in porcellata",
 "Alcune hanno dei pezzetti mancanti tipo scarpa o accessori, ma solo bellissime.",
 'Giocattoli',
@@ -409,7 +409,7 @@ VALUES("Lotto di bambole in porcellata",
 217,
 107);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Cucina giocattolo per i vostri piccoli chef",
 "come nuova, completa di tutti i pezzi in foto, i miei figli non ci giocano più.",
 'Giocattoli',
@@ -428,7 +428,7 @@ VALUES("Cucina giocattolo per i vostri piccoli chef",
 -- Elettronica
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Lavastoviglie incasso CANDY - FULL SIZE",
 "Presenta dei graffi sul lato, colpa del trasporto. Perfettamente funzionante.",
 'Elettronica',
@@ -442,7 +442,7 @@ VALUES("Lavastoviglie incasso CANDY - FULL SIZE",
 218,
 105);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("KIT Elottrodomestici",
 "kit elettrodomestici modermi tavolo marmo bianco.",
 'Elettronica',
@@ -458,7 +458,7 @@ VALUES("KIT Elottrodomestici",
 111);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Vendo lavatrice asciugatrice",
 "Tra 6 mesi mi sposo, il mio futuro marito già ha questi elettrodomestici. I miei sono perfettamente funzionanti.",
 'Elettronica',
@@ -472,7 +472,7 @@ VALUES("Vendo lavatrice asciugatrice",
 220,
 105);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Vendo coppia lavatrice ed asciugatrice - anno 2022",
 "Vendo perché vorrei una lavatrice asciugatrice compatta due in uno.",
 'Elettronica',
@@ -487,7 +487,7 @@ VALUES("Vendo coppia lavatrice ed asciugatrice - anno 2022",
 221,
 102);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("DYSON gen5detect",
 "Regalato il nuovo modello a mia moglie per il suo compleanno, vendo il vecchio perfettamente funzionante.",
 'Elettronica',
@@ -502,7 +502,7 @@ VALUES("DYSON gen5detect",
 114);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("DYSON gen5detect con tutti gli accessori",
 "Nuovo, senza scatolo perché è stato danneggiato durante lo scarico. Accessori in omaggio.",
 'Elettronica',
@@ -519,7 +519,7 @@ VALUES("DYSON gen5detect con tutti gli accessori",
 
 -- Arte
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Vaso originale artista Galileo Chini",
 "Originale, alto 46cm.",
 'Arte',
@@ -533,7 +533,7 @@ VALUES("Vaso originale artista Galileo Chini",
 225,
 106);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Copia gigante del David",
 "Copia del David di Michelangelo, alto 310 cm.",
 'Arte',
@@ -549,7 +549,7 @@ VALUES("Copia gigante del David",
 105);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Statua infantile di metallo",
 "Rappresenta tre bambini, vuole trasmette quella che è la purezza del giocare da bambini. totalmente in accaio.",
 'Arte',
@@ -563,7 +563,7 @@ VALUES("Statua infantile di metallo",
 227,
 108);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Coppia di dipinti floreali",
 "Le cornici presentano dei piccoli difetti dovuti dal tempo.",
 'Arte',
@@ -578,7 +578,7 @@ VALUES("Coppia di dipinti floreali",
 228,
 108);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Copia dipinto",
 "Mi è stato regalato alla laurea da una persona che voglio dimenticare.",
 'Arte',
@@ -593,7 +593,7 @@ VALUES("Copia dipinto",
 109);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Copia dell'illustre Monnalisa",
 "Copia eseguita da me stessa per esercitarmi all'accademia delle belle arti.",
 'Arte',
@@ -609,7 +609,7 @@ VALUES("Copia dell'illustre Monnalisa",
 
 -- Immobili
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Lotto garage situato a Siracusa",
 "Dimensioni: 410cm x 620cm",
 'Immobili',
@@ -623,7 +623,7 @@ VALUES("Lotto garage situato a Siracusa",
 231,
 100);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Villetta in provincia di Firenze",
 "Vendo villa ereditata a San Giorgio a Firenze, giardino e garage inclusi nel prezzo.",
 'Immobili',
@@ -639,7 +639,7 @@ VALUES("Villetta in provincia di Firenze",
 101);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Appartamento da ristrutturare",
 "Situato a Gallivola, Pavia, è una casa disabitata da oltre 30 anni e senza mobili. Due piani.",
 'Immobili',
@@ -653,7 +653,7 @@ VALUES("Appartamento da ristrutturare",
 233,
 100);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Villa due piani con giardino e posto auto",
 "Villa situata nelle marche, molto grande ma molto lontana dal centro. Da ristrutturare.",
 'Immobili',
@@ -668,7 +668,7 @@ VALUES("Villa due piani con giardino e posto auto",
 234,
 104);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Appartamento nuovo Bergamo centro",
 "Appartamento nuovo del 2021, box auto incluso.",
 'Immobili',
@@ -683,7 +683,7 @@ VALUES("Appartamento nuovo Bergamo centro",
 104);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Monolocale Roma centro",
 "Affittato per tanti anni come casa studenti, non ho più le forze per starci dietro. Mobili inclusi, nessun restauro è richiesto.",
 'Immobili',
@@ -699,7 +699,7 @@ VALUES("Monolocale Roma centro",
 
 
 
-----NOTIFICHE----
+-- NOTIFICHE
 
 INSERT INTO auctionlinedb.notifiche(titolo, testo, IDutenteFK)
 VALUES ("Benvenuto su DietiDeals24!",
