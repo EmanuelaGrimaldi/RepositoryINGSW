@@ -86,18 +86,19 @@
 
 .under-header{
 	display: flex;
+	margin: 0 auto;
 	flex: 1 1 30%;
 	max-width: 100%; 
 	padding: 0 20px;
   	background-color: #9CB4E3;
   	font-family: Arial;
-  	 justify-content: center;
+  	justify-content: center;
 	}
 
 /* Links dentro-la-navbar */
 .homeButton {
   float: left;
-  font-size: 16px;
+  font-size: 20px;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -112,14 +113,15 @@
 
 /* ---BOTTONE DROPDOWN--- */
 .dropdown .dropbtn {
-  font-size: 16px;
+  font-size: 20px;
   border: none;
   outline: none;
   color: white;
   padding: 14px 16px;
+  text-align: center;
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+  margin: 0 auto; /* Important for vertical align on mobile phones */
 }
 
 /*Il-dropdown-diventa-blu-quando-ci-vado-sopra */

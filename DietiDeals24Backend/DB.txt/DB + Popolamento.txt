@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS asta
 
 	-- Per aste inglesi
 	Timer TIME,
+	TimerReset TIME,
 	SogliaRialzo float,
 
 	-- Per aste tempofisso
@@ -25,10 +26,8 @@ CREATE TABLE IF NOT EXISTS asta
 
 
 	-- PK e FK  
-	IDasta INT AUTO_INCREMENT NOT NULL,
-	ProprietarioFK int NOT NULL,
-    
-	PRIMARY KEY (IDasta)
+	IDasta INT PRIMARY KEY,
+	ProprietarioFK int NOT NULL
     
   );
 
@@ -70,6 +69,7 @@ CREATE TABLE IF NOT EXISTS notifiche
     	
 	IDnotifiche INT AUTO_INCREMENT NOT NULL,
     	IDutenteFK int NOT NULL,
+	IDAsta int NOT NULL,
 
 	PRIMARY KEY (IDnotifiche)
 );
@@ -137,7 +137,7 @@ VALUES("Giovanni","Russo","1988-08-08","Amo la mia famiglia","Palermo","TikTok",
 
 -- Antiquariato
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1,Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1,Timer, TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Set di sei sedie antiche francesi",
 "Vendo set di sedie senza schienale, originariamente francesi e di ottima manufattura.",
 'Antiquariato',
@@ -147,12 +147,12 @@ VALUES("Set di sei sedie antiche francesi",
  250,
  0,
  "https://laprimularossa.it/cdn/shop/files/set-di-sei-sedie-antiche-per-sala-da-pranzo-inglesi-in-stile-800-vittoriano-noce-44675421896971.jpg?v=1707716852",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 200,
 113);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto misto di oggetti in ceramica",
 "Lotto composto da pezzi singoli di diversa natura, in foto vi sono tutti i pezzi. Condizioni ottime, nuovi.",
 'Antiquariato',
@@ -163,12 +163,13 @@ VALUES("Lotto misto di oggetti in ceramica",
  0,
  "https://imageapi.cambiaste.com/api/lotto/immagine/106990.jpg",
 '20:00:00',
+'20:00:00',
  20,
 201,
 110);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Macchina da scrivere degli anni 30",
 "Era di mio nonno, in qualche modo funziona ancora. Fuori produzione da più di 50 anni.",
 'Antiquariato',
@@ -178,12 +179,12 @@ VALUES("Macchina da scrivere degli anni 30",
  250,
  0,
  "https://images.astepirone.it/@img/_large/bc02fc8ddd51885ab0c68e918276f9b59e364ae5.webp/-macchina-da-scrivere-royal-anni-30--asta-antiquariato-.webp",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 202,
 101);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Statua dea Bastet placcata in oro",
 "Di origine egiziana, ottime condizioni, leggera in quanto vuota, metallo totalmente placcato d'oro.",
 'Antiquariato',
@@ -193,13 +194,13 @@ VALUES("Statua dea Bastet placcata in oro",
  400,
  0,
  "https://target.scene7.com/is/image/Target/GUEST_f1c49829-b2ba-41a8-92ee-a07022600f22?wid=488&hei=488&fmt=pjpeg",
-'20:00:00',
+'20:00:00', '20:00:00',
  60,
 203,
 103);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Tavolo Comò anni 60",
 "Tavolo circondato da cassetti, alcuni anche segreti. Ristrutturato di recente, unico nel suo genere!",
 'Antiquariato',
@@ -209,11 +210,11 @@ VALUES("Tavolo Comò anni 60",
  320,
  0,
  "https://images.astepirone.it/@img/_large/bc02fc8ddd51885ab0c68e918276f9b59e364ae5.webp/-macchina-da-scrivere-royal-anni-30--asta-antiquariato-.webp",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 204,
 114);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Grammofono con dentino rotto",
 "Ha oltre 50 anni, essendo il dentino l'unico danno, se riparato diventa un grammofono perfettamente funzionante.",
 'Antiquariato',
@@ -223,7 +224,7 @@ VALUES("Grammofono con dentino rotto",
  60,
  0,
  "https://citynews-anconatoday.stgy.ovh/~media/original-hi/35843506432326/mercatino-antiquariato-2.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  25,
 205,
 106);
@@ -232,7 +233,7 @@ VALUES("Grammofono con dentino rotto",
 -- TabletTelefonia
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Apple iPad Air 13 (M2): display Liquid Retina, 256GB",
 "disponibile a 1099 euro nei nostri Apple store.",
 'TabletTelefonia',
@@ -242,11 +243,11 @@ VALUES("Apple iPad Air 13 (M2): display Liquid Retina, 256GB",
  520,
  0,
  "https://www.repstatic.it/content/contenthub/img/2024/05/14/091557768-07dae453-d5ed-4f4c-8090-21d907d7c8c2.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 206,
 112);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto di telefoni Nokia inizio anni 2000",
 "Alcuni funzionanti, altri non, altri ancora chiusi nel proprio imballaggio.",
 'TabletTelefonia',
@@ -256,13 +257,13 @@ VALUES("Lotto di telefoni Nokia inizio anni 2000",
  10,
  0,
  "https://assets.catawiki.com/image/cw_lot_card:cw_grav_ce:cw_dpr2/plain/assets/catawiki/assets/2021/2/1/2/f/6/2f63f4ea-26db-4194-b496-05103efba0da.jpg",
-'20:00:00',
+'20:00:00','20:00:00',
  10,
 207,
 111);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Telefono vecchio di 100 anni",
 "Ancora funzionante, è un vero pezzo da collezione!",
 'TabletTelefonia',
@@ -272,11 +273,11 @@ VALUES("Telefono vecchio di 100 anni",
  200,
  0,
  "https://notizie.tiscali.it/export/shared/agencies/media/17/02/18/20170218_093620_681EE72C.jpg_613881476.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 208,
 102);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Nokia 6150 NUOVO!!",
 "Scatolo, caricatore e cover tutto incluso. E' un pezzo più unico che raro.",
 'TabletTelefonia',
@@ -286,12 +287,12 @@ VALUES("Nokia 6150 NUOVO!!",
  100,
  0,
  "https://i.ebayimg.com/thumbs/images/g/5iMAAOSwJelkNZvt/s-l640.jpg",
-'20:00:00',
+'20:00:00', '20:00:00'
  30,
 209,
 107);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Lotto tre tablet PC modello TTAB510",
 "Nuovi. Cover inclusa. Vendo perché sono gli ultimi modelli che mi sono rimasti al negozio, valgono circa 350 euro l'uno.",
 'TabletTelefonia',
@@ -301,11 +302,11 @@ VALUES("Lotto tre tablet PC modello TTAB510",
  500,
  0,
  "https://www.picclickimg.com/grYAAOSws8Jl0MLT/3x-Archos-9-Windows-Tablet-Auction-starts-from.webp",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 210,
 111);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Tablets e MP3: Ipad, ASUS, SONY.",
 "Lotto composto da: tre tablet, un ipad, una tavoletta grafica e un MP3",
 'TabletTelefonia',
@@ -315,7 +316,7 @@ VALUES("Tablets e MP3: Ipad, ASUS, SONY.",
  500,
  0,
  "https://content.propertyroom.com/listings/sellers/seller1/images/origimgs/tablets-and-mp3-player-ipad-asus-sony-and-more-6-items-1_241020191950364302358.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  50,
 211,
 111);
@@ -324,7 +325,7 @@ VALUES("Tablets e MP3: Ipad, ASUS, SONY.",
 -- Giocattoli
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Robot giocattolo rarissimo giapponese",
 "Edizione limitata , luogo di produzione: Giappone.",
 'Giocattoli',
@@ -334,11 +335,11 @@ VALUES("Robot giocattolo rarissimo giapponese",
  120,
  0,
  "https://www.antiquesandthearts.com/wp-content/uploads/2023/06/LEAD-610-D.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 212,
 101);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Collezione completa di trattori DeAgostini, anno 2001",
 "Nuovi, ogni pezzo ha il proprio scatolo",
 'Giocattoli',
@@ -348,13 +349,13 @@ VALUES("Collezione completa di trattori DeAgostini, anno 2001",
  300,
  0,
  "https://carrollcountytourism.org/wp-content/uploads/2017/12/event_toytractor.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  20,
 213,
 103);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Coppia bambole da giardino",
 "Alte 110cm, le vendo perché di notte si spostano da sole.",
 'Giocattoli',
@@ -364,11 +365,11 @@ VALUES("Coppia bambole da giardino",
  5,
  0,
  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckHq457iTSRLvnSO0ddCixnEpZKlcHLfiHA&s",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 214,
 102);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto robottini",
 "Rivendo lotto di robottini trovati in un mercatino l'anno scorso in vacanza a Firenze.",
 'Giocattoli',
@@ -378,12 +379,12 @@ VALUES("Lotto robottini",
  180,
  0,
  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTctid7WH4LLGxQgyYP_SWdH_CSv-PgXcopmw&s",
-'20:00:00',
+'20:00:00','20:00:00',
  30,
 215,
 107);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Collezione Hot Wheels",
 "Quasi completa, mancano tre macchinine. Confezione inclusa",
 'Giocattoli',
@@ -393,11 +394,11 @@ VALUES("Collezione Hot Wheels",
  500,
  0,
  "https://centralmassauctions.com/wp-content/uploads/2019/10/hot-wheels-collection-toy-auctions.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 216,
 114);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Lotto di bambole in porcellata",
 "Alcune hanno dei pezzetti mancanti tipo scarpa o accessori, ma solo bellissime.",
 'Giocattoli',
@@ -407,12 +408,12 @@ VALUES("Lotto di bambole in porcellata",
  120,
  0,
  "https://image.invaluable.com/housePhotos/keystoneauction/93/767393/H4200-L366632272.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  20,
 217,
 107);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Cucina giocattolo per i vostri piccoli chef",
 "come nuova, completa di tutti i pezzi in foto, i miei figli non ci giocano più.",
 'Giocattoli',
@@ -422,7 +423,7 @@ VALUES("Cucina giocattolo per i vostri piccoli chef",
  80,
  0,
  "https://m.media-amazon.com/images/I/71yZ5d88keL.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  10,
 222,
 107);
@@ -431,7 +432,7 @@ VALUES("Cucina giocattolo per i vostri piccoli chef",
 -- Elettronica
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Lavastoviglie incasso CANDY - FULL SIZE",
 "Presenta dei graffi sul lato, colpa del trasporto. Perfettamente funzionante.",
 'Elettronica',
@@ -441,11 +442,11 @@ VALUES("Lavastoviglie incasso CANDY - FULL SIZE",
  120,
  0,
  "https://immagini.qualescegliere.it/articoli/2022/11/lavastoviglie-da-incasso-1024x724.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 218,
 105);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("KIT Elottrodomestici",
 "kit elettrodomestici modermi tavolo marmo bianco.",
 'Elettronica',
@@ -455,13 +456,13 @@ VALUES("KIT Elottrodomestici",
  200,
  0,
  "https://st4.depositphotos.com/16122460/20179/i/450/depositphotos_201798564-stock-photo-household-kitchen-appliances-table-brick.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  50,
 219,
 111);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Vendo lavatrice asciugatrice",
 "Tra 6 mesi mi sposo, il mio futuro marito già ha questi elettrodomestici. I miei sono perfettamente funzionanti.",
 'Elettronica',
@@ -471,11 +472,11 @@ VALUES("Vendo lavatrice asciugatrice",
  800,
  0,
  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckHq457iTSRLvnSO0ddCixnEpZKlcHLfiHA&s",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 220,
 105);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Vendo coppia lavatrice ed asciugatrice - anno 2022",
 "Vendo perché vorrei una lavatrice asciugatrice compatta due in uno.",
 'Elettronica',
@@ -485,12 +486,12 @@ VALUES("Vendo coppia lavatrice ed asciugatrice - anno 2022",
  620,
  0,
  "https://www.miele.ch/media/misc_ch/media/assets_673_x/press/201910917-2_673x378.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  40,
 221,
 102);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("DYSON gen5detect",
 "Regalato il nuovo modello a mia moglie per il suo compleanno, vendo il vecchio perfettamente funzionante.",
 'Elettronica',
@@ -500,12 +501,12 @@ VALUES("DYSON gen5detect",
  400,
  0,
  "https://media.cnn.com/api/v1/images/stellar/prod/dyson-gen5detect-lead-cnnu.jpg?c=16x9",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 223,
 114);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("DYSON gen5detect con tutti gli accessori",
 "Nuovo, senza scatolo perché è stato danneggiato durante lo scarico. Accessori in omaggio.",
 'Elettronica',
@@ -515,14 +516,14 @@ VALUES("DYSON gen5detect con tutti gli accessori",
  460,
  0,
  "https://i0.shbdn.com/photos/15/71/32/x5_1148157132la6.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 224,
 111);
 
 
 -- Arte
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Vaso originale artista Galileo Chini",
 "Originale, alto 46cm.",
 'Arte',
@@ -532,11 +533,11 @@ VALUES("Vaso originale artista Galileo Chini",
  1200,
  0,
  "https://gregorysaste.it/wp-content/uploads/2020/07/Galielo-Chini-Grande-vaso.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 225,
 106);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Copia gigante del David",
 "Copia del David di Michelangelo, alto 310 cm.",
 'Arte',
@@ -546,13 +547,13 @@ VALUES("Copia gigante del David",
  2000,
  0,
  "https://cdn.britannica.com/77/196577-050-1101EEBD/Michelangelos-David-Goliath-one-statues-world.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  200,
 226,
 105);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Statua infantile di metallo",
 "Rappresenta tre bambini, vuole trasmette quella che è la purezza del giocare da bambini. totalmente in accaio.",
 'Arte',
@@ -562,11 +563,11 @@ VALUES("Statua infantile di metallo",
  1800,
  0,
  "https://5.imimg.com/data5/NS/DL/IA/SELLER-90032959/abstract-statue-art-500x500.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 227,
 108);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Coppia di dipinti orientali floreali",
 "Le cornici presentano dei piccoli difetti dovuti dal tempo.",
 'Arte',
@@ -576,12 +577,12 @@ VALUES("Coppia di dipinti orientali floreali",
  620,
  0,
  "https://gregorysaste.it/wp-content/uploads/2020/04/arte-oriental.jpg",
-'20:00:00',
+'20:00:00', '20:00:00',
  40,
 228,
 108);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Copia dipinto",
 "Mi è stato regalato alla laurea da una persona che voglio dimenticare.",
 'Arte',
@@ -591,12 +592,12 @@ VALUES("Copia dipinto",
  100,
  0,
  "https://strapiassets.blob.core.windows.net/upload/assets/3f534478_61a9_468b_9d97_afaa00d7dd65_ae0d6d83ff.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 229,
 109);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Copia dell'illustre Monnalisa",
 "Copia eseguita da me stessa per esercitarmi all'accademia delle belle arti.",
 'Arte',
@@ -606,13 +607,13 @@ VALUES("Copia dell'illustre Monnalisa",
  160,
  0,
  "https://www.ilquadrodellasituazione.com/images/paragrafi/par_1392993162.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 230,
 109);
 
 -- Immobili
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Lotto garage situato a Siracusa",
 "Dimensioni: 410cm x 620cm",
 'Immobili',
@@ -622,11 +623,11 @@ VALUES("Lotto garage situato a Siracusa",
  30000,
  0,
  "https://gregorysaste.it/wp-content/uploads/2020/07/Galielo-Chini-Grande-vaso.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 231,
 100);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Villetta in provincia di Firenze",
 "Vendo villa ereditata a San Giorgio a Firenze, giardino e garage inclusi nel prezzo.",
 'Immobili',
@@ -636,13 +637,13 @@ VALUES("Villetta in provincia di Firenze",
  110000,
  0,
  "https://pwm.im-cdn.it/image/1519649795/xxs-c.jpg",
-'20:00:00',
+'20:00:00','20:00:00',
  1000,
 232,
 101);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Appartamento da ristrutturare",
 "Situato a Gallivola, Pavia, è una casa disabitata da oltre 30 anni e senza mobili. Due piani.",
 'Immobili',
@@ -652,11 +653,11 @@ VALUES("Appartamento da ristrutturare",
  60000,
  0,
  "https://img3.idealista.it/blur/WEB_LISTING-M/0/id.pro.it.image.master/ef/b5/b1/541434746.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 233,
 100);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, IDasta, ProprietarioFK)  
 VALUES("Villa due piani con giardino e posto auto",
 "Villa situata nelle marche, molto grande ma molto lontana dal centro. Da ristrutturare.",
 'Immobili',
@@ -666,12 +667,12 @@ VALUES("Villa due piani con giardino e posto auto",
  62000,
  0,
  "https://www.marche-estates.com/imgp.php?src=pic_cat6_poggio-1.jpg&width=915&height=574&crop-to-fit&q=50",
-'20:00:00',
+'20:00:00', '20:00:00',
  1500,
 234,
 104);
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Appartamento nuovo Bergamo centro",
 "Appartamento nuovo del 2021, box auto incluso.",
 'Immobili',
@@ -681,12 +682,12 @@ VALUES("Appartamento nuovo Bergamo centro",
  180000,
  0,
  "https://img3.idealista.it/blur/WEB_LISTING-M/0/id.pro.it.image.master/17/28/a9/610286243.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 235,
 104);
 
 
-INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
+INSERT INTO auctionlinedb.asta (Titolo, Descrizione, Categoria, Tipologia, DataInizio, OffertaIniziale, OffertaPiuAlta, IDOffertaPiuAlta, FotoAsta1, Timer,TimerReset, SogliaRialzo, DataFine, IDasta, ProprietarioFK)  
 VALUES("Monolocale Roma centro",
 "Affittato per tanti anni come casa studenti, non ho più le forze per starci dietro. Mobili inclusi, nessun restauro è richiesto.",
 'Immobili',
@@ -696,6 +697,15 @@ VALUES("Monolocale Roma centro",
  150000,
  0,
  "https://www.gaiamiacola.it/wp-content/uploads/2020/10/arredare-un-monolocale-19.jpg",
-0,0,"2024-7-27 00:00:00",
+0,0,0,"2024-7-27 00:00:00",
 236,
 104);
+
+
+
+----NOTIFICHE----
+
+INSERT INTO auctionlinedb.notifiche(titolo, testo, IDutenteFK)
+VALUES ("Benvenuto su DietiDeals24!",
+	"Benvenuto nella nostra piattaforma, qui ogni bene troverà una nuova casa.",
+	101)

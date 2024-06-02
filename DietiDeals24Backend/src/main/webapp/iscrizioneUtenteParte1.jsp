@@ -30,9 +30,7 @@
 </div>	
 <div class ="bluePadding"></div>
 	<div class="under-header">
-		<div class="homeButton">
-			<a href="index.jsp">Home</a>
-		</div>
+		<a href="index.jsp" class="homeButton">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				Tipi di Asta <i class="fa fa-caret-down"></i>

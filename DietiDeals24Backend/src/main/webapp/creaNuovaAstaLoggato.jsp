@@ -61,12 +61,10 @@
 			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
 </div>	
-<div class ="bluePadding"></div>	
+<div class ="bluePadding"></div>
 <div class="under-header">
-  	<div class="homeButton">
-			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
-			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 
-  	</div> 		
+			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>" class="homeButton">Home</a>
+			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 	
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
@@ -131,7 +129,7 @@
 
 <h1>Per favore inserisci qui i dati richiesti</h1>
 	
-	<form name="nuovaAstaForm" method="get" action="AddNuovaAstaServlet">
+	<form name="nuovaAstaForm" method="post" action="AddNuovaAstaServlet">
 	
 <!-- IF ASTA INGLESE-->		
 		<c:if test = "${tipologia == 'astaInglese'}">	
@@ -189,11 +187,12 @@
 				<c:if test = "${tipologia == 'astaInglese'}">		
 					<div>
 						<h4>Timer:</h4>
-						<input type="datetime" name="timer" class="inputTimer">
+						<div class="scrittaPiccola">Il timer va a ore</div>
+						<input type="time" name="timer" placeholder="Esempio 12:00:00" class="inputTimer">
 					</div>
 					<div>
 						<h4>Soglia di rialzo:</h4>
-						<input type="number" name="sogliaRialzo" required class="inputStretto">
+						<input type="number" name="sogliaRialzo" required min="1" class="inputStretto">
 					</div>
 				</c:if>
 				
@@ -219,7 +218,7 @@
 					<i class="fa-solid fa-file-circle-plus addImmagineProfilo"></i>
 					<input type="hidden" name="inputfoto" value="inserisci-foto-da-rivedere"> 
 				</div>
-				
+				<br>
 				<div>
 					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
 					<input type="hidden" name="tipologia" value="<%= tipoAsta %>"/>

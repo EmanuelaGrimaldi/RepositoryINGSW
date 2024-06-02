@@ -70,10 +70,8 @@
 </div>	
 <div class ="bluePadding"></div>	
 <div class="under-header">
-  	<div class="homeButton">
-			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">Home</a>
-			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 
-  	</div> 		
+			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>" class="homeButton">Home</a>
+			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>  		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
@@ -143,7 +141,7 @@
 		</a>
 		
 		
-<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="footer">
 	<p> DietiDeals24 &#169;</p>
 </div>

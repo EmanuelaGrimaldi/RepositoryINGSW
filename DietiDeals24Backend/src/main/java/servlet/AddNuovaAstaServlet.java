@@ -21,7 +21,7 @@ import implementazione.AstaRepositoryImpl;
 public class AddNuovaAstaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	static int IDCountAsta = 260;
+	int IDCountAsta = 260;
 	Date dataFine;
 	Time timer;
 	Asta a = new Asta();
@@ -30,14 +30,14 @@ public class AddNuovaAstaServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int idUtenteINT = Integer.valueOf(request.getParameter("idUtente"));
 		String tipologiaAsta = (request.getParameter("tipologia"));
 		LocalDate date = LocalDate.now();
 		LocalTime time;
-		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm:ss");	////// la string in jsp deve avere questa fomrattazione
-		DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm");	////// la string in jsp deve avere questa fomrattazione
+		//DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			
 		a.setTitolo(request.getParameter("titoloAsta"));
 		a.setDescrizione(request.getParameter("descrizione"));
@@ -75,24 +75,32 @@ public class AddNuovaAstaServlet extends HttpServlet {
 			a.setTipologia("astaTempoFisso");
 			
 		}
+		
+		int nuovoIDtrovato = 0;
+		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
 
-		a.setID(IDCountAsta);
+		do {
+			if(aRepo.findbyID(IDCountAsta) == null) {
+				a.setID(IDCountAsta);
+				nuovoIDtrovato++;
+			}
 		IDCountAsta++;
+		} while(nuovoIDtrovato == 0);
+		
 		
 		a.setProprietario_FK(idUtenteINT);
 		
-		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
 		aRepo.save(a);
 		
-		request.getRequestDispatcher("profiloUtenteLoggato.jsp?idUtente=" + idUtenteINT).forward(request, response);
+		request.getRequestDispatcher("indexLoggato.jsp?idUtente=" + idUtenteINT).forward(request, response);
 		
 	}
 	
 	
 	
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 }
