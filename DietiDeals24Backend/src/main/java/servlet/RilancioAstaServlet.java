@@ -70,6 +70,7 @@ public class RilancioAstaServlet extends HttpServlet {
 		notificaVenditore.setTesto("L'utente: " + utenteVenditore.getNome() + " " + utenteVenditore.getCognome() + " ha effettuato un nuovo rilancio per l'asta " 
 							+ a.getTitolo() + " facendo cosi salire il prezzo dell'asta a " + somma + "euro!");
 		notificaVenditore.setIDUtenteFK(a.getProprietario_FK());
+		notificaVenditore.setIDAsta(idAstaINT);
 		nRepo.save(notificaVenditore);
 		
 		
@@ -82,11 +83,12 @@ public class RilancioAstaServlet extends HttpServlet {
 		aRepo.update(a);
 		
 		PartecipazioneUtenteAsta pua = new PartecipazioneUtenteAsta();
+		PartecipazioneUtenteAstaRepository puaRepo = PartecipazioneUtenteAstaRepositoryImpl.getInstance();
+		
 		pua.setIDAsta(idAstaINT);
 		pua.setIDUtente(idUtenteCompratore);
-		PartecipazioneUtenteAstaRepository puaRepo = PartecipazioneUtenteAstaRepositoryImpl.getInstance();
 		puaRepo.save(pua);
-		
+
 		request.getRequestDispatcher("elencoNotificheLoggato.jsp?idUtente=" + idUtenteCompratore).forward(request, response);
 	}
 

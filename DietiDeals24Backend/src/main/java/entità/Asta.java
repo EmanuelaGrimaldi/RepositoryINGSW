@@ -39,25 +39,16 @@ public class Asta {
 	private int IDOffertaPiuAlta;
 	
 	@Column(name = "fotoasta1", nullable = true, length = 500)
-	private String fotoAsta1;
-	
-	@Column(name = "fotoasta2", nullable = true, length = 500)
-	private String fotoAsta2;
-	
-	@Column(name = "fotoasta3", nullable = true, length = 500)
-	private String fotoAsta3;
-	
-	@Column(name = "fotoasta4", nullable = true, length = 500)
-	private String fotoAsta4;
-	
-	@Column(name = "fotoasta5", nullable = true, length = 500)
-	private String fotoAsta5;
+	private String fotoAsta;
 	
 	
 	//Per_aste_inglesi
 	
 	@Column(name = "timer", nullable = true)
 	private LocalTime timer;
+	
+	@Column(name = "timerreset", nullable = true)
+	private LocalTime timerReset;
 	
 	@Column(name = "sogliarialzo", nullable = true)
 	private float sogliaRialzo;
@@ -145,52 +136,28 @@ public class Asta {
 		IDOffertaPiuAlta = iDOffertaPiuAlta;
 	}
 
-	public String getFotoAsta1() {
-		return fotoAsta1;
+	public String getFotoAsta() {
+		return fotoAsta;
 	}
 
-	public void setFotoAsta1(String fotoAsta1) {
-		this.fotoAsta1 = fotoAsta1;
-	}
-
-	public String getFotoAsta2() {
-		return fotoAsta2;
-	}
-
-	public void setFotoAsta2(String fotoAsta2) {
-		this.fotoAsta2 = fotoAsta2;
-	}
-
-	public String getFotoAsta3() {
-		return fotoAsta3;
-	}
-
-	public void setFotoAsta3(String fotoAsta3) {
-		this.fotoAsta3 = fotoAsta3;
-	}
-
-	public String getFotoAsta4() {
-		return fotoAsta4;
-	}
-
-	public void setFotoAsta4(String fotoAsta4) {
-		this.fotoAsta4 = fotoAsta4;
-	}
-
-	public String getFotoAsta5() {
-		return fotoAsta5;
-	}
-
-	public void setFotoAsta5(String fotoAsta5) {
-		this.fotoAsta5 = fotoAsta5;
+	public void setFotoAsta(String fotoAsta) {
+		this.fotoAsta = fotoAsta;
 	}
 
 	public String getTimer() {
 		return timer.toString();
 	}
 
-	public void setTimer(LocalTime time) {
-		this.timer = time;
+	public void setTimer(LocalTime timer) {
+		this.timer = timer;
+	}
+	
+	public String getTimerReset() {
+		return timerReset.toString();
+	}
+
+	public void setTimerReset(LocalTime timerReset) {
+		this.timer = timerReset;
 	}
 
 	public float getSogliaRialzo() {
@@ -229,11 +196,12 @@ public class Asta {
 	public String toString() {
 		return "Asta [titolo=" + titolo + ", descrizione=" + descrizione + ", categoria=" + categoria + ", tipologia="
 				+ tipologia + ", dataInizio=" + dataInizio + ", offertaIniziale=" + offertaIniziale
-				+ ", offertaPiuAlta=" + offertaPiuAlta + ", IDOffertaPiuAlta=" + IDOffertaPiuAlta + ", fotoAsta1="
-				+ fotoAsta1 + ", fotoAsta2=" + fotoAsta2 + ", fotoAsta3=" + fotoAsta3 + ", fotoAsta4=" + fotoAsta4
-				+ ", fotoAsta5=" + fotoAsta5 + ", timer=" + timer + ", sogliaRialzo=" + sogliaRialzo + ", dataFine="
-				+ dataFine + ", ID=" + ID + ", proprietario_FK=" + proprietario_FK + "]";
-	}  
+				+ ", offertaPiuAlta=" + offertaPiuAlta + ", IDOffertaPiuAlta=" + IDOffertaPiuAlta + ", fotoAsta="
+				+ fotoAsta + ", timer=" + timer + ", timerReset=" + timerReset + ", sogliaRialzo=" + sogliaRialzo
+				+ ", dataFine=" + dataFine + ", ID=" + ID + ", proprietario_FK=" + proprietario_FK + "]";
+	}
+
+  
 
 	
 	

@@ -47,7 +47,7 @@ public class AddNuovaAstaServlet extends HttpServlet {
 		a.setOffertaIniziale(Integer.valueOf(request.getParameter("baseAsta")));
 		a.setOffertaPiuAlta(Integer.valueOf(request.getParameter("baseAsta")));
 		a.setIDOffertaPiuAlta(0);
-		a.setFotoAsta1("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6as2TZiSKC0WS-bzq9ulMIVXNO6xankJYHA&s"); 
+		a.setFotoAsta("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6as2TZiSKC0WS-bzq9ulMIVXNO6xankJYHA&s"); 
 		
 		
 		

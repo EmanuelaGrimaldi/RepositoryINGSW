@@ -26,6 +26,9 @@ public class Notifiche
 	@Column(name = "IDUtenteFK", nullable = false)
 	private int IDUtenteFK;
 	
+	@Column(name = "IDAsta", nullable = false)
+	private int IDAsta;
+	
 
 	public String getTitolo() {
 		return titolo;
@@ -43,14 +46,6 @@ public class Notifiche
 		this.testo = testo;
 	}
 
-	public int getID_notifiche() {
-		return IDnotifiche;
-	}
-
-	public void setID_notifiche(int iDnotifiche) {
-		IDnotifiche = iDnotifiche;
-	}
-
 	public int getIDUtenteFK() {
 		return IDUtenteFK;
 	}
@@ -58,11 +53,23 @@ public class Notifiche
 	public void setIDUtenteFK(int iDUtenteFK) {
 		IDUtenteFK = iDUtenteFK;
 	}
-	
-	@Override
-	public String toString() {
-		return "Notifiche [titolo=" + titolo + ", testo=" + testo + ", IDnotifiche=" + IDnotifiche + ", IDUtenteFK="
-				+ IDUtenteFK + "]";
+
+	public int getIDnotifiche() {
+		return IDnotifiche;
 	}
+
+	public void setIDnotifiche(int iDnotifiche) {
+		IDnotifiche = iDnotifiche;
+	}
+
+	public int getIDAsta() {
+		return IDAsta;
+	}
+
+	public void setIDAsta(int iDAsta) {
+		IDAsta = iDAsta;
+	}
+	
+
 	
 }
