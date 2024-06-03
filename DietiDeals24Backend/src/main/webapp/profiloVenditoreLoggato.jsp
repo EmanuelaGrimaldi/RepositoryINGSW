@@ -150,11 +150,12 @@
 	
 		<div class="flex-diviso2 cell">
 			<div>
+				<h1>
     			<a href="ProfiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     			<input type="hidden" name="idAsta" value="${i.ID}"/>
     				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     				<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
-   	 			</a>
+   	 			</a></h1>
    	 		</div>	 	
     		<div>
 				<div class="testoAsta">		
@@ -188,11 +189,12 @@
    	 		</div>	
     		<div>
 				<div class="testoAsta">		
+						<h1>
 						<a href="profiloAstaLoggato.jsp?idAsta=${i.ID}&idUtente=<%= utente.getID_Utente()%>">
     						<input type="hidden" name="idAsta" value="${i.ID}"/>
     						<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
     						<c:out value = "${i.titolo}"/>
-    					</a>
+    					</a></h1>
 					<p><c:out value = "${i.descrizione}"/></p>
 					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
 					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>

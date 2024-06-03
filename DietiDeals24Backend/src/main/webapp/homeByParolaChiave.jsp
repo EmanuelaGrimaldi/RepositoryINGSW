@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "implementazione.AstaRepositoryImpl, java.util.List, entità.Asta"%>
+<%@page import = "implementazione.AstaRepositoryImpl, java.util.List, java.util.ArrayList, entità.Asta"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<title>Aste a tempo fisso: DietiDeals24</title>
+<title>Home: DietiDeals24</title>
 </head>
 <body>
 
@@ -33,9 +33,9 @@
 			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
 </div>	
-<div class ="bluePadding"></div>		
+<div class ="bluePadding"></div>	
 <div class="under-header">
-  		<a href="index.jsp" class="homeButton">Home</a> 		
+  		<a href="index.jsp" class="homeButton">Home</a>  		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
@@ -103,18 +103,26 @@
  	 	</form>
 	</div>
 	
-	<%
-    String stringTipologia = request.getParameter("tipologia");
-	List<Asta> listaAste;
-	listaAste = AstaRepositoryImpl.getInstance().findByTipologia(stringTipologia);	
-	System.out.println(listaAste.toString());
+	<%	
+    //per prendere ID dall'url
+    String parolaChiaveString = request.getParameter("parolaChiave");
+	System.out.println("la parola chiave è:" + parolaChiaveString);
+	List<Asta> listaAste= new ArrayList<Asta>(), listaCorretta= new ArrayList<Asta>();
+	listaAste = AstaRepositoryImpl.getInstance().findAll();		
+	
+	for (Asta a : listaAste){
+		if(a.getTitolo().toLowerCase().contains(parolaChiaveString.toLowerCase())){
+			listaCorretta.add(a);
+		}
+	}
 	%>
 
-	<c:set var="tipoAsta" value="<%=stringTipologia%>" />
+	<!--INIZIO BODY ASTE-->	
 	
-	<c:if test= "${tipoAsta == 'astaInglese'}">
 	
-		<c:forEach var = "i" items="<%= listaAste %>">
+	<c:forEach var = "i" items="<%=listaCorretta%>">
+	
+	<c:if test= "${i.tipologia == 'astaInglese'}">
 	
 			<div class="flex-diviso2 cell">
 				<div>
@@ -130,7 +138,7 @@
     						<c:out value = "${i.titolo}"/>
     					</a></h1>
 						<p><c:out value = "${i.descrizione}"/></p>
-						<h5>Scadrà tra: <c:out value = "${i.timer}"/> ore!</h5>
+						<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
 						<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/>0€</h5>
 						<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/>0€</h5>
 						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
@@ -138,12 +146,9 @@
    					</div>
   				</div> 	
   			</div>
-  		</c:forEach>
 	</c:if>
 	
-	<c:if test= "${tipoAsta == 'astaTempoFisso'}">
-	
-		<c:forEach var = "i" items="<%= listaAste %>">
+	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
 	
 			<div class="flex-diviso2 cell">
 				<div>
@@ -165,15 +170,19 @@
    					</div>
   				</div> 		
   			</div>
-  		</c:forEach>
 	</c:if>
 	
- 
+</c:forEach>
+	
+
+	
+   
 <!--Footer:-->
 
 <div class="footer">
 	<p> DietiDeals24 &#169;</p>
 </div>
+
 <script src="scriptRicerca.js"></script>
 </body>
 </html>

@@ -185,5 +185,116 @@
 .lenteRicerca{
 	color:white;
   	overflow: hidden;
-  	font-size: 25px;
+  	padding: auto;
+  	width:50px;
+}
+
+.lenteRicerca:hover{
+	background-color:#1A1170;
+}
+
+.lenteRicercaSymbol{
+	display: block;
+	margin: 15px;
+	font-size: 20px;
+}
+
+
+
+/*Per ricerca tramite parola chiave*/
+/*Per_Pop-up_errore*/
+.modalRicerca{
+	display:none;
+}
+
+.modal-content-Ricerca {
+  margin: auto;
+  position: absolute;
+  top: 200px;
+  left: 35%;
+  width: 30%;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  border:3px solid  #1A1170;
+}
+
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:10}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header-Ricerca {
+  padding: 2px 16px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  background-color: #9CB4E3;
+  font-family:Gotham
+}
+
+.modal-body-Ricerca {
+	padding: 2px 16px;
+	background-color: #9CB4E3;
+	color: white;
+  	text-align: center;
+ 	font-size: 22px;
+ 	font-family:Gotham;
+	}
+
+.modal-footer-Ricerca {
+    background-color: #9CB4E3;
+  	color: white;
+  	font-family:Gotham;
+  	height: 30px;
+  	float: center;
+}
+
+.inputTestoRicercaParolaChiave{
+	width:60%;
+	height:22px;
+	
+}
+
+.ricercaParolaChiaveButton{
+	float: center;
+  	font-size: 20px;
+  	color: white;
+  	text-align: center;
+  	padding: 0 10px;
+  	text-decoration: none;
+  	background-color: #1A1170;
+  	margin:0 42%;
+	
+}
+
+.titoloRicercaParolaChiave{
+	padding: 20px 0 0 0;
 }

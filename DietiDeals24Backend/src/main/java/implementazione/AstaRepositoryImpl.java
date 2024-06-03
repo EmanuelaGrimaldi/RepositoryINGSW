@@ -202,7 +202,4 @@ public class AstaRepositoryImpl extends JPARepositoryImpl<Asta, Integer> impleme
 	return lista;
     }
 
-
-
-
 }

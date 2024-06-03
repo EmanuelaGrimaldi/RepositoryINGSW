@@ -201,9 +201,9 @@
 					</h1>
 					<p><c:out value = "${i.descrizione}"/></p>
 					<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> €</h5>
-					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> €</h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+					<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/>0€</h5>
+					<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/>0€</h5>
+					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
 					<h2><c:out value = "Asta all'inglese"/></h2>		     
    				</div>
   			</div> 	
@@ -229,7 +229,7 @@
     					</h1>
 					<p><c:out value = "${i.descrizione}"/></p>
 					<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> €</h5>
+					<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
 					<h2><c:out value = "Asta a tempo fisso"/></h2>		     
    				</div>
   			</div> 		

@@ -385,3 +385,5 @@ h1{
   	cursor: pointer;
   	text-decoration: underline;
 }
+
+p{text-align:left;}

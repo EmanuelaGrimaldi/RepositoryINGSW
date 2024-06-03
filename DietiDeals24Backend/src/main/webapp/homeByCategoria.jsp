@@ -76,9 +76,32 @@
     				Antiquariato</a>
     	</div>
   </div>
+      		<div class="lenteRicerca">
+    			<i class="fa-solid fa-magnifying-glass lenteRicercaSymbol" id="lenteRicercaButton"></i>
+    		</div>
 </div>
 
 <!-- FINE HEADER -->
+		
+	<div id="myModalRicerca" class="modalRicerca">
+  		<form name="RicercaByParolaChiaveForm" method="get" action="RicercaByParolaChiaveServlet">
+  			<div class="modal-content-Ricerca">
+   	 			<div class="modal-header-Ricerca">
+   	   				<span class="close">&times;</span>
+   	   				<div class="titoloRicercaParolaChiave">Inserisci qui la tua parola chiave</div>
+  	  			</div>
+ 	   			<div class="modal-body-Ricerca">
+ 	   				<br>
+ 	     			<input type="text" name="inputParolaChiave" class="inputTestoRicercaParolaChiave" required>
+ 	     			<br><br>
+ 	   			</div>
+  	  			<div class="modal-footer-Ricerca">
+  	  				<input type="submit" value="Cerca" class="ricercaParolaChiaveButton"/>
+  	    			<br>
+  	  			</div>
+ 	 		</div>
+ 	 	</form>
+	</div>
 	
 	<%	
     //per prendere ID dall'url
@@ -110,9 +133,9 @@
     					</a></h1>
 						<p><c:out value = "${i.descrizione}"/></p>
 						<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
-						<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/> 0€</h5>
-						<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/> 0€</h5>
-						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> 0€</h5>
+						<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/>0€</h5>
+						<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/>0€</h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
 						<h2><c:out value = "Asta all'inglese"/></h2>		     
    					</div>
   				</div> 	
@@ -136,7 +159,7 @@
     					</a></h1>
 						<p><c:out value = "${i.descrizione}"/></p>
 						<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
-						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/> 0€</h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
 						<h2><c:out value = "Asta a tempo fisso"/></h2>		     
    					</div>
   				</div> 		
@@ -154,6 +177,6 @@
 	<p> DietiDeals24 &#169;</p>
 </div>
 
-
+<script src="scriptRicerca.js"></script>
 </body>
 </html>
