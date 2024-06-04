@@ -16,7 +16,13 @@ public class RicercaByParolaChiaveServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parolaChiave = request.getParameter("inputParolaChiave");
-		request.getRequestDispatcher("homeByParolaChiave.jsp?parolaChiave="+parolaChiave).forward(request, response);
+		String StringIDUtente = request.getParameter("idUtente");
+		
+		if(StringIDUtente != null) {
+			request.getRequestDispatcher("homeByParolaChiaveLoggato.jsp?parolaChiave="+parolaChiave+"&&idUtente="+StringIDUtente).forward(request, response);
+		}else {
+			request.getRequestDispatcher("homeByParolaChiave.jsp?parolaChiave="+parolaChiave).forward(request, response);
+		}
 	}
 
 	

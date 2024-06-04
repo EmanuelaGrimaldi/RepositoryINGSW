@@ -117,9 +117,33 @@
     				Antiquariato</a>
     	</div>
   </div>
+        	<div class="lenteRicerca">
+    			<i class="fa-solid fa-magnifying-glass lenteRicercaSymbol" id="lenteRicercaButton"></i>
+    		</div>
 </div>
 
 <!-- FINE HEADER LOGGATO-->
+		
+	<div id="myModalRicerca" class="modalRicerca">
+  		<form name="RicercaByParolaChiaveForm" method="get" action="RicercaByParolaChiaveServlet">
+  			<div class="modal-content-Ricerca">
+   	 			<div class="modal-header-Ricerca">
+   	   				<span class="close">&times;</span>
+   	   				<div class="titoloRicercaParolaChiave">Inserisci qui la tua parola chiave</div>
+  	  			</div>
+ 	   			<div class="modal-body-Ricerca">
+ 	   				<br>
+ 	     			<input type="text" name="inputParolaChiave" class="inputTestoRicercaParolaChiave" required>
+ 	     			<br><br>
+ 	   			</div>
+  	  			<div class="modal-footer-Ricerca">
+  	  				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
+  	  				<input type="submit" value="Cerca" class="ricercaParolaChiaveButton"/>
+  	    			<br>
+  	  			</div>
+ 	 		</div>
+ 	 	</form>
+	</div>
 
 	<!--INIZIO BODY ASTE-->	
 	
@@ -194,7 +218,6 @@
 <div class="footer">
 	<p> DietiDeals24 &#169;</p>
 </div>
-
-
+<script src="scriptRicerca.js"></script>
 </body>
 </html>

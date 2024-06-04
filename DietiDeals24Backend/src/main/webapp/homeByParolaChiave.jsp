@@ -106,7 +106,6 @@
 	<%	
     //per prendere ID dall'url
     String parolaChiaveString = request.getParameter("parolaChiave");
-	System.out.println("la parola chiave è:" + parolaChiaveString);
 	List<Asta> listaAste= new ArrayList<Asta>(), listaCorretta= new ArrayList<Asta>();
 	listaAste = AstaRepositoryImpl.getInstance().findAll();		
 	

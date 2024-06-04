@@ -3,29 +3,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import = "implementazione.AstaRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, entità.Asta, entità.Utente"%>
+<%@page import = "implementazione.AstaRepositoryImpl, implementazione.UtenteRepositoryImpl, java.util.List, java.util.ArrayList, entità.Asta, entità.Utente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/headerAndFooter.css">
-<link rel="stylesheet" type="text/css" href="css/nuovaAstaStyle.css">
+<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<title>DietiDeals24</title>
+
+<title>Home: DietiDeals24</title>
 </head>
 <body>
+
 <!--INIZIO HEADER LOGGATO-->
 
 	<%	
     //per prendere ID dall'url
-     String stringVenditoreID = request.getParameter("idUtente");
+    String stringVenditoreID = request.getParameter("idUtente");
 	int intVenditoreID = Integer.valueOf(stringVenditoreID);
  	Utente utente = UtenteRepositoryImpl.getInstance().findbyID(intVenditoreID);
- 	String tipoAsta = request.getParameter("tipologia");
  	%>
- 	
- 	
+ 	<%	
+    //per prendere ID dall'url
+    String parolaChiaveString = request.getParameter("parolaChiave");
+	List<Asta> listaAste= new ArrayList<Asta>(), listaCorretta= new ArrayList<Asta>();
+	listaAste = AstaRepositoryImpl.getInstance().findAll();	
+	%>
+	
 	<div class ="bluePadding"></div>
         <div class="over_header">
 			<div class="loginButton ">
@@ -61,10 +68,10 @@
 			<img alt="logo" src="LOGO_DIETIDEALS.png">
 		</div>
 </div>	
-<div class ="bluePadding"></div>
+<div class ="bluePadding"></div>	
 <div class="under-header">
 			<a href="indexLoggato.jsp?idUtente=<%= utente.getID_Utente()%>" class="homeButton">Home</a>
-			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 	
+			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/> 		
   	<div class="dropdown">		
   		<button class="dropbtn">
   			Tipi di Asta
@@ -140,120 +147,81 @@
  	 		</div>
  	 	</form>
 	</div>
+	
+	<%
+	for (Asta a : listaAste){
+		if(a.getTitolo().toLowerCase().contains(parolaChiaveString.toLowerCase())){
+			listaCorretta.add(a);
+		}
+	}
+	%>
 
-<div>
-	<a href="profiloUtenteLoggato.jsp?idUtente=<%= utente.getID_Utente()%>">
-  		<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-		<i class="fa-solid fa-arrow-left freccia-indietro"></i>
-	</a>
-</div>
+	<!--INIZIO BODY ASTE-->	
 	
 	
-<c:set var="tipologia" value="<%= tipoAsta %>" />
+	<c:forEach var = "i" items="<%=listaCorretta%>">
+	
+	<c:if test= "${i.tipologia == 'astaInglese'}">
+	
+			<div class="flex-diviso2 cell">
+				<div>
+    				<a href="profiloAsta.jsp?idAsta=${i.ID}">
+    					<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    					<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
+    				</a>
+   	 			</div>	 	
+    			<div>
+					<div class="testoAsta">		
+						<h1><a href="profiloAsta.jsp?idAsta=${i.ID}">
+    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    						<c:out value = "${i.titolo}"/>
+    					</a></h1>
+						<p><c:out value = "${i.descrizione}"/></p>
+						<h5>Scadrà tra: <c:out value = "${i.timer}"/></h5>
+						<h5>Base d'asta: <c:out value = "${i.offertaIniziale}"/>0€</h5>
+						<h5>Soglia di rialzo: <c:out value = "${i.sogliaRialzo}"/>0€</h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
+						<h2><c:out value = "Asta all'inglese"/></h2>		     
+   					</div>
+  				</div> 	
+  			</div>
+	</c:if>
+	
+	<c:if test= "${i.tipologia == 'astaTempoFisso'}">
+	
+			<div class="flex-diviso2 cell">
+				<div>
+    				<a href="profiloAsta.jsp?idAsta=${i.ID}">
+    					<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    					<img src="${i.fotoAsta}" alt="Immagine prodotto" class="immagineAsta">
+    				</a>
+   	 			</div>	
+    			<div>
+					<div class="testoAsta">		
+						<h1><a href="profiloAsta.jsp?idAsta=${i.ID}">
+    						<input type="hidden" name="IdAsta" value="${i.ID}"/>
+    						<c:out value = "${i.titolo}"/>
+    					</a></h1>
+						<p><c:out value = "${i.descrizione}"/></p>
+						<h5>Data fine: <c:out value = "${i.dataFine}"/></h5>
+						<h5>Prezzo attuale: <c:out value = "${i.offertaPiuAlta}"/>0€</h5>
+						<h2><c:out value = "Asta a tempo fisso"/></h2>		     
+   					</div>
+  				</div> 		
+  			</div>
+	</c:if>
+	
+</c:forEach>
+	
 
-<h1>Per favore inserisci qui i dati richiesti</h1>
 	
-	<form name="nuovaAstaForm" method="post" action="AddNuovaAstaServlet">
-	
-<!-- IF ASTA INGLESE-->		
-		<c:if test = "${tipologia == 'astaInglese'}">	
-			<c:set var="tipologia" value="astaInglese" />		
-			<h4>Che tipo di asta vuoi creare?</h4>
-				
-			<div class ="squareTipologia">		
-			<a href="creaNuovaAstaLoggato.jsp?tipologia=astaTempoFisso&idUtente=<%= utente.getID_Utente()%>">
-				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-  				<h3>Asta a tempo fisso</h3>
-			</a>
-					
-			<a href="creaNuovaAstaLoggato.jsp?tipologia=astaInglese&idUtente=<%= utente.getID_Utente()%>">
-    			<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-    			<div class="blueBackground"><h3>&#x2022 Asta all'Inglese &#x2022 </h3></div>
-    		</a>
-    		</div>	
-		</c:if>		
-					
-<!-- IF ASTA TEMPO FISSO-->
-		<c:if test = "${tipologia == 'astaTempoFisso'}">
-			<c:set var="tipologia" value="astaTempoFisso" />
-			<h4>Che tipo di asta vuoi creare?</h4>	
-				
-				<div class ="squareTipologia">	
-				<a href="creaNuovaAstaLoggato.jsp?tipologia=astaTempoFisso&idUtente=<%= utente.getID_Utente()%>">
-					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-					<input type="hidden" name="tipologia" required class="astaTempoFisso">
-  					<div class="blueBackground"><h3>&#x2022 Asta a tempo fisso &#x2022</h3></div>
-				</a>
-					
-				<a href="creaNuovaAstaLoggato.jsp?tipologia=astaInglese&idUtente=<%= utente.getID_Utente()%>">
-    				<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-    				<input type="hidden" name="tipologia" required class="astaInglese">
-    				<h3>Asta all'Inglese</h3>
-    			</a>
-    			</div>		
-		</c:if>
-<!-- FINE IF -->
-				<div>
-					<h4>Titolo Asta:</h4>
-					<input type="text" name="titoloAsta" required class="inputTesto">
-				</div>
-				<div>
-					<h4>Descrizione:</h4>
-					<input type="text" name="descrizione" required class="inputDescrizione">
-				</div>
-   				
-   				<c:if test = "${tipologia == 'astaTempoFisso'}">	
-					<div>
-						<h4>Data di scadenza:</h4>
-						<input type="date" name="dataScadenza" class="inputStretto">
-					</div>
-				</c:if>
-				<c:if test = "${tipologia == 'astaInglese'}">		
-					<div>
-						<h4>Timer:</h4>
-						<div class="scrittaPiccola">Il timer va a ore</div>
-						<input type="time" name="timer" placeholder="Esempio 12:00:00" class="inputTimer">
-					</div>
-					<div>
-						<h4>Soglia di rialzo:</h4>
-						<input type="number" name="sogliaRialzo" required min="1" class="inputStretto">
-					</div>
-				</c:if>
-				
-				<div>
-					<h4>Categoria Articolo:</h4>
-				 	<select name="categoria" class="finestraCategoria">
-						<option value="TabletTelefonia">Tablet e telefonia</option>
-     					<option value="Giocattoli">Giocattoli</option>
-     					<option value="Elettronica">Elettronica</option>
-     					<option value="Arte">Arte</option>
-     					<option value="Immobili">Immobili</option>
-     					<option value="Antiquariato">Antiquariato</option>
-   					</select>
-   				</div>
-				
-				<div>
-					<h4>Base d'asta:</h4>
-					<input type="number" name="baseAsta" required class="inputStretto" min="1">
-				</div>	
-				
-				<br>
-				<div>
-					<input type="hidden" name="idUtente" value="<%= utente.getID_Utente()%>"/>
-					<input type="hidden" name="tipologia" value="<%= tipoAsta %>"/>
-					<input type="submit" value="Pubblica" class="pubblicaAstaButton"/>
-				</div>
-				
-				
-				
-				
-</form>
-
+   
 <!--Footer:-->
-<br><br>
+
 <div class="footer">
-	<p> DietiDeals24 &#169</p>
+	<p> DietiDeals24 &#169;</p>
 </div>
+
 <script src="scriptRicerca.js"></script>
 </body>
 </html>
