@@ -68,7 +68,7 @@ class AggiornaMioProfiloServletTest
 		Utente u = uRepo.findByEmail("marioesposito@root.com");
 		//webTester.assert
 		
-		assertEquals(u.getEmailUtente(), );
+		assertEquals(u.getBiografia(), biografiaTest);
 		
 		
 		
