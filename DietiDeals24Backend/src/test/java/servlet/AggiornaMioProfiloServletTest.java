@@ -1,81 +1,107 @@
-/**
- * 
- */
+
 package servlet;
 
-import net.sourceforge.jwebunit.junit.WebTester;
-import net.sourceforge.jwebunit.util.TestingEngineRegistry;
 import repository.UtenteRepository;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import implementazione.UtenteRepositoryImpl;
+import entità.Utente;
 import java.io.IOException;
 
-import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import junit.framework.Assert;
 import org.junit.jupiter.api.Test;
 
-import entità.Utente;
-import implementazione.UtenteRepositoryImpl;
-import jakarta.servlet.ServletException;
-
-class AggiornaMioProfiloServletTest
+class AggiornaMioProfiloServletTest extends Mockito
 {
-	private WebTester webTester;
-	private static final String WEBSITE_URL = "http://localhost:8080/DietiDeals24Backend/";
 
-	@Test
-	@BeforeAll
-	public void entraNelProfilo()
-	{
-		
-		webTester = new WebTester();
-		webTester.setTestingEngineKey(TestingEngineRegistry.TESTING_ENGINE_HTMLUNIT);
-		webTester.getTestContext().setBaseUrl(WEBSITE_URL);
+	@Mock
+	RequestDispatcher rd;
 
-		webTester.clickLink("login");
-		webTester.assertFormPresent("aggiornaMioProfiloForm");
-		webTester.assertFormElementPresent("inputEmail");
-		webTester.assertFormElementPresent("inputPassword");
-		
-		webTester.setTextField("inputEmail", "marioesposito@root.com");
-		webTester.setTextField("inputPassword", "root");
-		webTester.submit();
-		webTester.clickLink("profiloUtenteLoggato.jsp?idUtente=100");
-		
-		
-	}
 	
+	// 1 CAMPO PIENO E GIUSTO E GLI ALTRI VUOTI
 	@Test
-	public void testBiografiaNonVuotaTuttiGliAltriCampiVuoti()
+	public void testNuovaPosizioneNonVuotaTuttiGliAltriCampiVuoti()
 	{
-		
-		String biografiaTest = "Sono uo stimato scienziato";
-		String posizioneaTest = "";
-		String socialTest = "";
-		String emailTest = "";
-		
-		
-		
-		webTester.setTextField("nuovaBiografia", biografiaTest);
-		webTester.setTextField("nuovaPosizione", posizioneaTest);
-		webTester.setTextField("nuovoSocial", socialTest);
-		webTester.setTextField("nuovaEmail", emailTest);
-		webTester.submit();
-		
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse response = mock(HttpServletResponse.class);
+
 		UtenteRepository uRepo = UtenteRepositoryImpl.getInstance();
-		Utente u = uRepo.findByEmail("marioesposito@root.com");
-		//webTester.assert
-		
-		assertEquals(u.getBiografia(), biografiaTest);
-		
-		
-		
+		Utente uPrima, uDopo;
+		String posizioneTest = "Napoli, Na";
+		Integer idU = 100;
+
+		when(request.getParameter("idUtente")).thenReturn(idU.toString());
+
+		when(request.getParameter("nuovaPosizione")).thenReturn(posizioneTest);
+		when(request.getParameter("nuovoSocial")).thenReturn("");
+		when(request.getParameter("nuovaEmail")).thenReturn("");
+		when(request.getParameter("nuovaBiografia")).thenReturn("");
+
+		when(request.getRequestDispatcher("profiloUtenteLoggato.jsp?idUtente=" + idU)).thenAnswer(RETURNS_MOCKS);
+
+		uDopo = uRepo.findbyID(idU);
+
+		try
+		{
+			new AggiornaMioProfiloServlet().doGet(request, response);
+		} catch (ServletException | IOException e)
+		{
+		}
+
+		uPrima = uRepo.findbyID(100);
+
+		Assert.assertTrue(uPrima.getGeolocalizzazione().equals(uDopo.getGeolocalizzazione()));
+		Assert.assertTrue(uPrima.getBiografia().equals(uDopo.getBiografia()));
+		Assert.assertTrue(uPrima.getLinkSocial().equals(uDopo.getLinkSocial()));
+		Assert.assertTrue(uPrima.getEmailUtente().equals(uDopo.getEmailUtente()));
+
+	}
+	public void testNovoSocialNonVuotaTuttiGliAltriCampiVuoti()
+	{
+	}
+	public void testNuovaEmailNonVuotaTuttiGliAltriCampiVuoti()
+	{
+	}
+	public void testNuovaBiografiaNonVuotaTuttiGliAltriCampiVuoti()
+	{
 	}
 	
-		
 	
+	// 2 CAMPI PIENI E GIUSTI E GLI ALTRI VUOTI
 	
+	public void testNuovoSocialENuovaPosizioneNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovaEmailENuovaPosizioneNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovaPosizioneENuovaBiografiaNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovaEmailENuovaSocialNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovoSocialENuovaBiografiaNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovaEmailENuovaBiografiaNonVuoteTuttiGliAltriCampiVuoti() {}
 
+	
+	// 3 CAMPI PIENI E GIUSTI E GLI ALTRI VUOTI
+	
+	public void testNuovaPosizioneNuovoSocialNuovaEmailNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovoSocialNuovaEmailNuovaBiografiaNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovaPosizioneNuovaEmailNuovaBiografiaNonVuoteTuttiGliAltriCampiVuoti() {}
+	public void testNuovaPosizioneNuovoSocialNuovBiografiaNonVuoteTuttiGliAltriCampiVuoti() {}
+	
+	// TUTTI I CAMPI PIENI E GIUSTI 
+	
+	public void testNessunCampoVuoto() {}
+	
+	
+	// TUTTI I CAMPI VUOTI
+	
+	public void testCampiNonValidi() {}
+	
+	//TUTTI I CAMPI PIENI E SBAGLIATI
+	
+	public void testCampiTuttiNulli() {}
+	
+	
+	
 }
