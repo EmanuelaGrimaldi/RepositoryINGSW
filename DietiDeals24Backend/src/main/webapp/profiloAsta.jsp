@@ -113,7 +113,7 @@
   		<!-- Modal content -->
   		<div class="modal-content-redBorder">
    	 		<div class="modal-header">
-   	   			<span class="close">&times;</span>
+   	   			<span class="closeButton">&times;</span>
   	    		<h2>ATTENZIONE!</h2>
   	  		</div>
  	   		<div class="modal-body">
@@ -209,7 +209,7 @@ var modal = document.getElementById("myModal");
 var offertabutton = document.getElementById("faiOffertaButton");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementsByClassName("closeButton")[0];
 
 // When the user clicks the button, open the modal 
 offertabutton.onclick = function() {
@@ -217,7 +217,7 @@ offertabutton.onclick = function() {
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+closeButton.onclick = function() {
   modal.style.display = "none";
 }
 
