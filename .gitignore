@@ -2,3 +2,4 @@
 DietiDeals24Backend/target/classes/servlet/ControllerUtenti.class
 DietiDeals24Backend/target/classes/repository/UtenteRepository.class
 *.class
+DietiDeals24Backend/.classpath
