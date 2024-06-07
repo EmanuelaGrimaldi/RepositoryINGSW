@@ -22,6 +22,149 @@ import implementazione.AstaRepositoryImpl;
 class AggiornaMiaAstaServletTest extends Mockito
 {
 
+
+
+	// FATTO
+	@Test
+	public void testSettoSogliaRialzoMinoreDi1PerAstaAllInglese() 
+	{
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse response = mock(HttpServletResponse.class);
+
+		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
+		Asta aPrima, aDopo;
+		
+		String tipologia = "astaInglese";
+		Integer idAstaINT = 201, idVenditoreINT = 110, sogliaDiRialzo = -1;
+
+		String timer = "";
+		String dataScadenza = "";
+		
+		aPrima = aRepo.findbyID(idAstaINT);		
+		
+		when(request.getParameter("tipoAsta")).thenReturn(tipologia);
+		when(request.getParameter("idAsta")).thenReturn(idAstaINT.toString());
+		when(request.getParameter("idUtente")).thenReturn(idVenditoreINT.toString());
+		when(request.getParameter("nuovaSogliaRialzo")).thenReturn(sogliaDiRialzo.toString());
+		when(request.getParameter("nuovoTimer")).thenReturn(timer);
+		when(request.getParameter("nuovoDataScadenza")).thenReturn(dataScadenza);
+
+		when(request.getRequestDispatcher("MiaAstaLoggato.jsp?idAsta=" + idAstaINT + "&&idUtente=" + idVenditoreINT))
+				.thenAnswer(RETURNS_MOCKS);
+
+		try
+		{
+			new AggiornaMiaAstaServlet().doGet(request, response);
+		} catch (ServletException | IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		aDopo = aRepo.findbyID(idAstaINT);
+
+		Assert.assertNotSame(aPrima.getSogliaRialzo(), aDopo.getSogliaRialzo());
+		System.out.println("\n\n"+aPrima.getSogliaRialzo() +"\n"+aDopo.getSogliaRialzo());
+
+		// reset
+		aRepo.update(aPrima);
+
+	}
+	
+	// FATTO
+	@Test 
+	public void testSettoDataDiFineMinoreAQuellaOdiernaPerAstaATempoFisso() 
+	{
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse response = mock(HttpServletResponse.class);
+
+		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
+		Asta aPrima, aDopo;
+
+		String tipologia = "astaATempoFisso";
+		Integer idAstaINT = 201, idVenditoreINT = 110;
+		String sogliaDiRialzo = "";
+
+		String timer = "";
+		String dataScadenza = "2023-02-22";
+
+		when(request.getParameter("tipoAsta")).thenReturn(tipologia);
+		when(request.getParameter("idAsta")).thenReturn(idAstaINT.toString());
+		when(request.getParameter("idUtente")).thenReturn(idVenditoreINT.toString());
+		when(request.getParameter("nuovaSogliaRialzo")).thenReturn(sogliaDiRialzo.toString());
+		when(request.getParameter("nuovoTimer")).thenReturn(timer);
+		when(request.getParameter("nuovoDataScadenza")).thenReturn(dataScadenza);
+
+		when(request.getRequestDispatcher("MiaAstaLoggato.jsp?idAsta=" + idAstaINT + "&&idUtente=" + idVenditoreINT))
+				.thenAnswer(RETURNS_MOCKS);
+
+		aPrima = aRepo.findbyID(idAstaINT);
+
+		try
+		{
+			new AggiornaMiaAstaServlet().doGet(request, response);
+		} catch (ServletException | IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		aDopo = aRepo.findbyID(idAstaINT);
+
+		Assert.assertNotSame(aPrima.getDataFine(), aDopo.getDataFine());
+		System.out.println(aPrima.getDataFine()+"\n"+ aDopo.getDataFine());
+		
+		// reset
+		aRepo.update(aPrima);
+
+	}
+	
+	// FATT
+	@Test 
+	public void testSettoValoriNulliPerAstaAllInglese()
+	{
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse response = mock(HttpServletResponse.class);
+
+		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
+		Asta aPrima, aDopo;
+
+		String tipologia = "astaInglese";
+		Integer idAstaINT = 201, idVenditoreINT = 110;
+		String sogliaDiRialzo = "";
+
+		String timer = "";
+		String dataScadenza = "";
+
+		when(request.getParameter("tipoAsta")).thenReturn(tipologia);
+		when(request.getParameter("idAsta")).thenReturn(idAstaINT.toString());
+		when(request.getParameter("idUtente")).thenReturn(idVenditoreINT.toString());
+		when(request.getParameter("nuovaSogliaRialzo")).thenReturn(sogliaDiRialzo.toString());
+		when(request.getParameter("nuovoTimer")).thenReturn(timer);
+		when(request.getParameter("nuovoDataScadenza")).thenReturn(dataScadenza);
+
+		when(request.getRequestDispatcher("MiaAstaLoggato.jsp?idAsta=" + idAstaINT + "&&idUtente=" + idVenditoreINT))
+				.thenAnswer(RETURNS_MOCKS);
+
+		aPrima = aRepo.findbyID(idAstaINT);
+
+		try
+		{
+			new AggiornaMiaAstaServlet().doGet(request, response);
+		} catch (ServletException | IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		aDopo = aRepo.findbyID(idAstaINT);
+
+		Assert.assertEquals(aPrima.getSogliaRialzo(), aDopo.getSogliaRialzo());
+		Assert.assertEquals(aPrima.getTimer(), aDopo.getTimer());
+		Assert.assertEquals(aPrima.getDataFine(), aDopo.getDataFine());
+
+		// reset
+		aRepo.update(aPrima);
+
+	}
+	
 	// FATTO
 	@Test
 	public void testSettoNuovoTimerDiversoDaQuelloCorrenteENuovoTimerMaggioreDi0PerAstaAllInglese()
@@ -160,8 +303,8 @@ class AggiornaMiaAstaServletTest extends Mockito
 		aRepo.update(aPrima);
 	}
 
-	// NON SI PUO FARE ORA
-	// @Test
+	// FATTO
+	@Test
 	public void testUsoValoreNulloPerAstaATempoFisso()
 	{
 		HttpServletRequest request = mock(HttpServletRequest.class);
@@ -170,21 +313,28 @@ class AggiornaMiaAstaServletTest extends Mockito
 		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
 		Asta aPrima, aDopo;
 
-		String tipologia = "astaTempoFisso", sogliaDiRialzo, timer, dataScadenza;
+		String tipologia = "astaATempoFisso";
 		Integer idAstaINT = 201, idVenditoreINT = 110;
+		String sogliaDiRialzo = "";
+
+		String timer = "";
+		String dataScadenza = "";
 
 		when(request.getParameter("tipoAsta")).thenReturn(tipologia);
-		when(request.getParameter("idAsta")).thenReturn("");
-		when(request.getParameter("idUtente")).thenReturn("");
-		when(request.getParameter("nuovaSogliaRialzo")).thenReturn("");
-		when(request.getParameter("nuovoTimer")).thenReturn("");
-		when(request.getParameter("nuovoDataScadenza")).thenReturn("");
+		when(request.getParameter("idAsta")).thenReturn(idAstaINT.toString());
+		when(request.getParameter("idUtente")).thenReturn(idVenditoreINT.toString());
+		when(request.getParameter("nuovaSogliaRialzo")).thenReturn(sogliaDiRialzo.toString());
+		when(request.getParameter("nuovoTimer")).thenReturn(timer);
+		when(request.getParameter("nuovoDataScadenza")).thenReturn(dataScadenza);
+
+		when(request.getRequestDispatcher("MiaAstaLoggato.jsp?idAsta=" + idAstaINT + "&&idUtente=" + idVenditoreINT))
+				.thenAnswer(RETURNS_MOCKS);
 
 		aPrima = aRepo.findbyID(idAstaINT);
 
 		try
 		{
-			new AggiornaMioProfiloServlet().doGet(request, response);
+			new AggiornaMiaAstaServlet().doGet(request, response);
 		} catch (ServletException | IOException e)
 		{
 			e.printStackTrace();
@@ -192,11 +342,9 @@ class AggiornaMiaAstaServletTest extends Mockito
 
 		aDopo = aRepo.findbyID(idAstaINT);
 
-		// Assert.assertTrue(uDopo.getGeolocalizzazione().equals(posizioneTest));
-//			Assert.assertEquals(, aDopo.get);
-//			Assert.assertTrue(aPrima.equals(aDopo.));
-//			Assert.assertTrue(aPrima.equals(aDopo.);
-//			Assert.assertTrue(aPrima..equals(aDopo.);
+		Assert.assertEquals(aPrima.getSogliaRialzo(), aDopo.getSogliaRialzo());
+		Assert.assertEquals(aPrima.getTimer(), aDopo.getTimer());
+		Assert.assertEquals(aPrima.getDataFine(), aDopo.getDataFine());
 
 		// reset
 		aRepo.update(aPrima);
