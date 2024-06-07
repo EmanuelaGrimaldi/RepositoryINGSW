@@ -48,8 +48,8 @@ public class AggiornaMiaAstaServlet extends HttpServlet {
 			stringa = request.getParameter("nuovoTimer");
 			
 			if (!stringa.isEmpty()){
-				DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("00:00:00");
-				LocalTime time = LocalTime.parse(stringa, formatterTime );
+				//DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("00:00:00");
+				LocalTime time = LocalTime.parse(stringa);//, formatterTime );
 				a.setTimer(time);	
 			}
 			
@@ -58,9 +58,10 @@ public class AggiornaMiaAstaServlet extends HttpServlet {
 			stringa = request.getParameter("nuovoDataScadenza");
 			
 			if (!stringa.isEmpty()){
-				DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy:mm:dd");
-				LocalDate date = LocalDate.parse(stringa, formatterDate );
+				//DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy:mm:dd");
+				LocalDate date = LocalDate.parse(stringa);
 				a.setDataFine(date);	
+				System.out.println(a.getDataFine());
 			}
 		}
 		
