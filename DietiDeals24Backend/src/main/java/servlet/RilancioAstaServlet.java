@@ -79,9 +79,9 @@ public class RilancioAstaServlet extends HttpServlet {
 		notificaCompratore.setIDProprietarioNotifica(idUtenteCompratore);
 		notificaCompratore.setIDUtenteCompratore(idUtenteCompratore);
 		nRepo.save(notificaCompratore);
-			
+		
 		aRepo.update(a);
-
+		
 		request.getRequestDispatcher("elencoNotificheLoggato.jsp?idUtente=" + idUtenteCompratore).forward(request, response);
 	}
 

@@ -53,7 +53,7 @@ public class AddNuovaAstaServlet extends HttpServlet {
 		
 		if (tipologiaAsta.equals("astaInglese")) {
 			
-			time = LocalTime.parse(request.getParameter("timer"), formatterTime);
+			time = LocalTime.parse(request.getParameter("timer"));//, formatterTime);
 
 			a.setTimer(time);
 			a.setSogliaRialzo(Integer.valueOf(request.getParameter("sogliaRialzo")));
@@ -69,7 +69,7 @@ public class AddNuovaAstaServlet extends HttpServlet {
 			a.setDataFine(date);
 			
 			//timer_e_soglia_rialzo null
-			time = LocalTime.parse("00:00:00", formatterTime );
+			time = LocalTime.parse("00:00:00");//, formatterTime );
 			a.setTimer(time);
 			a.setSogliaRialzo(0);
 			a.setTipologia("astaTempoFisso");
@@ -78,7 +78,8 @@ public class AddNuovaAstaServlet extends HttpServlet {
 		
 		int nuovoIDtrovato = 0;
 		AstaRepository aRepo = AstaRepositoryImpl.getInstance();
-
+		
+		// ciclo inutile
 		do {
 			if(aRepo.findbyID(IDCountAsta) == null) {
 				a.setID(IDCountAsta);
@@ -93,7 +94,6 @@ public class AddNuovaAstaServlet extends HttpServlet {
 		aRepo.save(a);
 		
 		request.getRequestDispatcher("indexLoggato.jsp?idUtente=" + idUtenteINT).forward(request, response);
-		
 	}
 	
 	
