@@ -157,7 +157,7 @@
 			<c:if test= "${tipoAsta == 'astaInglese'}">
 	
 	   	 		<div class="modal-header">
-   	   				<span class="close">&times;</span>
+   	   				<span class="closeButton">&times;</span>
   	    			<h2>Nuova offerta:</h2>
   	  			</div>
  	   			<div class="modal-body">
@@ -183,8 +183,8 @@
 			</c:if>
 			<c:if test= "${tipoAsta == 'astaTempoFisso'}">
 	
-	   	 		<div class="modal-header">
-   	   				<span class="close">&times;</span>
+   	 			<div class="modal-header">
+   	   				<span class="closeButton">&times;</span>
   	    			<h2>Nuova offerta:</h2>
   	  			</div>
  	   			<div class="modal-body">
@@ -289,7 +289,7 @@ var modal = document.getElementById("myModal");
 var offertabutton = document.getElementById("faiOffertaButton");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementsByClassName("closeButton")[0];
 
 // When the user clicks the button, open the modal 
 offertabutton.onclick = function() {
@@ -297,11 +297,11 @@ offertabutton.onclick = function() {
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+closeButton.onclick = function() {
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+//When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
